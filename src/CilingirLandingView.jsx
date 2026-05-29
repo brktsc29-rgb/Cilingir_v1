@@ -154,27 +154,27 @@ function Hero() {
       {/* Background image */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'url(/images/hero-bg.webp)',
+        backgroundImage: 'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center right',
         backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
 
-      {/* Left-to-right overlay: text readable on left, key visible on right */}
+      {/* Left-to-right overlay */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.65) 35%,rgba(0,0,0,.20) 70%,rgba(0,0,0,.10) 100%)',
       }} />
 
-      {/* Bottom fade: smooth transition into next section */}
+      {/* Bottom fade */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, zIndex: 2,
         background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
         pointerEvents: 'none',
       }} />
 
-      {/* Content — left side only */}
+      {/* Content — left side */}
       <div style={{
         position: 'relative', zIndex: 3,
         width: '100%',
