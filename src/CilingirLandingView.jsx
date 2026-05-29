@@ -1,97 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import {
+  Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
+  ChevronRight, Menu, X, Star, Users, Shield, Tag, Car,
+  Key, Lock,
+} from 'lucide-react';
 
 const TEL = 'tel:+905426946920';
 const TEL_DISPLAY = '0542 694 69 20';
 const WA = 'https://wa.me/905426946920';
 const WA_KONUM = 'https://wa.me/905426946920?text=Merhaba%2C%20konumumu%20payla%C5%9Fmak%20istiyorum.';
-
 const GOLD = '#D4AF37';
-const GOLD_LIGHT = '#FFD700';
-const GOLD_DIM = '#C9A84C';
-const GOLD_PALE = 'rgba(212,175,55,0.08)';
-const GOLD_BORDER = 'rgba(212,175,55,0.2)';
-const BLACK = '#080808';
-
-const glass = {
-  background: 'rgba(255,255,255,0.04)',
-  backdropFilter: 'blur(20px)',
-  WebkitBackdropFilter: 'blur(20px)',
-  border: `1px solid ${GOLD_BORDER}`,
-  borderRadius: 16,
-};
+const GL = '#FFD700';
+const GD = '#C9A84C';
+const BG = '#07090e';
 
 const CSS = `
-  @keyframes goldGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.22), 0 0 60px rgba(212,175,55,0.08); }
-    50% { box-shadow: 0 0 40px rgba(212,175,55,0.48), 0 0 100px rgba(212,175,55,0.18); }
+  @keyframes floatKey{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+  @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+  @keyframes glowRing{
+    0%,100%{opacity:.38;transform:translate(-50%,-50%) scale(1)}
+    50%{opacity:.65;transform:translate(-50%,-50%) scale(1.06)}
   }
-  @keyframes floatKey {
-    0%, 100% { transform: translateY(0px) rotate(-15deg); }
-    33% { transform: translateY(-14px) rotate(-10deg); }
-    66% { transform: translateY(-6px) rotate(-18deg); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  @keyframes ringOut {
-    0% { transform: translate(-50%,-50%) scale(0.8); opacity: 0.55; }
-    100% { transform: translate(-50%,-50%) scale(1.45); opacity: 0; }
-  }
-  @keyframes pulseDot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
-  @keyframes ctaBounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.015); }
-  }
-  .cl-root * { box-sizing: border-box; }
-  .cl-root { -webkit-tap-highlight-color: transparent; }
-  .cl-root a { text-decoration: none; color: inherit; -webkit-tap-highlight-color: transparent; }
-  .cl-scrollx { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .cl-scrollx::-webkit-scrollbar { display: none; }
-  .cl-scrollx { scrollbar-width: none; }
-  .cl-svc { transition: transform 0.2s ease; }
-  .cl-svc:hover { transform: translateX(5px); }
-  .cl-pill { transition: background 0.2s, border-color 0.2s; cursor: default; }
-  .cl-pill:hover { background: rgba(212,175,55,0.16) !important; border-color: rgba(212,175,55,0.48) !important; }
-  .cl-cta { animation: ctaBounce 3s ease-in-out infinite; }
-  .cl-cta:active, .cl-wa:active, .cl-sb:active { transform: scale(0.97) !important; animation: none !important; }
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: #080808; }
-  ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 2px; }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#07090e;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
+  button{-webkit-tap-highlight-color:transparent}
+  .sx{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sx::-webkit-scrollbar{display:none}
+  .sx{scrollbar-width:none}
+  .svc{transition:transform .2s ease,border-color .2s ease}
+  .svc:hover{transform:translateX(4px);border-color:rgba(212,175,55,.42)!important}
+  .pill{transition:background .2s,border-color .2s;cursor:default}
+  .pill:hover{background:rgba(212,175,55,.14)!important;border-color:rgba(212,175,55,.44)!important}
+  .bp:active{transform:scale(.97)!important;transition:transform .1s!important}
 `;
 
 export default function CilingirLandingView() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    document.title = 'Taşcı Çilingir | İstanbul 7/24 Acil Çilingir Hizmeti';
-  }, []);
-
+  const [open, setOpen] = useState(false);
   return (
     <>
       <style>{CSS}</style>
-      <div
-        className="cl-root"
-        style={{
-          background: BLACK,
-          minHeight: '100vh',
-          color: '#fff',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", sans-serif',
-          overflowX: 'hidden',
-          paddingBottom: 90,
-        }}
-      >
-        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        {menuOpen && <MobileMenu close={() => setMenuOpen(false)} />}
+      <div style={{
+        background: BG, minHeight: '100vh', color: '#fff',
+        fontFamily: '-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","Helvetica Neue",sans-serif',
+        overflowX: 'hidden', paddingBottom: 80,
+      }}>
+        <Navbar open={open} setOpen={setOpen} />
+        {open && <MobileMenu onClose={() => setOpen(false)} />}
         <Hero />
-        <TrustRow />
+        <TrustCards />
         <Services />
         <Districts />
         <SocialProof />
@@ -101,101 +61,162 @@ export default function CilingirLandingView() {
   );
 }
 
-function Navbar({ menuOpen, setMenuOpen }) {
+/* ─── NAVBAR ─── */
+function Navbar({ open, setOpen }) {
   return (
-    <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, height: 60, padding: '0 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(8,8,8,0.93)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(212,175,55,0.08)' }}>
-      <Logo />
-      <HamburgerBtn open={menuOpen} onClick={() => setMenuOpen(o => !o)} />
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      height: 64, padding: '0 16px',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      background: 'rgba(7,9,14,.95)',
+      backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+      borderBottom: '1px solid rgba(212,175,55,.09)',
+    }}>
+      <LogoMark />
+      <a href={TEL} className="bp" style={{
+        display: 'flex', alignItems: 'center', gap: 8,
+        padding: '7px 12px',
+        background: 'rgba(212,175,55,.08)', border: '1px solid rgba(212,175,55,.2)', borderRadius: 10,
+      }}>
+        <Phone size={13} color={GL} strokeWidth={2.5} />
+        <div>
+          <div style={{ fontSize: 8, color: GD, fontWeight: 700, letterSpacing: '.1em', lineHeight: 1 }}>7/24 ACİL DESTEK</div>
+          <div style={{ fontSize: 12.5, color: GL, fontWeight: 800, letterSpacing: '.03em', lineHeight: 1.4 }}>{TEL_DISPLAY}</div>
+        </div>
+      </a>
+      <button onClick={() => setOpen(o => !o)}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'flex', alignItems: 'center' }}
+        aria-label="Menü">
+        {open ? <X size={22} color={GL} /> : <Menu size={22} color={GD} />}
+      </button>
     </nav>
   );
 }
 
-function Logo() {
+function LogoMark() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-      <svg width="34" height="38" viewBox="0 0 34 38" fill="none" aria-hidden="true">
-        <path d="M17 1.5L32 7V21C32 30 17 37 17 37C17 37 2 30 2 21V7L17 1.5Z" fill="url(#sh)" stroke="rgba(212,175,55,0.35)" strokeWidth="0.5" />
+    <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+      <svg width="32" height="36" viewBox="0 0 32 36" fill="none">
+        <path d="M16 1.5L30 7V20C30 28.5 16 35 16 35C16 35 2 28.5 2 20V7L16 1.5Z" fill="url(#lsg)"
+          stroke="rgba(212,175,55,.3)" strokeWidth=".5" />
         <defs>
-          <linearGradient id="sh" x1="2" y1="1" x2="32" y2="37" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#C9A84C" />
-            <stop offset="0.5" stopColor="#FFD700" />
-            <stop offset="1" stopColor="#C9A84C" />
+          <linearGradient id="lsg" x1="2" y1="1.5" x2="30" y2="35" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#C9A84C" /><stop offset=".5" stopColor="#FFD700" /><stop offset="1" stopColor="#C9A84C" />
           </linearGradient>
         </defs>
-        <circle cx="17" cy="15" r="5.5" stroke="#080808" strokeWidth="2.8" fill="none" />
-        <rect x="15" y="18.5" width="4" height="9" rx="1.5" fill="#080808" />
+        <circle cx="16" cy="13.5" r="5.2" stroke="#07090e" strokeWidth="2.5" fill="none" />
+        <rect x="14" y="17" width="4" height="8.5" rx="1.5" fill="#07090e" />
       </svg>
       <div>
-        <div style={{ fontSize: 14, fontWeight: 800, color: GOLD_LIGHT, letterSpacing: '0.1em', lineHeight: 1 }}>TAŞCI</div>
-        <div style={{ fontSize: 8.5, fontWeight: 700, color: GOLD_DIM, letterSpacing: '0.28em', lineHeight: 1.6 }}>ÇİLİNGİR</div>
+        <div style={{ fontSize: 13.5, fontWeight: 800, color: GL, letterSpacing: '.09em', lineHeight: 1.1 }}>TAŞCI</div>
+        <div style={{ fontSize: 7.5, fontWeight: 700, color: GD, letterSpacing: '.3em', lineHeight: 1 }}>ÇİLİNGİR</div>
       </div>
     </div>
   );
 }
 
-function HamburgerBtn({ open, onClick }) {
+function MobileMenu({ onClose }) {
   return (
-    <button onClick={onClick} style={{ background: 'none', border: 'none', padding: 8, cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'flex-end' }} aria-label="Menü">
-      {[22, 15, 22].map((w, i) => (
-        <span key={i} style={{ display: 'block', height: 2, width: w, background: open ? GOLD_LIGHT : GOLD_DIM, borderRadius: 2, transition: 'all 0.28s ease', ...(open && i === 0 ? { transform: 'rotate(45deg) translate(5px, 5px)', width: 20 } : {}), ...(open && i === 1 ? { opacity: 0, width: 0 } : {}), ...(open && i === 2 ? { transform: 'rotate(-45deg) translate(5px, -5px)', width: 20 } : {}) }} />
-      ))}
-    </button>
-  );
-}
-
-function MobileMenu({ close }) {
-  return (
-    <div style={{ position: 'fixed', top: 60, left: 0, right: 0, zIndex: 999, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(212,175,55,0.1)', padding: '6px 24px 24px', animation: 'fadeUp 0.2s ease' }}>
+    <div style={{
+      position: 'fixed', inset: 0, zIndex: 99,
+      background: 'rgba(7,9,14,.97)', backdropFilter: 'blur(24px)',
+      paddingTop: 72, padding: '72px 24px 32px',
+    }}>
       {['Hizmetler', 'Bölgeler', 'İletişim'].map(item => (
-        <button key={item} onClick={close} style={{ display: 'block', width: '100%', padding: '16px 0', textAlign: 'left', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.06)', fontSize: 16, fontWeight: 600, color: 'rgba(255,255,255,0.82)', cursor: 'pointer' }}>{item}</button>
+        <button key={item} onClick={onClose} style={{
+          display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
+          background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,.07)',
+          fontSize: 18, fontWeight: 600, color: '#fff', cursor: 'pointer',
+        }}>{item}</button>
       ))}
-      <a href={TEL} style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 20, padding: '14px 18px', background: GOLD_PALE, border: `1px solid ${GOLD_BORDER}`, borderRadius: 12 }}>
-        <span style={{ fontSize: 20 }}>📞</span>
+      <a href={TEL} onClick={onClose} style={{
+        display: 'flex', alignItems: 'center', gap: 14, marginTop: 28,
+        padding: '16px 20px', borderRadius: 14,
+        background: `linear-gradient(135deg,${GD},${GL})`,
+        boxShadow: '0 4px 20px rgba(212,175,55,.35)',
+      }}>
+        <Phone size={20} color="#000" />
         <div>
-          <div style={{ fontSize: 10.5, color: GOLD_DIM, fontWeight: 700, letterSpacing: '0.1em' }}>ACİL HATTI</div>
-          <div style={{ fontSize: 17, fontWeight: 900, color: GOLD_LIGHT }}>{TEL_DISPLAY}</div>
+          <div style={{ fontSize: 11, color: 'rgba(0,0,0,.6)', fontWeight: 700 }}>ACİL HATTI</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
         </div>
       </a>
     </div>
   );
 }
 
+/* ─── HERO ─── */
 function Hero() {
   return (
-    <section style={{ minHeight: '88vh', position: 'relative', overflow: 'hidden', padding: '82px 24px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <div style={{ position: 'absolute', top: '4%', right: '-18%', width: 380, height: 380, background: 'radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 0 }} />
-      <div style={{ position: 'absolute', bottom: '12%', left: '-22%', width: 300, height: 300, background: 'radial-gradient(circle, rgba(212,175,55,0.065) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 0 }} />
-      <IstanbulBg />
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ marginBottom: 22, animation: 'fadeUp 0.55s ease both' }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(212,175,55,0.07)', border: '1px solid rgba(212,175,55,0.26)', borderRadius: 100, padding: '6px 14px', fontSize: 10.5, fontWeight: 700, color: GOLD_DIM, letterSpacing: '0.13em' }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e', display: 'inline-block', animation: 'pulseDot 2s ease-in-out infinite' }} />
-            7/24 ACİL ÇİLİNGİR HİZMETİ
+    <section style={{
+      paddingTop: 64, minHeight: '100svh',
+      position: 'relative', overflow: 'hidden',
+      display: 'flex', alignItems: 'center',
+    }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,#07090e 0%,#0b0e16 50%,#09090e 100%)' }} />
+      <div style={{ position: 'absolute', bottom: 0, right: 0, width: '75%', height: '65%', background: 'radial-gradient(ellipse at 85% 100%,rgba(160,100,20,.1) 0%,transparent 60%)', zIndex: 1 }} />
+      <div style={{ position: 'absolute', top: '18%', right: '6%', width: 190, height: 310, background: 'radial-gradient(ellipse,rgba(212,175,55,.08) 0%,transparent 70%)', zIndex: 1 }} />
+      <IstanbulSilhouette />
+
+      <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: '28px 20px 24px' }}>
+        <div style={{ marginBottom: 18, animation: 'fadeUp .55s ease both' }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 7,
+            background: 'rgba(212,175,55,.07)', border: '1px solid rgba(212,175,55,.24)',
+            borderRadius: 100, padding: '7px 14px',
+            fontSize: 11, fontWeight: 700, color: GD, letterSpacing: '.1em',
+          }}>
+            <Clock size={12} color={GD} />
+            7/24 ACİL ÇİLİNGİR
           </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-          <div style={{ flex: 1, animation: 'fadeUp 0.65s ease 0.1s both' }}>
-            <h1 style={{ fontSize: 'clamp(38px, 11vw, 58px)', fontWeight: 900, lineHeight: 1.05, marginBottom: 18, letterSpacing: '-0.025em' }}>
-              <span style={{ color: '#fff' }}>Kapıda mı</span>
-              <br />
-              <span style={{ background: `linear-gradient(90deg, ${GOLD_DIM} 0%, ${GOLD_LIGHT} 40%, #FFFBB0 55%, ${GOLD_DIM} 100%)`, backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: 'shimmer 4s linear infinite', display: 'inline-block' }}>kaldınız?</span>
+
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+          <div style={{ flex: 1, animation: 'fadeUp .65s ease .1s both' }}>
+            <h1 style={{ fontSize: 'clamp(36px,10.5vw,52px)', fontWeight: 900, lineHeight: 1.05, marginBottom: 14, letterSpacing: '-.02em' }}>
+              <span style={{ display: 'block', color: '#fff' }}>Kapıda mı</span>
+              <span style={{
+                display: 'block',
+                background: `linear-gradient(90deg,${GD} 0%,${GL} 40%,#FFF5B0 55%,${GD} 100%)`,
+                backgroundSize: '200% auto', WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+                animation: 'shimmer 4s linear infinite',
+              }}>kaldınız?</span>
             </h1>
-            <p style={{ fontSize: 14.5, color: 'rgba(255,255,255,0.52)', lineHeight: 1.68, marginBottom: 30, maxWidth: 295 }}>
-              İstanbul'un birçok noktasında ortalama{' '}
-              <strong style={{ color: 'rgba(255,255,255,0.82)', fontWeight: 700 }}>20-30 dakika</strong>{' '}
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,.52)', lineHeight: 1.65, marginBottom: 22, maxWidth: 280 }}>
+              İstanbul’un birçok noktasında ortalama{' '}
+              <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dakika</span>{' '}
               içinde profesyonel çözüm.
             </p>
-            <a href={TEL} className="cl-cta" style={{ display: 'flex', flexDirection: 'column', padding: '17px 22px', borderRadius: 14, marginBottom: 12, background: `linear-gradient(135deg, ${GOLD_DIM} 0%, ${GOLD_LIGHT} 50%, ${GOLD_DIM} 100%)`, backgroundSize: '200% auto', boxShadow: '0 6px 28px rgba(212,175,55,0.38), inset 0 1px 0 rgba(255,255,255,0.22)', maxWidth: 300 }}>
-              <span style={{ fontSize: 12.5, fontWeight: 800, color: 'rgba(0,0,0,0.65)', letterSpacing: '0.15em' }}>📞  HEMEN ARA</span>
-              <span style={{ fontSize: 20, fontWeight: 900, color: '#000', letterSpacing: '0.04em', marginTop: 3 }}>{TEL_DISPLAY}</span>
+            <a href={TEL} className="bp" style={{
+              display: 'flex', alignItems: 'center', gap: 14,
+              padding: '14px 18px', borderRadius: 12, marginBottom: 10,
+              background: `linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
+              backgroundSize: '200% auto',
+              boxShadow: '0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
+              maxWidth: 290,
+            }}>
+              <Phone size={18} color="#000" strokeWidth={2.5} />
+              <div>
+                <div style={{ fontSize: 12.5, fontWeight: 900, color: 'rgba(0,0,0,.7)', letterSpacing: '.12em', lineHeight: 1 }}>HEMEN ARA</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: '#000', letterSpacing: '.04em' }}>{TEL_DISPLAY}</div>
+              </div>
             </a>
-            <a href={WA} className="cl-wa" style={{ display: 'flex', flexDirection: 'column', padding: '14px 22px', borderRadius: 14, background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.28)', maxWidth: 300 }}>
-              <span style={{ fontSize: 12.5, fontWeight: 800, color: '#25D366', letterSpacing: '0.12em' }}>💬  WHATSAPP'TAN YAZ</span>
-              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.38)', marginTop: 3 }}>Hızlı destek alın</span>
+            <a href={WA} className="bp" style={{
+              display: 'flex', alignItems: 'center', gap: 14,
+              padding: '12px 18px', borderRadius: 12,
+              background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.1)',
+              maxWidth: 290,
+            }}>
+              <MessageCircle size={18} color="#25D366" />
+              <div>
+                <div style={{ fontSize: 12.5, fontWeight: 800, color: '#fff', letterSpacing: '.08em', lineHeight: 1 }}>WHATSAPP’TAN YAZ</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,.42)', marginTop: 2 }}>Hızlı destek alın</div>
+              </div>
             </a>
           </div>
-          <div style={{ flexShrink: 0, width: 108, marginTop: 8, animation: 'fadeUp 0.7s ease 0.2s both' }}>
-            <GoldenKey />
+          <div style={{ flexShrink: 0, width: 115, alignSelf: 'center', animation: 'fadeUp .7s ease .2s both' }}>
+            <HeroKey />
           </div>
         </div>
       </div>
@@ -203,147 +224,245 @@ function Hero() {
   );
 }
 
-function GoldenKey() {
+function IstanbulSilhouette() {
   return (
-    <div style={{ position: 'relative', width: 108, height: 145 }}>
-      {[130, 100, 72].map((sz, i) => (
-        <div key={i} style={{ position: 'absolute', top: '40%', left: '50%', width: sz, height: sz, border: `1px solid rgba(212,175,55,${0.18 - i * 0.05})`, borderRadius: '50%', animation: `ringOut ${2.6 + i * 0.8}s ease-in-out infinite ${i * 0.45}s` }} />
-      ))}
-      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'floatKey 4.2s ease-in-out infinite' }}>
-        <svg width="92" height="92" viewBox="0 0 92 92" fill="none" style={{ filter: 'drop-shadow(0 0 18px rgba(212,175,55,0.58)) drop-shadow(0 2px 8px rgba(212,175,55,0.32))' }}>
-          <defs>
-            <linearGradient id="kg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#B8860B" />
-              <stop offset="28%" stopColor="#D4AF37" />
-              <stop offset="52%" stopColor="#FFD700" />
-              <stop offset="72%" stopColor="#FFFAA0" />
-              <stop offset="100%" stopColor="#C9A84C" />
-            </linearGradient>
-            <linearGradient id="kg2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FFD700" />
-              <stop offset="100%" stopColor="#C9A84C" />
-            </linearGradient>
-          </defs>
-          <circle cx="33" cy="30" r="17" stroke="url(#kg)" strokeWidth="7" fill="none" />
-          <circle cx="33" cy="30" r="6.5" fill="url(#kg2)" opacity="0.3" />
-          <circle cx="33" cy="30" r="3" fill="#080808" />
-          <rect x="48" y="27" width="33" height="6.5" rx="3.25" fill="url(#kg)" />
-          <rect x="59" y="33.5" width="5.5" height="9.5" rx="2" fill="url(#kg2)" />
-          <rect x="69.5" y="33.5" width="5" height="6.5" rx="2" fill="url(#kg2)" />
-          <rect x="77" y="33.5" width="4.5" height="12" rx="2" fill="url(#kg2)" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function IstanbulBg() {
-  return (
-    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 110, zIndex: 0, pointerEvents: 'none', opacity: 0.045 }}>
-      <svg width="100%" height="110" viewBox="0 0 800 110" preserveAspectRatio="xMidYMax slice" fill="rgba(212,175,55,1)">
-        <path d="M0 110 L0 68 Q12 66 22 58 Q30 52 38 56 L44 47 Q51 40 57 44 L64 36 Q71 30 77 34 L84 27 Q91 22 97 26 L107 33 Q113 30 122 37 L132 44 Q138 41 146 50 L154 46 Q162 40 169 45 L180 53 Q187 50 195 45 L204 42 Q212 39 220 46 L230 53 Q238 49 248 56 L259 62 Q267 58 277 54 L289 50 Q299 53 309 59 L321 64 Q330 61 340 66 L354 71 Q363 68 373 73 L387 77 Q395 74 405 79 L418 82 Q427 79 438 75 L449 71 Q459 69 470 75 L484 79 Q493 77 504 81 L519 84 Q529 82 541 78 L555 74 Q565 77 575 81 L589 84 Q597 82 607 85 L621 88 Q629 86 639 89 L659 92 Q671 90 683 93 L699 95 Q711 94 723 96 L739 97 Q753 97 769 98 L800 99 L800 110 Z" />
+    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 130, zIndex: 1, pointerEvents: 'none', opacity: .07 }}>
+      <svg viewBox="0 0 800 130" width="100%" height="130" preserveAspectRatio="xMidYMax slice" fill={GOLD}>
+        <path d="M0 130 L0 75 Q8 73 16 66 L24 58 Q30 52 36 56 L42 47 Q49 40 55 44 L61 36 Q67 30 73 34 L80 27 Q87 21 93 26 L99 31 Q106 28 114 36 L122 42 Q128 39 136 47 L144 43 Q152 37 160 42 L168 48 Q176 45 184 41 L192 38 Q200 35 208 42 L218 49 Q226 45 236 52 L248 58 Q256 55 266 51 L278 47 Q288 50 298 56 L310 61 Q318 58 328 63 L342 68 Q350 66 360 70 L374 74 Q382 72 392 76 L406 79 Q414 77 424 72 L436 68 Q446 66 456 72 L470 76 Q478 74 488 78 L502 81 Q512 79 524 75 L538 71 Q548 74 558 78 L572 81 Q580 79 590 82 L604 85 Q612 83 622 86 L638 88 Q648 87 660 90 L676 92 Q688 90 700 93 L716 95 Q730 94 746 96 L800 98 L800 130 Z" />
       </svg>
     </div>
   );
 }
 
-function TrustRow() {
+function HeroKey() {
+  return (
+    <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', animation: 'floatKey 4s ease-in-out infinite' }}>
+      {[110, 80, 56].map((r, i) => (
+        <div key={i} style={{
+          position: 'absolute', top: '35%', left: '50%',
+          width: r, height: r, borderRadius: '50%',
+          border: `1px solid rgba(212,175,55,${.22 - i * .07})`,
+          animation: `glowRing ${2.5 + i * .6}s ease-in-out infinite ${i * .35}s`,
+        }} />
+      ))}
+      <svg width="96" height="152" viewBox="0 0 96 152" fill="none"
+        style={{ filter: 'drop-shadow(0 0 18px rgba(212,175,55,.62)) drop-shadow(0 3px 10px rgba(212,175,55,.35))' }}>
+        <defs>
+          <linearGradient id="kh" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#7A5C0A" />
+            <stop offset="18%" stopColor="#C9A84C" />
+            <stop offset="45%" stopColor="#FFD700" />
+            <stop offset="65%" stopColor="#FFFAA0" />
+            <stop offset="85%" stopColor="#D4AF37" />
+            <stop offset="100%" stopColor="#7A5C0A" />
+          </linearGradient>
+          <linearGradient id="kh2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#9B7513" />
+            <stop offset="50%" stopColor="#FFE44D" />
+            <stop offset="100%" stopColor="#9B7513" />
+          </linearGradient>
+          <linearGradient id="khv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#FFD700" />
+            <stop offset="60%" stopColor="#C9A84C" />
+            <stop offset="100%" stopColor="#7A5C0A" />
+          </linearGradient>
+        </defs>
+        <circle cx="48" cy="38" r="30" fill="url(#kh)" />
+        <circle cx="48" cy="38" r="19" fill="#07090e" />
+        <circle cx="48" cy="38" r="22.5" fill="none" stroke="url(#kh2)" strokeWidth="1.5" opacity=".45" />
+        <circle cx="48" cy="32" r="7.5" fill="url(#kh2)" />
+        <path d="M44 38 L52 38 L50 49 L46 49 Z" fill="url(#kh2)" />
+        <rect x="41" y="65" width="14" height="74" rx="4.5" fill="url(#khv)" />
+        <rect x="55" y="84" width="13" height="10" rx="3" fill="url(#kh2)" />
+        <rect x="55" y="101" width="10" height="9" rx="3" fill="url(#kh2)" />
+        <rect x="55" y="118" width="12" height="9" rx="3" fill="url(#kh2)" />
+      </svg>
+      <div style={{ width: 76, height: 10, background: 'radial-gradient(ellipse,rgba(212,175,55,.72) 0%,transparent 72%)', marginTop: -8, filter: 'blur(4px)' }} />
+    </div>
+  );
+}
+
+/* ─── TRUST CARDS ─── */
+function TrustCards() {
   const items = [
-    { val: '20-30 DK', sub: 'Ortalama Varış Süresi', icon: '⚡' },
-    { val: '7/24', sub: 'Kesintisiz Hizmet', icon: '🕐' },
-    { val: '%100', sub: 'Müşteri Memnuniyeti', icon: '⭐' },
-    { val: 'Şeffaf\nFiyat', sub: 'Sürpriz Ücret Yok', icon: '✓' },
+    { Icon: Zap, val: '20-30 DK', sub: 'Ortalama Varış Süresi' },
+    { Icon: Clock, val: '7/24', sub: 'Kesintisiz Hizmet' },
+    { Icon: CheckCircle, val: '%100', sub: 'Müşteri Memnuniyeti' },
+    { Icon: Tag, val: 'ŞEFFAF FİYAT', sub: 'Sürpriz Ücret Yok' },
   ];
   return (
-    <div className="cl-scrollx" style={{ padding: '0 24px 36px', display: 'flex', gap: 12 }}>
-      {items.map((t, i) => (
-        <div key={i} style={{ ...glass, flexShrink: 0, width: 128, padding: '16px 14px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 22 }}>{t.icon}</span>
-          <div style={{ fontSize: 17, fontWeight: 800, color: GOLD_LIGHT, lineHeight: 1.15, whiteSpace: 'pre-line' }}>{t.val}</div>
-          <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.44)', lineHeight: 1.42 }}>{t.sub}</div>
+    <div className="sx" style={{ display: 'flex', gap: 10, padding: '0 20px 32px' }}>
+      {items.map(({ Icon, val, sub }, i) => (
+        <div key={i} style={{
+          flexShrink: 0, width: 128, padding: '14px 12px',
+          background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.2)',
+          borderRadius: 14, backdropFilter: 'blur(16px)',
+        }}>
+          <Icon size={18} color={GD} style={{ marginBottom: 8 }} />
+          <div style={{ fontSize: 15.5, fontWeight: 800, color: GL, lineHeight: 1.1, marginBottom: 5 }}>{val}</div>
+          <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,.43)', lineHeight: 1.38 }}>{sub}</div>
         </div>
       ))}
     </div>
   );
 }
 
+/* ─── SERVICES ─── */
+const SVC_DATA = [
+  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Kapı Açma',           desc: 'Hasarsız ve hızlı kapı açma hizmeti.' },
+  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Oto Çilingir',        desc: 'Araç kapı açma ve anahtar çözümleri.' },
+  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Kilit Değişimi',       desc: 'Her türlü kilit değişimi ve tamiri.' },
+  { grad: 'linear-gradient(160deg,#1c1e22 0%,#15171a 60%,#0f1012 100%)', Icon: Shield, title: 'Çelik Kapı Sistemleri', desc: 'Yüksek güvenlikli kilit sistemleri.' },
+];
+
 function Services() {
-  const list = [
-    { icon: '🚪', title: 'Kapı Açma', desc: 'Hasarsız ve hızlı kapı açma hizmeti.' },
-    { icon: '🚗', title: 'Oto Çilingir', desc: 'Araç kapı açma ve anahtar çözümleri.' },
-    { icon: '🔐', title: 'Kilit Değişimi', desc: 'Her türlü kilit değişimi ve tamiri.' },
-    { icon: '🛡️', title: 'Çelik Kapı Sistemleri', desc: 'Yüksek güvenlikli kilit sistemleri.' },
-  ];
   return (
-    <section id="services" style={{ padding: '0 24px 40px' }}>
-      <SectionHeader eyebrow="PROFESYONEL ÇÖZÜMLER" title="Hizmetlerimiz" />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
-        {list.map((s, i) => (
-          <a key={i} href={TEL} className="cl-svc" style={{ ...glass, display: 'flex', alignItems: 'center', gap: 14, padding: '17px 16px', borderRadius: 14, borderColor: 'rgba(212,175,55,0.17)' }}>
-            <div style={{ width: 46, height: 46, flexShrink: 0, background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.18)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>{s.icon}</div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontWeight: 700, fontSize: 14.5, color: '#fff', marginBottom: 3 }}>{s.title}</div>
-              <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.44)', lineHeight: 1.45 }}>{s.desc}</div>
-            </div>
-            <div style={{ width: 30, height: 30, flexShrink: 0, background: `linear-gradient(135deg, ${GOLD_DIM}, ${GOLD_LIGHT})`, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, color: '#000', fontWeight: 900 }}>›</div>
-          </a>
-        ))}
+    <section id="services" style={{ padding: '0 20px 40px' }}>
+      <SectionHeader eyebrow="HİZMETLERİMİZ" title="Profesyonel Çözümler" />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {SVC_DATA.map((s, i) => <ServiceCard key={i} {...s} />)}
       </div>
     </section>
   );
 }
 
+function ServiceCard({ grad, Icon, title, desc }) {
+  return (
+    <a href={TEL} className="svc" style={{
+      display: 'flex', alignItems: 'center',
+      background: 'rgba(255,255,255,.04)',
+      border: '1px solid rgba(212,175,55,.18)',
+      borderRadius: 14, overflow: 'hidden',
+    }}>
+      <div style={{
+        width: 82, flexShrink: 0, alignSelf: 'stretch', minHeight: 74,
+        background: grad, position: 'relative',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right,transparent 55%,rgba(7,9,14,.6) 100%)' }} />
+      </div>
+      <div style={{
+        width: 32, height: 32, flexShrink: 0, marginLeft: -16,
+        background: `linear-gradient(135deg,${GD},${GL})`,
+        borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        border: '2px solid #07090e',
+        boxShadow: '0 0 10px rgba(212,175,55,.5)',
+      }}>
+        <Icon size={14} color="#000" strokeWidth={2.5} />
+      </div>
+      <div style={{ flex: 1, padding: '13px 8px 13px 10px' }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 3 }}>{title}</div>
+        <div style={{ fontSize: 12, color: 'rgba(255,255,255,.43)', lineHeight: 1.42 }}>{desc}</div>
+      </div>
+      <div style={{ padding: '0 14px 0 4px', flexShrink: 0 }}>
+        <div style={{
+          width: 28, height: 28,
+          background: `linear-gradient(135deg,${GD},${GL})`,
+          borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <ChevronRight size={15} color="#000" strokeWidth={2.5} />
+        </div>
+      </div>
+    </a>
+  );
+}
+
+/* ─── DISTRICTS ─── */
 function Districts() {
   const list = ['Beşiktaş', 'Şişli', 'Sarıyer', 'Kadıköy', 'Üsküdar', 'Beyoğlu', 'Fatih', 'Bakırköy', 'Kağıthane', 'Eyüpsultan'];
   return (
-    <section id="districts" style={{ padding: '0 24px 40px' }}>
-      <SectionHeader eyebrow="TÜM İSTANBUL'DA" title="Hizmet Bölgelerimiz" />
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
+    <section id="districts" style={{ padding: '0 20px 36px' }}>
+      <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Tüm İstanbul’da Hizmetinizdeyiz!" />
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {list.map((d, i) => (
-          <span key={i} className="cl-pill" style={{ padding: '9px 17px', borderRadius: 100, background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.18)', fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.76)' }}>{d}</span>
+          <span key={i} className="pill" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 5,
+            padding: '8px 13px', borderRadius: 100,
+            background: 'rgba(212,175,55,.06)', border: '1px solid rgba(212,175,55,.18)',
+            fontSize: 12.5, fontWeight: 600, color: 'rgba(255,255,255,.76)',
+          }}>
+            <MapPin size={11} color={GD} />
+            {d}
+          </span>
         ))}
       </div>
     </section>
   );
 }
 
+/* ─── SOCIAL PROOF ─── */
 function SocialProof() {
-  const stats = [
-    { val: '10.000+', label: 'Mutlu Müşteri' },
-    { val: '4.9 / 5', label: 'Müşteri Puanı' },
-    { val: '20-30 DK', label: 'Ort. Varış' },
+  const items = [
+    { Icon: Users, val: '10.000+', label: 'Mutlu Müşteri' },
+    { Icon: Star,  val: '4.9/5',   label: 'Müşteri Puanı' },
+    { Icon: Clock, val: '20-30 DK', label: 'Ortalama Varış' },
   ];
   return (
-    <section style={{ padding: '0 24px 44px' }}>
-      <div style={{ ...glass, padding: '28px 20px', background: 'linear-gradient(135deg, rgba(212,175,55,0.07) 0%, rgba(212,175,55,0.02) 100%)', border: '1px solid rgba(212,175,55,0.28)', animation: 'goldGlow 5s ease-in-out infinite' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          {stats.map((s, i) => (
-            <div key={i} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 20, fontWeight: 900, color: GOLD_LIGHT, lineHeight: 1 }}>{s.val}</div>
-              <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.44)', marginTop: 5, lineHeight: 1.35 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
+    <section style={{ padding: '0 20px 40px' }}>
+      <div style={{
+        background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.24)',
+        borderRadius: 16, padding: '22px 16px',
+        display: 'flex', justifyContent: 'space-around',
+      }}>
+        {items.map(({ Icon, val, label }, i) => (
+          <div key={i} style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
+            <Icon size={18} color={GL} />
+            <div style={{ fontSize: 17, fontWeight: 900, color: GL, lineHeight: 1 }}>{val}</div>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,.44)', lineHeight: 1.3 }}>{label}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
+/* ─── STICKY BAR ─── */
 function StickyBar() {
   return (
-    <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000, background: 'rgba(8,8,8,0.96)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderTop: '1px solid rgba(212,175,55,0.14)', padding: '10px 14px', paddingBottom: 'max(10px, env(safe-area-inset-bottom))', display: 'flex', gap: 9 }}>
-      <a href={TEL} className="cl-sb" style={{ flex: 1, padding: '12px 6px', textAlign: 'center', borderRadius: 11, background: `linear-gradient(135deg, ${GOLD_DIM}, ${GOLD_LIGHT})`, fontSize: 11.5, fontWeight: 800, color: '#000', letterSpacing: '0.07em', display: 'block' }}>📞 HEMEN ARA</a>
-      <a href={WA} className="cl-sb" style={{ flex: 1, padding: '12px 6px', textAlign: 'center', borderRadius: 11, background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.32)', fontSize: 11.5, fontWeight: 800, color: '#25D366', letterSpacing: '0.05em', display: 'block' }}>💬 WHATSAPP</a>
-      <a href={WA_KONUM} className="cl-sb" style={{ flex: 1, padding: '12px 6px', textAlign: 'center', borderRadius: 11, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', fontSize: 11.5, fontWeight: 700, color: 'rgba(255,255,255,0.72)', display: 'block' }}>📍 KONUM</a>
+    <div style={{
+      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 200,
+      background: 'rgba(7,9,14,.97)',
+      backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+      borderTop: '1px solid rgba(212,175,55,.12)',
+      padding: '10px 12px',
+      paddingBottom: 'max(10px,env(safe-area-inset-bottom))',
+      display: 'flex', gap: 8,
+    }}>
+      <a href={TEL} className="bp" style={{
+        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+        padding: '13px 4px', borderRadius: 12,
+        background: `linear-gradient(135deg,${GD},${GL})`,
+        boxShadow: '0 3px 14px rgba(212,175,55,.35)',
+        fontSize: 11.5, fontWeight: 800, color: '#000',
+      }}>
+        <Phone size={14} color="#000" strokeWidth={2.5} /> HEMEN ARA
+      </a>
+      <a href={WA} className="bp" style={{
+        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+        padding: '13px 4px', borderRadius: 12,
+        background: '#0d1e11', border: '1px solid rgba(37,211,102,.28)',
+        fontSize: 11.5, fontWeight: 800, color: '#25D366',
+      }}>
+        <MessageCircle size={14} color="#25D366" /> WHATSAPP
+      </a>
+      <a href={WA_KONUM} className="bp" style={{
+        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+        padding: '13px 4px', borderRadius: 12,
+        background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)',
+        fontSize: 10.5, fontWeight: 700, color: 'rgba(255,255,255,.78)',
+      }}>
+        <MapPin size={13} color="rgba(255,255,255,.78)" /> KONUM GÖNDER
+      </a>
     </div>
   );
 }
 
+/* ─── HELPER ─── */
 function SectionHeader({ eyebrow, title }) {
   return (
-    <div style={{ marginBottom: 20 }}>
-      <div style={{ fontSize: 10, fontWeight: 700, color: GOLD_DIM, letterSpacing: '0.22em', marginBottom: 7 }}>{eyebrow}</div>
-      <h2 style={{ fontSize: 24, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>{title}</h2>
+    <div style={{ marginBottom: 18 }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.22em', marginBottom: 6 }}>{eyebrow}</div>
+      <h2 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-.01em' }}>{title}</h2>
     </div>
   );
 }
