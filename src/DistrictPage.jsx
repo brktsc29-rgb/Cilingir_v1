@@ -46,7 +46,7 @@ function DistrictHero({ page }) {
     }}>
       <div style={{
         position:'absolute',inset:0,
-        backgroundImage:'url(/images/hero-bg.webp)',
+        backgroundImage:'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
         backgroundSize:'cover',backgroundPosition:'center right',backgroundRepeat:'no-repeat',
         zIndex:0,
       }}/>
