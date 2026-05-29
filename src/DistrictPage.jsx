@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { Clock, Phone, MessageCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Clock, Phone, MessageCircle, MapPin } from 'lucide-react';
 import {
   CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG,
-  Navbar, MobileMenu, TrustCards, Services, Districts, SocialProof, StickyBar,
+  Navbar, MobileMenu, TrustCards, Services, SocialProof, StickyBar, SectionHeader,
 } from './shared';
 
-export default function CilingirLandingView() {
+export default function DistrictPage({ page }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = page.metaTitle;
+    const set = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
+    set('meta[name="description"]', page.metaDesc);
+    set('meta[property="og:title"]', page.metaTitle);
+    set('meta[property="og:description"]', page.metaDesc);
+    window.scrollTo(0, 0);
+  }, [page]);
+
   return (
     <>
       <style>{CSS}</style>
@@ -17,10 +27,10 @@ export default function CilingirLandingView() {
       }}>
         <Navbar open={open} setOpen={setOpen}/>
         {open && <MobileMenu onClose={() => setOpen(false)}/>}
-        <Hero/>
+        <DistrictHero page={page}/>
         <TrustCards/>
         <Services/>
-        <Districts/>
+        <NearbyAreas page={page}/>
         <SocialProof/>
         <StickyBar/>
       </div>
@@ -28,7 +38,7 @@ export default function CilingirLandingView() {
   );
 }
 
-function Hero() {
+function DistrictHero({ page }) {
   return (
     <section style={{
       position:'relative',paddingTop:64,
@@ -64,23 +74,23 @@ function Hero() {
 
         <div style={{animation:'fadeUp .65s ease .1s both'}}>
           <h1 style={{
-            fontSize:'clamp(38px,11vw,54px)',fontWeight:900,lineHeight:.9,
+            fontSize:'clamp(34px,10vw,50px)',fontWeight:900,lineHeight:.9,
             marginBottom:16,letterSpacing:'-.02em',
           }}>
-            <span style={{display:'block',color:'#fff'}}>Kapıda mı</span>
+            <span style={{display:'block',color:'#fff'}}>{page.name}</span>
             <span style={{
               display:'block',
               background:`linear-gradient(90deg,${GD} 0%,${GL} 40%,#FFF5B0 55%,${GD} 100%)`,
               backgroundSize:'200% auto',
               WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',
               animation:'shimmer 4s linear infinite',
-            }}>kaldınız?</span>
+            }}>Çilingir Hizmeti</span>
           </h1>
 
           <p style={{fontSize:14,color:'rgba(255,255,255,.6)',lineHeight:1.65,marginBottom:22,maxWidth:260}}>
-            İstanbul'un birçok noktasında ortalama{' '}
+            {page.name} bölgesinde ortalama{' '}
             <span style={{color:'#E5951E',fontWeight:700}}>20-30 dakika</span>{' '}
-            içinde profesyonel çözüm.
+            içinde profesyonel çilingir hizmeti.
           </p>
 
           <a href={TEL} className="bp" style={{
@@ -111,6 +121,31 @@ function Hero() {
             </div>
           </a>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function NearbyAreas({ page }) {
+  if (!page.nearby || page.nearby.length === 0) return null;
+  return (
+    <section style={{padding:'0 20px 36px'}}>
+      <SectionHeader
+        eyebrow={page.isNeighborhood ? 'YAKIN BÖLGELER' : 'MAHALLE HİZMETLERİ'}
+        title={page.isNeighborhood ? `${page.districtName} Bölgesi` : `${page.name} Mahalleleri`}
+      />
+      <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
+        {page.nearby.map((n,i) => (
+          <a key={i} href={`/${n.path}`} className="pill" style={{
+            display:'inline-flex',alignItems:'center',gap:5,
+            padding:'8px 13px',borderRadius:100,
+            background:'rgba(212,175,55,.06)',border:'1px solid rgba(212,175,55,.18)',
+            fontSize:12.5,fontWeight:600,color:'rgba(255,255,255,.76)',
+          }}>
+            <MapPin size={11} color={GD}/>
+            {n.name}
+          </a>
+        ))}
       </div>
     </section>
   );
