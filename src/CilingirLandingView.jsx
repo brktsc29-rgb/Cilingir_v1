@@ -15,12 +15,7 @@ const GD = '#C9A84C';
 const BG = '#07090e';
 
 const CSS = `
-  @keyframes floatKey{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
   @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-  @keyframes glowRing{
-    0%,100%{opacity:.38;transform:translate(-50%,-50%) scale(1)}
-    50%{opacity:.65;transform:translate(-50%,-50%) scale(1.06)}
-  }
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -149,16 +144,44 @@ function MobileMenu({ onClose }) {
 function Hero() {
   return (
     <section style={{
-      paddingTop: 64, minHeight: '100svh',
-      position: 'relative', overflow: 'hidden',
-      display: 'flex', alignItems: 'center',
+      position: 'relative',
+      paddingTop: 64,
+      minHeight: 720,
+      display: 'flex',
+      alignItems: 'center',
+      overflow: 'hidden',
     }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,#07090e 0%,#0b0e16 50%,#09090e 100%)' }} />
-      <div style={{ position: 'absolute', bottom: 0, right: 0, width: '75%', height: '65%', background: 'radial-gradient(ellipse at 85% 100%,rgba(160,100,20,.1) 0%,transparent 60%)', zIndex: 1 }} />
-      <div style={{ position: 'absolute', top: '18%', right: '6%', width: 190, height: 310, background: 'radial-gradient(ellipse,rgba(212,175,55,.08) 0%,transparent 70%)', zIndex: 1 }} />
-      <IstanbulSilhouette />
+      {/* Background image */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'url(/images/hero-bg.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat',
+        zIndex: 0,
+      }} />
 
-      <div style={{ position: 'relative', zIndex: 2, width: '100%', padding: '28px 20px 24px' }}>
+      {/* Left-to-right overlay: text readable on left, key visible on right */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        background: 'linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.65) 35%,rgba(0,0,0,.20) 70%,rgba(0,0,0,.10) 100%)',
+      }} />
+
+      {/* Bottom fade: smooth transition into next section */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, zIndex: 2,
+        background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
+        pointerEvents: 'none',
+      }} />
+
+      {/* Content — left side only */}
+      <div style={{
+        position: 'relative', zIndex: 3,
+        width: '100%',
+        maxWidth: 380,
+        padding: '28px 20px 48px',
+      }}>
+        {/* Badge */}
         <div style={{ marginBottom: 18, animation: 'fadeUp .55s ease both' }}>
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 7,
@@ -171,124 +194,76 @@ function Hero() {
           </span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-          <div style={{ flex: 1, animation: 'fadeUp .65s ease .1s both' }}>
-            <h1 style={{ fontSize: 'clamp(36px,10.5vw,52px)', fontWeight: 900, lineHeight: 1.05, marginBottom: 14, letterSpacing: '-.02em' }}>
-              <span style={{ display: 'block', color: '#fff' }}>Kapıda mı</span>
-              <span style={{
-                display: 'block',
-                background: `linear-gradient(90deg,${GD} 0%,${GL} 40%,#FFF5B0 55%,${GD} 100%)`,
-                backgroundSize: '200% auto', WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                animation: 'shimmer 4s linear infinite',
-              }}>kaldınız?</span>
-            </h1>
-            <p style={{ fontSize: 14, color: 'rgba(255,255,255,.52)', lineHeight: 1.65, marginBottom: 22, maxWidth: 280 }}>
-              İstanbul’un birçok noktasında ortalama{' '}
-              <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dakika</span>{' '}
-              içinde profesyonel çözüm.
-            </p>
-            <a href={TEL} className="bp" style={{
-              display: 'flex', alignItems: 'center', gap: 14,
-              padding: '14px 18px', borderRadius: 12, marginBottom: 10,
-              background: `linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
+        {/* Heading */}
+        <div style={{ animation: 'fadeUp .65s ease .1s both' }}>
+          <h1 style={{
+            fontSize: 'clamp(36px,10.5vw,52px)',
+            fontWeight: 900, lineHeight: 1.05,
+            marginBottom: 14, letterSpacing: '-.02em',
+          }}>
+            <span style={{ display: 'block', color: '#fff' }}>Kapıda mı</span>
+            <span style={{
+              display: 'block',
+              background: `linear-gradient(90deg,${GD} 0%,${GL} 40%,#FFF5B0 55%,${GD} 100%)`,
               backgroundSize: '200% auto',
-              boxShadow: '0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
-              maxWidth: 290,
-            }}>
-              <Phone size={18} color="#000" strokeWidth={2.5} />
-              <div>
-                <div style={{ fontSize: 12.5, fontWeight: 900, color: 'rgba(0,0,0,.7)', letterSpacing: '.12em', lineHeight: 1 }}>HEMEN ARA</div>
-                <div style={{ fontSize: 16, fontWeight: 900, color: '#000', letterSpacing: '.04em' }}>{TEL_DISPLAY}</div>
-              </div>
-            </a>
-            <a href={WA} className="bp" style={{
-              display: 'flex', alignItems: 'center', gap: 14,
-              padding: '12px 18px', borderRadius: 12,
-              background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.1)',
-              maxWidth: 290,
-            }}>
-              <MessageCircle size={18} color="#25D366" />
-              <div>
-                <div style={{ fontSize: 12.5, fontWeight: 800, color: '#fff', letterSpacing: '.08em', lineHeight: 1 }}>WHATSAPP’TAN YAZ</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,.42)', marginTop: 2 }}>Hızlı destek alın</div>
-              </div>
-            </a>
-          </div>
-          <div style={{ flexShrink: 0, width: 115, alignSelf: 'center', animation: 'fadeUp .7s ease .2s both' }}>
-            <HeroKey />
-          </div>
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'shimmer 4s linear infinite',
+            }}>kaldınız?</span>
+          </h1>
+
+          <p style={{
+            fontSize: 14, color: 'rgba(255,255,255,.6)',
+            lineHeight: 1.65, marginBottom: 24, maxWidth: 270,
+          }}>
+            İstanbul'un birçok noktasında ortalama{' '}
+            <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dakika</span>{' '}
+            içinde profesyonel çözüm.
+          </p>
+
+          {/* Primary CTA */}
+          <a href={TEL} className="bp" style={{
+            display: 'flex', alignItems: 'center', gap: 14,
+            padding: '14px 18px', borderRadius: 12, marginBottom: 10,
+            background: `linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
+            backgroundSize: '200% auto',
+            boxShadow: '0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
+            maxWidth: 290,
+          }}>
+            <Phone size={18} color="#000" strokeWidth={2.5} />
+            <div>
+              <div style={{ fontSize: 12.5, fontWeight: 900, color: 'rgba(0,0,0,.7)', letterSpacing: '.12em', lineHeight: 1 }}>HEMEN ARA</div>
+              <div style={{ fontSize: 16, fontWeight: 900, color: '#000', letterSpacing: '.04em' }}>{TEL_DISPLAY}</div>
+            </div>
+          </a>
+
+          {/* Secondary CTA */}
+          <a href={WA} className="bp" style={{
+            display: 'flex', alignItems: 'center', gap: 14,
+            padding: '12px 18px', borderRadius: 12,
+            background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.1)',
+            maxWidth: 290,
+          }}>
+            <MessageCircle size={18} color="#25D366" />
+            <div>
+              <div style={{ fontSize: 12.5, fontWeight: 800, color: '#fff', letterSpacing: '.08em', lineHeight: 1 }}>WHATSAPP'TAN YAZ</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,.42)', marginTop: 2 }}>Hızlı destek alın</div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
   );
 }
 
-function IstanbulSilhouette() {
-  return (
-    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 130, zIndex: 1, pointerEvents: 'none', opacity: .07 }}>
-      <svg viewBox="0 0 800 130" width="100%" height="130" preserveAspectRatio="xMidYMax slice" fill={GOLD}>
-        <path d="M0 130 L0 75 Q8 73 16 66 L24 58 Q30 52 36 56 L42 47 Q49 40 55 44 L61 36 Q67 30 73 34 L80 27 Q87 21 93 26 L99 31 Q106 28 114 36 L122 42 Q128 39 136 47 L144 43 Q152 37 160 42 L168 48 Q176 45 184 41 L192 38 Q200 35 208 42 L218 49 Q226 45 236 52 L248 58 Q256 55 266 51 L278 47 Q288 50 298 56 L310 61 Q318 58 328 63 L342 68 Q350 66 360 70 L374 74 Q382 72 392 76 L406 79 Q414 77 424 72 L436 68 Q446 66 456 72 L470 76 Q478 74 488 78 L502 81 Q512 79 524 75 L538 71 Q548 74 558 78 L572 81 Q580 79 590 82 L604 85 Q612 83 622 86 L638 88 Q648 87 660 90 L676 92 Q688 90 700 93 L716 95 Q730 94 746 96 L800 98 L800 130 Z" />
-      </svg>
-    </div>
-  );
-}
-
-function HeroKey() {
-  return (
-    <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', animation: 'floatKey 4s ease-in-out infinite' }}>
-      {[110, 80, 56].map((r, i) => (
-        <div key={i} style={{
-          position: 'absolute', top: '35%', left: '50%',
-          width: r, height: r, borderRadius: '50%',
-          border: `1px solid rgba(212,175,55,${.22 - i * .07})`,
-          animation: `glowRing ${2.5 + i * .6}s ease-in-out infinite ${i * .35}s`,
-        }} />
-      ))}
-      <svg width="96" height="152" viewBox="0 0 96 152" fill="none"
-        style={{ filter: 'drop-shadow(0 0 18px rgba(212,175,55,.62)) drop-shadow(0 3px 10px rgba(212,175,55,.35))' }}>
-        <defs>
-          <linearGradient id="kh" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#7A5C0A" />
-            <stop offset="18%" stopColor="#C9A84C" />
-            <stop offset="45%" stopColor="#FFD700" />
-            <stop offset="65%" stopColor="#FFFAA0" />
-            <stop offset="85%" stopColor="#D4AF37" />
-            <stop offset="100%" stopColor="#7A5C0A" />
-          </linearGradient>
-          <linearGradient id="kh2" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#9B7513" />
-            <stop offset="50%" stopColor="#FFE44D" />
-            <stop offset="100%" stopColor="#9B7513" />
-          </linearGradient>
-          <linearGradient id="khv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#FFD700" />
-            <stop offset="60%" stopColor="#C9A84C" />
-            <stop offset="100%" stopColor="#7A5C0A" />
-          </linearGradient>
-        </defs>
-        <circle cx="48" cy="38" r="30" fill="url(#kh)" />
-        <circle cx="48" cy="38" r="19" fill="#07090e" />
-        <circle cx="48" cy="38" r="22.5" fill="none" stroke="url(#kh2)" strokeWidth="1.5" opacity=".45" />
-        <circle cx="48" cy="32" r="7.5" fill="url(#kh2)" />
-        <path d="M44 38 L52 38 L50 49 L46 49 Z" fill="url(#kh2)" />
-        <rect x="41" y="65" width="14" height="74" rx="4.5" fill="url(#khv)" />
-        <rect x="55" y="84" width="13" height="10" rx="3" fill="url(#kh2)" />
-        <rect x="55" y="101" width="10" height="9" rx="3" fill="url(#kh2)" />
-        <rect x="55" y="118" width="12" height="9" rx="3" fill="url(#kh2)" />
-      </svg>
-      <div style={{ width: 76, height: 10, background: 'radial-gradient(ellipse,rgba(212,175,55,.72) 0%,transparent 72%)', marginTop: -8, filter: 'blur(4px)' }} />
-    </div>
-  );
-}
-
 /* ─── TRUST CARDS ─── */
 function TrustCards() {
   const items = [
-    { Icon: Zap, val: '20-30 DK', sub: 'Ortalama Varış Süresi' },
-    { Icon: Clock, val: '7/24', sub: 'Kesintisiz Hizmet' },
-    { Icon: CheckCircle, val: '%100', sub: 'Müşteri Memnuniyeti' },
-    { Icon: Tag, val: 'ŞEFFAF FİYAT', sub: 'Sürpriz Ücret Yok' },
+    { Icon: Zap,          val: '20-30 DK',      sub: 'Ortalama Varış Süresi' },
+    { Icon: Clock,        val: '7/24',           sub: 'Kesintisiz Hizmet' },
+    { Icon: CheckCircle,  val: '%100',           sub: 'Müşteri Memnuniyeti' },
+    { Icon: Tag,          val: 'ŞEFFAF FİYAT',   sub: 'Sürpriz Ücret Yok' },
   ];
   return (
     <div className="sx" style={{ display: 'flex', gap: 10, padding: '0 20px 32px' }}>
@@ -309,9 +284,9 @@ function TrustCards() {
 
 /* ─── SERVICES ─── */
 const SVC_DATA = [
-  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Kapı Açma',           desc: 'Hasarsız ve hızlı kapı açma hizmeti.' },
-  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Oto Çilingir',        desc: 'Araç kapı açma ve anahtar çözümleri.' },
-  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Kilit Değişimi',       desc: 'Her türlü kilit değişimi ve tamiri.' },
+  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Kapı Açma',            desc: 'Hasarsız ve hızlı kapı açma hizmeti.' },
+  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Oto Çilingir',         desc: 'Araç kapı açma ve anahtar çözümleri.' },
+  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Kilit Değişimi',        desc: 'Her türlü kilit değişimi ve tamiri.' },
   { grad: 'linear-gradient(160deg,#1c1e22 0%,#15171a 60%,#0f1012 100%)', Icon: Shield, title: 'Çelik Kapı Sistemleri', desc: 'Yüksek güvenlikli kilit sistemleri.' },
 ];
 
@@ -372,7 +347,7 @@ function Districts() {
   const list = ['Beşiktaş', 'Şişli', 'Sarıyer', 'Kadıköy', 'Üsküdar', 'Beyoğlu', 'Fatih', 'Bakırköy', 'Kağıthane', 'Eyüpsultan'];
   return (
     <section id="districts" style={{ padding: '0 20px 36px' }}>
-      <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Tüm İstanbul’da Hizmetinizdeyiz!" />
+      <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Tüm İstanbul'da Hizmetinizdeyiz!" />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {list.map((d, i) => (
           <span key={i} className="pill" style={{
@@ -393,8 +368,8 @@ function Districts() {
 /* ─── SOCIAL PROOF ─── */
 function SocialProof() {
   const items = [
-    { Icon: Users, val: '10.000+', label: 'Mutlu Müşteri' },
-    { Icon: Star,  val: '4.9/5',   label: 'Müşteri Puanı' },
+    { Icon: Users, val: '10.000+',  label: 'Mutlu Müşteri' },
+    { Icon: Star,  val: '4.9/5',    label: 'Müşteri Puanı' },
     { Icon: Clock, val: '20-30 DK', label: 'Ortalama Varış' },
   ];
   return (
