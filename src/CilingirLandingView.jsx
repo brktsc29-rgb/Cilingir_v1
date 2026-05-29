@@ -34,22 +34,34 @@ function Hero() {
       position:'relative',paddingTop:64,
       minHeight:560,display:'flex',alignItems:'center',overflow:'hidden',
     }}>
+      {/* Background image — key positioned right */}
       <div style={{
         position:'absolute',inset:0,
         backgroundImage:'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
-        backgroundSize:'cover',backgroundPosition:'center right',backgroundRepeat:'no-repeat',
+        backgroundSize:'cover',
+        backgroundPosition:'right center',
+        backgroundRepeat:'no-repeat',
         zIndex:0,
       }}/>
+
+      {/* Left→right overlay: text okunabilir, anahtar açık */}
       <div style={{
         position:'absolute',inset:0,zIndex:1,
-        background:'linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.78) 35%,rgba(0,0,0,.35) 70%,transparent 100%)',
+        background:'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.78) 28%,rgba(0,0,0,.18) 52%,transparent 70%)',
       }}/>
+
+      {/* Alt fade */}
       <div style={{
         position:'absolute',bottom:0,left:0,right:0,height:160,zIndex:2,pointerEvents:'none',
         background:'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
       }}/>
 
-      <div style={{position:'relative',zIndex:3,width:'100%',maxWidth:380,padding:'28px 20px 48px'}}>
+      {/* İçerik — sol %55 ile sınırlı, sağda anahtar görünür */}
+      <div style={{
+        position:'relative',zIndex:3,
+        width:'clamp(200px, 55%, 340px)',
+        padding:'28px 16px 48px 20px',
+      }}>
         <div style={{marginBottom:16,animation:'fadeUp .55s ease both'}}>
           <span style={{
             display:'inline-flex',alignItems:'center',gap:7,
@@ -64,7 +76,7 @@ function Hero() {
 
         <div style={{animation:'fadeUp .65s ease .1s both'}}>
           <h1 style={{
-            fontSize:'clamp(38px,11vw,54px)',fontWeight:900,lineHeight:.9,
+            fontSize:'clamp(34px,10vw,54px)',fontWeight:900,lineHeight:.9,
             marginBottom:16,letterSpacing:'-.02em',
           }}>
             <span style={{display:'block',color:'#fff'}}>Kapıda mı</span>
@@ -77,37 +89,35 @@ function Hero() {
             }}>kaldınız?</span>
           </h1>
 
-          <p style={{fontSize:14,color:'rgba(255,255,255,.6)',lineHeight:1.65,marginBottom:22,maxWidth:260}}>
-            İstanbul'un birçok noktasında ortalama{' '}
-            <span style={{color:'#E5951E',fontWeight:700}}>20-30 dakika</span>{' '}
+          <p style={{fontSize:13.5,color:'rgba(255,255,255,.6)',lineHeight:1.6,marginBottom:20}}>
+            İstanbul genelinde ortalama{' '}
+            <span style={{color:'#E5951E',fontWeight:700}}>20-30 dk</span>{' '}
             içinde profesyonel çözüm.
           </p>
 
           <a href={TEL} className="bp" style={{
-            display:'flex',alignItems:'center',gap:14,
-            padding:'0 18px',height:60,borderRadius:12,marginBottom:10,
+            display:'flex',alignItems:'center',gap:12,
+            padding:'0 14px',height:60,borderRadius:12,marginBottom:10,
             background:`linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
             backgroundSize:'200% auto',
             boxShadow:'0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
-            maxWidth:290,
           }}>
-            <Phone size={18} color="#000" strokeWidth={2.5}/>
+            <Phone size={17} color="#000" strokeWidth={2.5}/>
             <div>
-              <div style={{fontSize:12.5,fontWeight:900,color:'rgba(0,0,0,.7)',letterSpacing:'.12em',lineHeight:1}}>HEMEN ARA</div>
-              <div style={{fontSize:16,fontWeight:900,color:'#000',letterSpacing:'.04em'}}>{TEL_DISPLAY}</div>
+              <div style={{fontSize:11.5,fontWeight:900,color:'rgba(0,0,0,.7)',letterSpacing:'.12em',lineHeight:1}}>HEMEN ARA</div>
+              <div style={{fontSize:14.5,fontWeight:900,color:'#000',letterSpacing:'.02em'}}>{TEL_DISPLAY}</div>
             </div>
           </a>
 
           <a href={WA} className="bp" style={{
-            display:'flex',alignItems:'center',gap:14,
-            padding:'0 18px',height:60,borderRadius:12,
+            display:'flex',alignItems:'center',gap:12,
+            padding:'0 14px',height:60,borderRadius:12,
             background:'rgba(255,255,255,.04)',border:'1px solid rgba(255,255,255,.1)',
-            maxWidth:290,
           }}>
-            <MessageCircle size={18} color="#25D366"/>
+            <MessageCircle size={17} color="#25D366"/>
             <div>
-              <div style={{fontSize:12.5,fontWeight:800,color:'#fff',letterSpacing:'.08em',lineHeight:1}}>WHATSAPP'TAN YAZ</div>
-              <div style={{fontSize:12,color:'rgba(255,255,255,.42)',marginTop:2}}>Hızlı destek alın</div>
+              <div style={{fontSize:11.5,fontWeight:800,color:'#fff',letterSpacing:'.08em',lineHeight:1}}>WHATSAPP'TAN YAZ</div>
+              <div style={{fontSize:11.5,color:'rgba(255,255,255,.42)',marginTop:2}}>Hızlı destek alın</div>
             </div>
           </a>
         </div>
