@@ -50,7 +50,7 @@ function LogoMark() {
   );
 }
 
-export function Navbar({ open, setOpen }) {
+export function Navbar({ open, setOpen, lang = 'tr' }) {
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
@@ -68,15 +68,30 @@ export function Navbar({ open, setOpen }) {
       }}>
         <Phone size={13} color={GL} strokeWidth={2.5} />
         <div>
-          <div style={{ fontSize: 8, color: GD, fontWeight: 700, letterSpacing: '.1em', lineHeight: 1 }}>7/24 ACİL DESTEK</div>
+          <div style={{ fontSize: 8, color: GD, fontWeight: 700, letterSpacing: '.1em', lineHeight: 1 }}>
+            {lang === 'en' ? '24/7 EMERGENCY' : '7/24 ACİL DESTEK'}
+          </div>
           <div style={{ fontSize: 12.5, color: GL, fontWeight: 800, letterSpacing: '.03em', lineHeight: 1.4 }}>{TEL_DISPLAY}</div>
         </div>
       </a>
-      <button onClick={() => setOpen(o => !o)}
-        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'flex', alignItems: 'center' }}
-        aria-label="Menü">
-        {open ? <X size={22} color={GL} /> : <Menu size={22} color={GD} />}
-      </button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+        <a href="/" style={{
+          fontSize: 10.5, fontWeight: 800, letterSpacing: '.06em',
+          color: lang === 'tr' ? GL : 'rgba(255,255,255,.3)',
+          padding: '4px 6px',
+        }}>TR</a>
+        <span style={{ color: 'rgba(255,255,255,.18)', fontSize: 9 }}>|</span>
+        <a href="/en" style={{
+          fontSize: 10.5, fontWeight: 800, letterSpacing: '.06em',
+          color: lang === 'en' ? GL : 'rgba(255,255,255,.3)',
+          padding: '4px 6px',
+        }}>EN</a>
+        <button onClick={() => setOpen(o => !o)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 4px 8px 8px', display: 'flex', alignItems: 'center' }}
+          aria-label="Menu">
+          {open ? <X size={22} color={GL} /> : <Menu size={22} color={GD} />}
+        </button>
+      </div>
     </nav>
   );
 }
@@ -150,9 +165,7 @@ function ServiceCard({ grad, Icon, title, desc }) {
       background: 'rgba(255,255,255,.04)',
       border: '1px solid rgba(212,175,55,.18)',
       borderRadius: 14,
-      /* overflow visible — ikon rozeti kart sınırını aşabiliyor */
     }}>
-      {/* Thumbnail — kendi içinde clip */}
       <div style={{
         width: 74, flexShrink: 0, alignSelf: 'stretch', minHeight: 66,
         background: grad, position: 'relative',
@@ -160,8 +173,6 @@ function ServiceCard({ grad, Icon, title, desc }) {
       }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right,transparent 55%,rgba(7,9,14,.7) 100%)' }} />
       </div>
-
-      {/* Altın ikon rozeti — negatif margin ile thumbnail üzerine biner */}
       <div style={{
         width: 30, height: 30, flexShrink: 0, marginLeft: -15,
         background: `linear-gradient(135deg,${GD},${GL})`,
@@ -171,12 +182,10 @@ function ServiceCard({ grad, Icon, title, desc }) {
       }}>
         <Icon size={13} color="#000" strokeWidth={2.5} />
       </div>
-
       <div style={{ flex: 1, padding: '11px 8px 11px 10px' }}>
         <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 2 }}>{title}</div>
         <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,.43)', lineHeight: 1.4 }}>{desc}</div>
       </div>
-
       <div style={{ padding: '0 12px 0 4px', flexShrink: 0 }}>
         <div style={{
           width: 26, height: 26,
