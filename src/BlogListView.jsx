@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock, ChevronRight } from 'lucide-react';
 import { CSS, BG, GL, GD, BASE_URL, Navbar, MobileMenu, StickyBar, setSEO } from './shared';
 import { BLOG_POSTS, formatDate } from './blogPosts';
