@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
-  ChevronRight, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
+  ChevronRight, ChevronDown, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
 
 export const TEL = 'tel:+905426946920';
@@ -130,6 +130,7 @@ export function MobileMenu({ onClose }) {
   const NAV = [
     { label: 'Hizmetler', href: '#services' },
     { label: 'Bölgeler',  href: '#districts' },
+    { label: 'Fiyatlar',  href: '/fiyatlar' },
     { label: 'Blog',      href: '/blog' },
     { label: 'İletişim',  href: TEL },
   ];
@@ -346,5 +347,166 @@ export function SectionHeader({ eyebrow, title }) {
       <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.22em', marginBottom: 6 }}>{eyebrow}</div>
       <h2 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-.01em' }}>{title}</h2>
     </div>
+  );
+}
+
+const FAQ_ITEMS = [
+  {
+    q: 'Çilingir kaç dakikada gelir?',
+    a: 'Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da ortalama 20-30 dakika içinde kapınızdayız. Yoğun trafik saatlerinde bu süre biraz uzayabilir, telefonda tahmini süreyi bildiririz.',
+  },
+  {
+    q: 'Gece de hizmet veriyor musunuz?',
+    a: 'Evet, 7/24 kesintisiz hizmet veriyoruz. Gece yarısı, hafta sonu veya resmi tatil fark etmeksizin arayabilirsiniz. Gece tarifesi hakkında bilgiyi telefonda önceden bildiririz.',
+  },
+  {
+    q: 'Kapı açma işlemi kapıya zarar verir mi?',
+    a: 'Profesyonel ekipmanlarımızla büyük çoğunlukla kilidi ve kapıyı hasarsız açıyoruz. Eğer hasar verilmesi gerekecekse işlem öncesi sizi bilgilendiririz ve onayınızı alırız.',
+  },
+  {
+    q: 'Ücret ne kadar?',
+    a: 'Ücret işlemin türüne, saatine ve ilçeye göre değişir. Net fiyat bilgisi için sizi arayın — telefonda şeffaf fiyat veriyoruz, kapı açıldıktan sonra sürpriz ücret çıkmaz.',
+  },
+  {
+    q: 'Oto çilingir hizmeti de yapıyor musunuz?',
+    a: 'Evet, araç kapısı açma ve oto kilit hizmetleri de veriyoruz. Araç marka ve modelini telefonda belirtin, doğru ekipmanla gelelim.',
+  },
+  {
+    q: 'Kilit değişimi de yapıyor musunuz?',
+    a: 'Evet. Kapı açma işleminin yanı sıra kilit değişimi, çelik kapı kilidi kurulumu ve silindir yenileme hizmetleri de sunuyoruz. Markalı ve garantili ürünler kullanıyoruz.',
+  },
+];
+
+export function FAQSection() {
+  const [openIdx, setOpenIdx] = useState(null);
+
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQ_ITEMS.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    };
+    let el = document.getElementById('ld-faq');
+    if (!el) {
+      el = document.createElement('script');
+      el.id = 'ld-faq';
+      el.type = 'application/ld+json';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+    return () => { el.remove(); };
+  }, []);
+
+  return (
+    <section id="faq" style={{ padding: '0 20px 40px', scrollMarginTop: 72 }}>
+      <SectionHeader eyebrow="SIKÇA SORULAN SORULAR" title="Merak Ettikleriniz" />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {FAQ_ITEMS.map((item, i) => (
+          <div key={i}
+            onClick={() => setOpenIdx(openIdx === i ? null : i)}
+            style={{
+              background: 'rgba(255,255,255,.04)',
+              border: `1px solid ${openIdx === i ? 'rgba(212,175,55,.4)' : 'rgba(212,175,55,.15)'}`,
+              borderRadius: 12, overflow: 'hidden', cursor: 'pointer',
+            }}
+          >
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '14px 16px', gap: 12,
+            }}>
+              <span style={{ fontSize: 14, fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>{item.q}</span>
+              <ChevronDown size={16} color={GD} style={{
+                flexShrink: 0,
+                transform: openIdx === i ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform .25s',
+              }} />
+            </div>
+            {openIdx === i && (
+              <div style={{
+                padding: '0 16px 14px',
+                fontSize: 13.5, color: 'rgba(255,255,255,.62)', lineHeight: 1.7,
+                borderTop: '1px solid rgba(212,175,55,.1)',
+                paddingTop: 12,
+              }}>
+                {item.a}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const REVIEWS = [
+  { name: 'Ayşe D.',  district: 'Beşiktaş', text: 'Gece 01:30\'da kapıda kaldım, 25 dakikada geldi. Fiyatı önceden söyledi, fazlasını almadı. Çok teşekkürler!' },
+  { name: 'Murat K.', district: 'Şişli',    text: 'Araç anahtarım içerde kaldı. Kapıya hiç zarar vermeden açtı. Oto çilingir konusunda gerçekten uzman.' },
+  { name: 'Selin Y.', district: 'Sarıyer',  text: 'İstinye\'deyiz, tahmin ettiğimden hızlı geldi. Profesyonel davranış, temiz iş. Kesinlikle tavsiye ederim.' },
+  { name: 'Emre T.',  district: 'Kağıthane',text: 'Kilit değişimi yaptırdım. Kaliteli ürün taktı, uygun fiyat. Bir sonraki ihtiyaçta yine arayacağım.' },
+  { name: 'Fatma Ö.',district: 'Eyüpsultan',text: 'Komşuma da tavsiye ettim, o da memnun kaldı. 7/24 gerçekten açık, tatil günü de geldi.' },
+  { name: 'Can B.',   district: 'Beşiktaş', text: 'Etiler\'de kapıda kaldık. Tam söylenen sürede geldi, sorunsuz açtı. Güvenilir bir numara kaydetmek istedim.' },
+];
+
+export function ReviewsSection() {
+  return (
+    <section style={{ padding: '0 0 40px' }}>
+      <div style={{ padding: '0 20px' }}>
+        <SectionHeader eyebrow="MÜŞTERİ YORUMLARI" title="Memnun Müşterilerimiz" />
+      </div>
+      <div className="sx" style={{ display: 'flex', gap: 12, padding: '0 20px 4px' }}>
+        {REVIEWS.map((r, i) => (
+          <div key={i} style={{
+            flexShrink: 0, width: 240,
+            background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.15)',
+            borderRadius: 14, padding: '16px 14px',
+          }}>
+            <div style={{ display: 'flex', gap: 2, marginBottom: 8 }}>
+              {[...Array(5)].map((_, s) => <Star key={s} size={12} color={GL} fill={GL} />)}
+            </div>
+            <p style={{ fontSize: 13, color: 'rgba(255,255,255,.65)', lineHeight: 1.6, marginBottom: 12 }}>
+              "{r.text}"
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div style={{
+                width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
+                background: `linear-gradient(135deg,${GD},${GL})`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 11, fontWeight: 800, color: '#000',
+              }}>{r.name[0]}</div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#fff' }}>{r.name}</div>
+                <div style={{ fontSize: 10, color: GD }}>{r.district}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function WhatsAppBubble() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  if (!visible) return null;
+  return (
+    <a href={WA} className="bp" style={{
+      position: 'fixed', right: 16, bottom: 90, zIndex: 150,
+      width: 52, height: 52, borderRadius: '50%',
+      background: '#25D366',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      boxShadow: '0 4px 18px rgba(37,211,102,.5)',
+      animation: 'pulse 2.5s infinite',
+    }}>
+      <MessageCircle size={24} color="#fff" fill="#fff" />
+    </a>
   );
 }

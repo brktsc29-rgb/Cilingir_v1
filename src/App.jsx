@@ -4,6 +4,8 @@ import EnLandingView from './EnLandingView';
 import DistrictPage from './DistrictPage';
 import BlogListView from './BlogListView';
 import BlogPostView from './BlogPostView';
+import FiyatlarView from './FiyatlarView';
+import NotFoundView from './NotFoundView';
 import { ALL_PAGES } from './districts';
 
 function BlogPostRoute() {
@@ -16,12 +18,13 @@ export default function App() {
     <Routes>
       <Route path="/" element={<CilingirLandingView />} />
       <Route path="/en" element={<EnLandingView />} />
+      <Route path="/fiyatlar" element={<FiyatlarView />} />
       <Route path="/blog" element={<BlogListView />} />
       <Route path="/blog/:slug" element={<BlogPostRoute />} />
       {ALL_PAGES.map(p => (
         <Route key={p.path} path={`/${p.path}`} element={<DistrictPage page={p} />} />
       ))}
-      <Route path="*" element={<CilingirLandingView />} />
+      <Route path="*" element={<NotFoundView />} />
     </Routes>
   );
 }
