@@ -127,19 +127,9 @@ export function Navbar({ open, setOpen, lang = 'tr' }) {
 }
 
 export function MobileMenu({ onClose }) {
-  const goTo = (sectionId, fallback) => {
-    onClose();
-    const el = document.getElementById(sectionId);
-    if (el) {
-      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-    } else {
-      window.location.href = fallback;
-    }
-  };
-
   const NAV = [
-    { label: 'Hizmetler', action: () => goTo('services', '/#services') },
-    { label: 'Bölgeler',  action: () => goTo('districts', '/#districts') },
+    { label: 'Hizmetler', href: '#services' },
+    { label: 'Bölgeler',  href: '#districts' },
     { label: 'İletişim',  href: TEL },
   ];
 
@@ -149,21 +139,13 @@ export function MobileMenu({ onClose }) {
       background: 'rgba(7,9,14,.97)', backdropFilter: 'blur(24px)',
       padding: '72px 24px 32px',
     }}>
-      {NAV.map(({ label, action, href }) =>
-        href ? (
-          <a key={label} href={href} onClick={onClose} style={{
-            display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
-            borderBottom: '1px solid rgba(255,255,255,.07)',
-            fontSize: 18, fontWeight: 600, color: '#fff', textDecoration: 'none',
-          }}>{label}</a>
-        ) : (
-          <button key={label} onClick={action} style={{
-            display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
-            background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,.07)',
-            fontSize: 18, fontWeight: 600, color: '#fff', cursor: 'pointer',
-          }}>{label}</button>
-        )
-      )}
+      {NAV.map(({ label, href }) => (
+        <a key={label} href={href} onClick={onClose} style={{
+          display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
+          borderBottom: '1px solid rgba(255,255,255,.07)',
+          fontSize: 18, fontWeight: 600, color: '#fff', textDecoration: 'none',
+        }}>{label}</a>
+      ))}
       <a href={TEL} onClick={onClose} style={{
         display: 'flex', alignItems: 'center', gap: 14, marginTop: 28,
         padding: '16px 20px', borderRadius: 14,
@@ -255,7 +237,7 @@ function ServiceCard({ grad, Icon, title, desc }) {
 
 export function Services() {
   return (
-    <section id="services" style={{ padding: '0 20px 40px' }}>
+    <section id="services" style={{ padding: '0 20px 40px', scrollMarginTop: 72 }}>
       <SectionHeader eyebrow="HİZMETLERİMİZ" title="Profesyonel Çözümler" />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {SVC_DATA.map((s, i) => <ServiceCard key={i} {...s} />)}
@@ -273,7 +255,7 @@ export function Districts() {
     { name: 'Eyüpsultan', path: 'eyupsultan-cilingir' },
   ];
   return (
-    <section id="districts" style={{ padding: '0 20px 36px' }}>
+    <section id="districts" style={{ padding: '0 20px 36px', scrollMarginTop: 72 }}>
       <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Avrupa Yakası'nda Hizmetinizdeyiz!" />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {items.map((d, i) => (
