@@ -130,6 +130,7 @@ export function MobileMenu({ onClose }) {
   const NAV = [
     { label: 'Hizmetler', href: '#services' },
     { label: 'Bölgeler',  href: '#districts' },
+    { label: 'Blog',      href: '/blog' },
     { label: 'İletişim',  href: TEL },
   ];
 
