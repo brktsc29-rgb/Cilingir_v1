@@ -60,6 +60,7 @@ const RAW = [
     ['gulbag',        'Gülbağ'],
     ['hurriyet',      'Hürriyet'],
     ['emniyetevleri', 'Emniyet Evleri'],
+    ['sultanselim',   'Sultan Selim'],
   ]},
   {base:'eyupsultan', name:'Eyüpsultan', hoods:[
     ['alibeykoy',    'Alibeyköy'],
