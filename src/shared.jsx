@@ -152,9 +152,9 @@ export function TrustCards() {
 }
 
 const SVC_DATA = [
-  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Kapı Açma',            desc: 'Hasarsız ve hızlı kapı açma hizmeti.' },
-  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Oto Çilingir',         desc: 'Araç kapı açma ve anahtar çözümleri.' },
-  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Kilit Değişimi',       desc: 'Her türlü kilit değişimi ve tamiri.' },
+  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Kapı Açma',             desc: 'Hasarsız ve hızlı kapı açma hizmeti.' },
+  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Oto Çilingir',          desc: 'Araç kapı açma ve anahtar çözümleri.' },
+  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Kilit Değişimi',        desc: 'Her türlü kilit değişimi ve tamiri.' },
   { grad: 'linear-gradient(160deg,#1c1e22 0%,#15171a 60%,#0f1012 100%)', Icon: Shield, title: 'Çelik Kapı Sistemleri', desc: 'Yüksek güvenlikli kilit sistemleri.' },
 ];
 
@@ -212,20 +212,15 @@ export function Services() {
 
 export function Districts() {
   const items = [
-    { name: 'Beşiktaş', path: 'besiktas-cilingir' },
-    { name: 'Şişli',    path: 'sisli-cilingir' },
-    { name: 'Sarıyer',  path: 'sariyer-cilingir' },
-    { name: 'Kadıköy',  path: 'kadikoy-cilingir' },
-    { name: 'Üsküdar',  path: 'uskudar-cilingir' },
-    { name: 'Beyoğlu',  path: 'beyoglu-cilingir' },
-    { name: 'Fatih',    path: 'fatih-cilingir' },
-    { name: 'Bakırköy', path: 'bakirkoy-cilingir' },
-    { name: 'Kağıthane', path: 'kagithane-cilingir' },
+    { name: 'Beşiktaş',   path: 'besiktas-cilingir' },
+    { name: 'Şişli',      path: 'sisli-cilingir' },
+    { name: 'Sarıyer',    path: 'sariyer-cilingir' },
+    { name: 'Kağıthane',  path: 'kagithane-cilingir' },
     { name: 'Eyüpsultan', path: 'eyupsultan-cilingir' },
   ];
   return (
     <section id="districts" style={{ padding: '0 20px 36px' }}>
-      <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Tüm İstanbul'da Hizmetinizdeyiz!" />
+      <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Avrupa Yakası'nda Hizmetinizdeyiz!" />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {items.map((d, i) => (
           <a key={i} href={`/${d.path}`} className="pill" style={{

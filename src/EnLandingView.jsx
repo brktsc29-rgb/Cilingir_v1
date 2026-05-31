@@ -122,7 +122,7 @@ function EnHero() {
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.55, marginBottom: 20 }}>
           Professional locksmith service in Istanbul.
           Average response:{' '}
-          <span style={{ color: '#E5951E', fontWeight: 700 }}>20–30 min</span>.
+          <span style={{ color: '#E5951E', fontWeight: 700 }}>20–30 min</span>.
         </p>
 
         <a href={TEL} className="bp" style={{
@@ -244,14 +244,13 @@ function EnServices() {
 
 function EnDistricts() {
   const districts = [
-    'Beşiktaş', 'Şişli', 'Sarıyer', 'Kadıköy', 'Üsküdar',
-    'Beyoğlu', 'Fatih', 'Bakırköy', 'Kağıthane', 'Eyüpsultan',
+    'Beşiktaş', 'Şişli', 'Sarıyer', 'Kağıthane', 'Eyüpsultan',
   ];
   return (
     <section id="districts" style={{ padding: '0 20px 36px' }}>
       <div style={{ marginBottom: 18 }}>
         <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.22em', marginBottom: 6 }}>SERVICE AREAS</div>
-        <h2 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-.01em' }}>We Serve All of Istanbul!</h2>
+        <h2 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-.01em' }}>European Side of Istanbul!</h2>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {districts.map((d, i) => (
