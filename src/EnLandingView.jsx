@@ -58,7 +58,7 @@ export default function EnLandingView() {
         <EnServices />
         <EnDistricts />
         <ReviewsSection />
-        <FAQSection />
+        <FAQSection lang="en" />
         <EnSocialProof />
         <WhatsAppBubble />
         <EnStickyBar />

@@ -350,41 +350,34 @@ export function SectionHeader({ eyebrow, title }) {
   );
 }
 
-const FAQ_ITEMS = [
-  {
-    q: 'Çilingir kaç dakikada gelir?',
-    a: 'Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da ortalama 20-30 dakika içinde kapınızdayız. Yoğun trafik saatlerinde bu süre biraz uzayabilir, telefonda tahmini süreyi bildiririz.',
-  },
-  {
-    q: 'Gece de hizmet veriyor musunuz?',
-    a: 'Evet, 7/24 kesintisiz hizmet veriyoruz. Gece yarısı, hafta sonu veya resmi tatil fark etmeksizin arayabilirsiniz. Gece tarifesi hakkında bilgiyi telefonda önceden bildiririz.',
-  },
-  {
-    q: 'Kapı açma işlemi kapıya zarar verir mi?',
-    a: 'Profesyonel ekipmanlarımızla büyük çoğunlukla kilidi ve kapıyı hasarsız açıyoruz. Eğer hasar verilmesi gerekecekse işlem öncesi sizi bilgilendiririz ve onayınızı alırız.',
-  },
-  {
-    q: 'Ücret ne kadar?',
-    a: 'Ücret işlemin türüne, saatine ve ilçeye göre değişir. Net fiyat bilgisi için sizi arayın — telefonda şeffaf fiyat veriyoruz, kapı açıldıktan sonra sürpriz ücret çıkmaz.',
-  },
-  {
-    q: 'Oto çilingir hizmeti de yapıyor musunuz?',
-    a: 'Evet, araç kapısı açma ve oto kilit hizmetleri de veriyoruz. Araç marka ve modelini telefonda belirtin, doğru ekipmanla gelelim.',
-  },
-  {
-    q: 'Kilit değişimi de yapıyor musunuz?',
-    a: 'Evet. Kapı açma işleminin yanı sıra kilit değişimi, çelik kapı kilidi kurulumu ve silindir yenileme hizmetleri de sunuyoruz. Markalı ve garantili ürünler kullanıyoruz.',
-  },
-];
+const FAQ_ITEMS = {
+  tr: [
+    { q: 'Çilingir kaç dakikada gelir?', a: 'Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da ortalama 20-30 dakika içinde kapınızdayız. Yoğun trafik saatlerinde bu süre biraz uzayabilir, telefonda tahmini süreyi bildiririz.' },
+    { q: 'Gece de hizmet veriyor musunuz?', a: 'Evet, 7/24 kesintisiz hizmet veriyoruz. Gece yarısı, hafta sonu veya resmi tatil fark etmeksizin arayabilirsiniz. Gece tarifesi hakkında bilgiyi telefonda önceden bildiririz.' },
+    { q: 'Kapı açma işlemi kapıya zarar verir mi?', a: 'Profesyonel ekipmanlarımızla büyük çoğunlukla kilidi ve kapıyı hasarsız açıyoruz. Eğer hasar verilmesi gerekecekse işlem öncesi sizi bilgilendiririz ve onayınızı alırız.' },
+    { q: 'Ücret ne kadar?', a: 'Ücret işlemin türüne, saatine ve ilçeye göre değişir. Net fiyat bilgisi için sizi arayın — telefonda şeffaf fiyat veriyoruz, kapı açıldıktan sonra sürpriz ücret çıkmaz.' },
+    { q: 'Oto çilingir hizmeti de yapıyor musunuz?', a: 'Evet, araç kapısı açma ve oto kilit hizmetleri de veriyoruz. Araç marka ve modelini telefonda belirtin, doğru ekipmanla gelelim.' },
+    { q: 'Kilit değişimi de yapıyor musunuz?', a: 'Evet. Kapı açma işleminin yanı sıra kilit değişimi, çelik kapı kilidi kurulumu ve silindir yenileme hizmetleri de sunuyoruz. Markalı ve garantili ürünler kullanıyoruz.' },
+  ],
+  en: [
+    { q: 'How quickly can a locksmith arrive?', a: 'We arrive within an average of 20-30 minutes in Beşiktaş, Şişli, Sarıyer, Kağıthane and Eyüpsultan. During heavy traffic hours the wait may be slightly longer — we will give you an estimated arrival time by phone.' },
+    { q: 'Do you provide service at night?', a: 'Yes, we operate 24/7 without interruption. You can call us at midnight, on weekends or on public holidays. Any night-time surcharge will be communicated upfront.' },
+    { q: 'Will opening the door cause damage?', a: 'In the vast majority of cases we open locks and doors without any damage using professional equipment. If damage is unavoidable we will inform you and get your approval before proceeding.' },
+    { q: 'How much does it cost?', a: 'Pricing depends on the type of service, time of day and location. Call us for a clear quote — we give transparent pricing over the phone with no surprise charges after the job.' },
+    { q: 'Do you offer auto locksmith services?', a: 'Yes, we open vehicle doors and handle automotive lock issues. Please mention your vehicle make and model when you call so we can bring the right equipment.' },
+    { q: 'Do you also replace locks?', a: 'Yes. In addition to door opening we offer lock replacement, steel door lock installation and cylinder renewal. We use branded, guaranteed products.' },
+  ],
+};
 
-export function FAQSection() {
+export function FAQSection({ lang = 'tr' }) {
   const [openIdx, setOpenIdx] = useState(null);
+  const items = FAQ_ITEMS[lang] || FAQ_ITEMS.tr;
 
   useEffect(() => {
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: FAQ_ITEMS.map(item => ({
+      mainEntity: items.map(item => ({
         '@type': 'Question',
         name: item.q,
         acceptedAnswer: { '@type': 'Answer', text: item.a },
@@ -399,13 +392,16 @@ export function FAQSection() {
     }
     el.textContent = JSON.stringify(schema);
     return () => { el.remove(); };
-  }, []);
+  }, [lang]);
+
+  const eyebrow = lang === 'en' ? 'FREQUENTLY ASKED QUESTIONS' : 'SIKÇA SORULAN SORULAR';
+  const title   = lang === 'en' ? 'Common Questions'            : 'Merak Ettikleriniz';
 
   return (
     <section id="faq" style={{ padding: '0 20px 40px', scrollMarginTop: 72 }}>
-      <SectionHeader eyebrow="SIKÇA SORULAN SORULAR" title="Merak Ettikleriniz" />
+      <SectionHeader eyebrow={eyebrow} title={title} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {FAQ_ITEMS.map((item, i) => (
+        {items.map((item, i) => (
           <div key={i}
             onClick={() => setOpenIdx(openIdx === i ? null : i)}
             style={{
