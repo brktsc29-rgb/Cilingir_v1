@@ -62,19 +62,43 @@ export default function EnLandingView() {
 }
 
 function EnMobileMenu({ onClose }) {
+  const goTo = (sectionId, fallback) => {
+    onClose();
+    const el = document.getElementById(sectionId);
+    if (el) {
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    } else {
+      window.location.href = fallback;
+    }
+  };
+
+  const NAV = [
+    { label: 'Services',  action: () => goTo('services', '/en#services') },
+    { label: 'Districts', action: () => goTo('districts', '/en#districts') },
+    { label: 'Contact',   href: TEL },
+  ];
+
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 99,
       background: 'rgba(7,9,14,.97)', backdropFilter: 'blur(24px)',
       padding: '72px 24px 32px',
     }}>
-      {['Services', 'Districts', 'Contact'].map(item => (
-        <button key={item} onClick={onClose} style={{
-          display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
-          background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,.07)',
-          fontSize: 18, fontWeight: 600, color: '#fff', cursor: 'pointer',
-        }}>{item}</button>
-      ))}
+      {NAV.map(({ label, action, href }) =>
+        href ? (
+          <a key={label} href={href} onClick={onClose} style={{
+            display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
+            borderBottom: '1px solid rgba(255,255,255,.07)',
+            fontSize: 18, fontWeight: 600, color: '#fff', textDecoration: 'none',
+          }}>{label}</a>
+        ) : (
+          <button key={label} onClick={action} style={{
+            display: 'block', width: '100%', padding: '18px 0', textAlign: 'left',
+            background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,.07)',
+            fontSize: 18, fontWeight: 600, color: '#fff', cursor: 'pointer',
+          }}>{label}</button>
+        )
+      )}
       <a href={TEL} onClick={onClose} style={{
         display: 'flex', alignItems: 'center', gap: 14, marginTop: 28,
         padding: '16px 20px', borderRadius: 14,
