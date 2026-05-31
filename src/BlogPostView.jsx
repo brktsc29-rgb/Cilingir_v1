@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Clock, ArrowLeft, Phone, MessageCircle } from 'lucide-react';
+import { Clock, ArrowLeft, Phone, MessageCircle, MapPin } from 'lucide-react';
 import {
   CSS, BG, GL, GD, BASE_URL, TEL, TEL_DISPLAY, WA,
-  Navbar, StickyBar, setSEO,
+  Navbar, MobileMenu, StickyBar, setSEO,
 } from './shared';
+
+const DISTRICT_LINKS = [
+  { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+  { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+  { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+  { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+  { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+];
 import { getPostBySlug, formatDate } from './blogPosts';
 
 export default function BlogPostView({ slug }) {
@@ -57,6 +65,7 @@ export default function BlogPostView({ slug }) {
         overflowX: 'hidden', paddingBottom: 100,
       }}>
         <Navbar open={open} setOpen={setOpen} />
+        {open && <MobileMenu onClose={() => setOpen(false)} />}
         <article style={{ paddingTop: 80, maxWidth: 680, margin: '0 auto', padding: '80px 20px 0' }}>
           <a href="/blog" style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -87,6 +96,29 @@ export default function BlogPostView({ slug }) {
             {post.content.map((block, i) => (
               <Block key={i} block={block} />
             ))}
+          </div>
+
+          <div style={{
+            marginTop: 32, paddingTop: 24,
+            borderTop: '1px solid rgba(212,175,55,.1)',
+          }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.2em', marginBottom: 10 }}>
+              HİZMET BÖLGELERİMİZ
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {DISTRICT_LINKS.map(d => (
+                <a key={d.path} href={`/${d.path}`} className="pill" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 5,
+                  padding: '7px 12px', borderRadius: 100,
+                  background: 'rgba(212,175,55,.06)', border: '1px solid rgba(212,175,55,.18)',
+                  fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,.7)',
+                  textDecoration: 'none',
+                }}>
+                  <MapPin size={10} color={GD} />
+                  {d.name}
+                </a>
+              ))}
+            </div>
           </div>
         </article>
         <StickyBar />

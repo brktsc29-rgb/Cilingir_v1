@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { Clock, ChevronRight } from 'lucide-react';
-import { CSS, BG, GL, GD, BASE_URL, Navbar, StickyBar, setSEO } from './shared';
+import { CSS, BG, GL, GD, BASE_URL, Navbar, MobileMenu, StickyBar, setSEO } from './shared';
 import { BLOG_POSTS, formatDate } from './blogPosts';
-import { useState } from 'react';
 
 export default function BlogListView() {
   const [open, setOpen] = useState(false);
@@ -25,6 +24,7 @@ export default function BlogListView() {
         overflowX: 'hidden', paddingBottom: 100,
       }}>
         <Navbar open={open} setOpen={setOpen} />
+        {open && <MobileMenu onClose={() => setOpen(false)} />}
         <div style={{ paddingTop: 80, padding: '80px 20px 0' }}>
           <div style={{ marginBottom: 32 }}>
             <div style={{
