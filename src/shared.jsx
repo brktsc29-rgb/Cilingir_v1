@@ -11,6 +11,7 @@ export const WA_KONUM = 'https://wa.me/905426946920?text=Merhaba%2C%20konumumu%2
 export const GL = '#FFD700';
 export const GD = '#C9A84C';
 export const BG = '#07090e';
+export const BASE_URL = 'https://cilingirciniz.com';
 
 export const CSS = `
   @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
@@ -27,6 +28,35 @@ export const CSS = `
   .pill:hover{background:rgba(212,175,55,.14)!important;border-color:rgba(212,175,55,.44)!important}
   .bp:active{transform:scale(.97)!important;transition:transform .1s!important}
 `;
+
+export function setSEO({ title, desc, url, lang, schema }) {
+  document.title = title;
+  const s = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
+  s('meta[name="description"]', desc);
+  s('meta[property="og:title"]', title);
+  s('meta[property="og:description"]', desc);
+  if (url) s('meta[property="og:url"]', url);
+  if (lang) document.documentElement.lang = lang;
+
+  let can = document.querySelector('link[rel="canonical"]');
+  if (!can) { can = document.createElement('link'); can.rel = 'canonical'; document.head.appendChild(can); }
+  if (url) can.href = url;
+
+  let ld = document.getElementById('ld-schema');
+  if (!ld) { ld = document.createElement('script'); ld.id = 'ld-schema'; ld.type = 'application/ld+json'; document.head.appendChild(ld); }
+  if (schema) ld.textContent = JSON.stringify(schema);
+}
+
+export function setHreflang(trUrl, enUrl) {
+  const set = (hl, href) => {
+    let el = document.querySelector(`link[hreflang="${hl}"]`);
+    if (!el) { el = document.createElement('link'); el.rel = 'alternate'; el.setAttribute('hreflang', hl); document.head.appendChild(el); }
+    el.href = href;
+  };
+  set('tr', trUrl);
+  set('en', enUrl);
+  set('x-default', trUrl);
+}
 
 function LogoMark() {
   return (

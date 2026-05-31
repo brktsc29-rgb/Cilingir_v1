@@ -1,12 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock, Phone, MessageCircle } from 'lucide-react';
 import {
-  CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG,
+  CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, Services, Districts, SocialProof, StickyBar,
+  setSEO, setHreflang,
 } from './shared';
+
+const SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${BASE_URL}/#business`,
+  'name': 'Taşcı Çilingir',
+  'description': 'İstanbul Avrupa Yakası’nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir.',
+  'url': BASE_URL,
+  'telephone': '+905426946920',
+  'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
+  'priceRange': '₺₺',
+  'openingHoursSpecification': {
+    '@type': 'OpeningHoursSpecification',
+    'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+    'opens': '00:00',
+    'closes': '23:59',
+  },
+  'areaServed': [
+    {'@type': 'Place', 'name': 'Beşiktaş, İstanbul'},
+    {'@type': 'Place', 'name': 'Şişli, İstanbul'},
+    {'@type': 'Place', 'name': 'Sarıyer, İstanbul'},
+    {'@type': 'Place', 'name': 'Kağıthane, İstanbul'},
+    {'@type': 'Place', 'name': 'Eyüpsultan, İstanbul'},
+  ],
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': 'İstanbul',
+    'addressCountry': 'TR',
+  },
+  'aggregateRating': {
+    '@type': 'AggregateRating',
+    'ratingValue': '4.9',
+    'bestRating': '5',
+    'reviewCount': '127',
+  },
+};
 
 export default function CilingirLandingView() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setSEO({
+      title: 'Taşcı Çilingir | İstanbul 7/24 Acil Çilingir Hizmeti',
+      desc: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızdayız. 0542 694 69 20',
+      url: `${BASE_URL}/`,
+      lang: 'tr',
+      schema: SCHEMA,
+    });
+    setHreflang(`${BASE_URL}/`, `${BASE_URL}/en`);
+  }, []);
+
   return (
     <>
       <style>{CSS}</style>
@@ -38,7 +87,6 @@ function Hero() {
       alignItems: 'center',
       background: BG,
     }}>
-      {/* Arka plan görseli */}
       <div style={{
         position: 'absolute', inset: 0,
         backgroundImage: 'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
@@ -47,21 +95,15 @@ function Hero() {
         backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
-
-      {/* Sol-sağ karartma */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',
       }} />
-
-      {/* Alt geçiş */}
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: 160, zIndex: 2,
         background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
         pointerEvents: 'none',
       }} />
-
-      {/* İçerik — ekranın sol %55’i, anahtar sağda */}
       <div style={{
         position: 'relative', zIndex: 3,
         width: '100%', maxWidth: 255,
@@ -77,7 +119,6 @@ function Hero() {
           <Clock size={11} color={GD} />
           7/24 ACİL ÇİLİNGİR
         </span>
-
         <h1 style={{
           fontSize: 'clamp(32px,9.5vw,52px)', fontWeight: 900, lineHeight: .9,
           marginBottom: 14, letterSpacing: '-.02em',
@@ -91,11 +132,9 @@ function Hero() {
             animation: 'shimmer 4s linear infinite',
           }}>kaldınız?</span>
         </h1>
-
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.55, marginBottom: 20 }}>
-          Ortalama <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dk</span> içinde profesyonel çözüm.
+          Ortalama <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dk</span> içinde profesyonel çözüm.
         </p>
-
         <a href={TEL} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12, marginBottom: 10,
@@ -109,7 +148,6 @@ function Hero() {
             <div style={{ fontSize: 14, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
           </div>
         </a>
-
         <a href={WA} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12,

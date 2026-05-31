@@ -1,19 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Phone, MessageCircle, MapPin } from 'lucide-react';
 import {
-  CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG,
+  CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, Services, SocialProof, StickyBar, SectionHeader,
+  setSEO,
 } from './shared';
+
+const DISTRICT_CTX = {
+  'Beşiktaş': 'Avrupa yakasının prestijli ilçelerinden Beşiktaş',
+  'Şişli': 'İstanbul’un iş ve eğlence merkezi Şişli',
+  'Sarıyer': 'Boğaz kıyısındaki doğal güzellikte Sarıyer',
+  'Kağıthane': 'Gelişen yapısıyla öne çıkan Kağıthane',
+  'Eyüpsultan': 'Tarihi ve kültürel dokusuyla Eyüpsultan',
+};
+
+function getIntro(page) {
+  const ctx = DISTRICT_CTX[page.districtName] || page.districtName;
+  if (page.isNeighborhood) {
+    return `${ctx} ilçesinde yer alan ${page.name} mahallesinde kapıda kalmak artık sorun değil. Taşcı Çilingir olarak ${page.name} genelinde 7/24 acil kapı açma, kilit değişimi, çelik kapı sistemleri ve oto çilingir hizmetleri sunuyoruz. Ortalama 20-30 dakikada yanınızdayız.`;
+  }
+  return `${ctx} ilçesinde 7/24 acil çilingir hizmetine mi ihtiyacınız var? Taşcı Çilingir, ${page.name} genelinde kapı açma, kilit değişimi, çelik kapı sistemleri ve oto çilingir hizmetleri sunmaktadır. Tüm mahallelere ortalama 20-30 dakikada ulaşıyoruz.`;
+}
 
 export default function DistrictPage({ page }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.title = page.metaTitle;
-    const set = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
-    set('meta[name="description"]', page.metaDesc);
-    set('meta[property="og:title"]', page.metaTitle);
-    set('meta[property="og:description"]', page.metaDesc);
+    const url = `${BASE_URL}/${page.path}`;
+    setSEO({
+      title: page.metaTitle,
+      desc: page.metaDesc,
+      url,
+      lang: 'tr',
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        'name': `Taşcı Çilingir — ${page.name}`,
+        'description': page.metaDesc,
+        'url': url,
+        'telephone': '+905426946920',
+        'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
+        'priceRange': '₺₺',
+        'openingHoursSpecification': {
+          '@type': 'OpeningHoursSpecification',
+          'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+          'opens': '00:00',
+          'closes': '23:59',
+        },
+        'areaServed': { '@type': 'Place', 'name': `${page.name}, İstanbul` },
+        'address': { '@type': 'PostalAddress', 'addressLocality': 'İstanbul', 'addressCountry': 'TR' },
+        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'bestRating': '5', 'reviewCount': '127' },
+      },
+    });
     window.scrollTo(0, 0);
   }, [page]);
 
@@ -28,6 +66,7 @@ export default function DistrictPage({ page }) {
         <Navbar open={open} setOpen={setOpen} />
         {open && <MobileMenu onClose={() => setOpen(false)} />}
         <DistrictHero page={page} />
+        <DistrictIntro page={page} />
         <TrustCards />
         <Services />
         <NearbyAreas page={page} />
@@ -41,19 +80,14 @@ export default function DistrictPage({ page }) {
 function DistrictHero({ page }) {
   return (
     <section style={{
-      position: 'relative',
-      paddingTop: 64,
-      minHeight: '560px',
-      display: 'flex',
-      alignItems: 'center',
+      position: 'relative', paddingTop: 64,
+      minHeight: '560px', display: 'flex', alignItems: 'center',
       background: BG,
     }}>
       <div style={{
         position: 'absolute', inset: 0,
         backgroundImage: 'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'right center',
-        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
       <div style={{
@@ -65,7 +99,6 @@ function DistrictHero({ page }) {
         background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
         pointerEvents: 'none',
       }} />
-
       <div style={{
         position: 'relative', zIndex: 3,
         width: '100%', maxWidth: 255,
@@ -81,7 +114,6 @@ function DistrictHero({ page }) {
           <Clock size={11} color={GD} />
           7/24 ACİL ÇİLİNGİR
         </span>
-
         <h1 style={{
           fontSize: 'clamp(28px,8.5vw,48px)', fontWeight: 900, lineHeight: .9,
           marginBottom: 14, letterSpacing: '-.02em',
@@ -95,13 +127,11 @@ function DistrictHero({ page }) {
             animation: 'shimmer 4s linear infinite',
           }}>Çilingir Hizmeti</span>
         </h1>
-
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.55, marginBottom: 20 }}>
           {page.name} bölgesinde ortalama{' '}
-          <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dk</span>{' '}
+          <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dk</span>{' '}
           içinde profesyonel çilingir.
         </p>
-
         <a href={TEL} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12, marginBottom: 10,
@@ -115,7 +145,6 @@ function DistrictHero({ page }) {
             <div style={{ fontSize: 14, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
           </div>
         </a>
-
         <a href={WA} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12,
@@ -128,6 +157,19 @@ function DistrictHero({ page }) {
           </div>
         </a>
       </div>
+    </section>
+  );
+}
+
+function DistrictIntro({ page }) {
+  return (
+    <section style={{ padding: '28px 20px 8px' }}>
+      <p style={{
+        fontSize: 13.5, color: 'rgba(255,255,255,.58)', lineHeight: 1.7,
+        borderLeft: `3px solid ${GD}`, paddingLeft: 14,
+      }}>
+        {getIntro(page)}
+      </p>
     </section>
   );
 }

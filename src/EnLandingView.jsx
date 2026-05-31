@@ -3,16 +3,41 @@ import {
   Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
   ChevronRight, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
-import { CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, Navbar } from './shared';
+import { CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, BASE_URL, Navbar, setSEO, setHreflang } from './shared';
+
+const SCHEMA_EN = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${BASE_URL}/#business`,
+  'name': 'Taşcı Çilingir',
+  'description': '24/7 emergency locksmith service in Istanbul. Door opening, lock replacement, auto locksmith.',
+  'url': `${BASE_URL}/en`,
+  'telephone': '+905426946920',
+  'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
+  'priceRange': '₺₺',
+  'openingHoursSpecification': {
+    '@type': 'OpeningHoursSpecification',
+    'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+    'opens': '00:00',
+    'closes': '23:59',
+  },
+  'areaServed': { '@type': 'City', 'name': 'Istanbul' },
+  'address': { '@type': 'PostalAddress', 'addressLocality': 'Istanbul', 'addressCountry': 'TR' },
+  'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'bestRating': '5', 'reviewCount': '127' },
+};
 
 export default function EnLandingView() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.title = 'Istanbul Locksmith | 24/7 Emergency | Taşcı Çilingir';
-    const set = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
-    set('meta[name="description"]', '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0542 694 69 20');
-    set('meta[property="og:title"]', 'Istanbul Locksmith | 24/7 Emergency | Taşcı Çilingir');
+    setSEO({
+      title: 'Istanbul Locksmith | 24/7 Emergency | Taşcı Çilingir',
+      desc: '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0542 694 69 20',
+      url: `${BASE_URL}/en`,
+      lang: 'en',
+      schema: SCHEMA_EN,
+    });
+    setHreflang(`${BASE_URL}/`, `${BASE_URL}/en`);
   }, []);
 
   return (
@@ -88,7 +113,6 @@ function EnHero() {
         background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
         pointerEvents: 'none',
       }} />
-
       <div style={{
         position: 'relative', zIndex: 3,
         width: '100%', maxWidth: 255,
@@ -104,7 +128,6 @@ function EnHero() {
           <Clock size={11} color={GD} />
           24/7 EMERGENCY LOCKSMITH
         </span>
-
         <h1 style={{
           fontSize: 'clamp(32px,9.5vw,52px)', fontWeight: 900, lineHeight: .9,
           marginBottom: 14, letterSpacing: '-.02em',
@@ -118,13 +141,11 @@ function EnHero() {
             animation: 'shimmer 4s linear infinite',
           }}>locked out?</span>
         </h1>
-
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.55, marginBottom: 20 }}>
           Professional locksmith service in Istanbul.
           Average response:{' '}
           <span style={{ color: '#E5951E', fontWeight: 700 }}>20–30 min</span>.
         </p>
-
         <a href={TEL} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12, marginBottom: 10,
@@ -138,7 +159,6 @@ function EnHero() {
             <div style={{ fontSize: 14, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
           </div>
         </a>
-
         <a href={WA} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12,
@@ -181,24 +201,21 @@ function EnTrustCards() {
 }
 
 const EN_SVC = [
-  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Door Opening',        desc: 'Fast & damage-free door unlocking.' },
-  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Auto Locksmith',      desc: 'Car door opening & key solutions.' },
-  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Lock Replacement',    desc: 'All types of lock change & repair.' },
-  { grad: 'linear-gradient(160deg,#1c1e22 0%,#15171a 60%,#0f1012 100%)', Icon: Shield, title: 'Steel Door Systems',  desc: 'High-security lock installations.' },
+  { grad: 'linear-gradient(160deg,#3d2010 0%,#2a1505 60%,#1a0c03 100%)', Icon: Key,    title: 'Door Opening',       desc: 'Fast & damage-free door unlocking.' },
+  { grad: 'linear-gradient(160deg,#0f1a2e 0%,#0d1520 60%,#081018 100%)', Icon: Car,    title: 'Auto Locksmith',     desc: 'Car door opening & key solutions.' },
+  { grad: 'linear-gradient(160deg,#1a1820 0%,#141318 60%,#0f0d12 100%)', Icon: Lock,   title: 'Lock Replacement',   desc: 'All types of lock change & repair.' },
+  { grad: 'linear-gradient(160deg,#1c1e22 0%,#15171a 60%,#0f1012 100%)', Icon: Shield, title: 'Steel Door Systems', desc: 'High-security lock installations.' },
 ];
 
 function EnServiceCard({ grad, Icon, title, desc }) {
   return (
     <a href={TEL} className="svc" style={{
       display: 'flex', alignItems: 'center',
-      background: 'rgba(255,255,255,.04)',
-      border: '1px solid rgba(212,175,55,.18)',
-      borderRadius: 14,
+      background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.18)', borderRadius: 14,
     }}>
       <div style={{
         width: 74, flexShrink: 0, alignSelf: 'stretch', minHeight: 66,
-        background: grad, position: 'relative',
-        borderRadius: '14px 0 0 14px', overflow: 'hidden',
+        background: grad, position: 'relative', borderRadius: '14px 0 0 14px', overflow: 'hidden',
       }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right,transparent 55%,rgba(7,9,14,.7) 100%)' }} />
       </div>
@@ -217,8 +234,7 @@ function EnServiceCard({ grad, Icon, title, desc }) {
       </div>
       <div style={{ padding: '0 12px 0 4px', flexShrink: 0 }}>
         <div style={{
-          width: 26, height: 26,
-          background: `linear-gradient(135deg,${GD},${GL})`,
+          width: 26, height: 26, background: `linear-gradient(135deg,${GD},${GL})`,
           borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
           <ChevronRight size={14} color="#000" strokeWidth={2.5} />
@@ -243,9 +259,7 @@ function EnServices() {
 }
 
 function EnDistricts() {
-  const districts = [
-    'Beşiktaş', 'Şişli', 'Sarıyer', 'Kağıthane', 'Eyüpsultan',
-  ];
+  const districts = ['Beşiktaş', 'Şişli', 'Sarıyer', 'Kağıthane', 'Eyüpsultan'];
   return (
     <section id="districts" style={{ padding: '0 20px 36px' }}>
       <div style={{ marginBottom: 18 }}>
@@ -279,8 +293,7 @@ function EnSocialProof() {
     <section style={{ padding: '0 20px 40px' }}>
       <div style={{
         background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.24)',
-        borderRadius: 16, padding: '22px 16px',
-        display: 'flex', justifyContent: 'space-around',
+        borderRadius: 16, padding: '22px 16px', display: 'flex', justifyContent: 'space-around',
       }}>
         {items.map(({ Icon, val, label }, i) => (
           <div key={i} style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
@@ -307,25 +320,21 @@ function EnStickyBar() {
     }}>
       <a href={TEL} className="bp" style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-        height: 46, borderRadius: 12,
-        background: `linear-gradient(135deg,${GD},${GL})`,
-        boxShadow: '0 3px 14px rgba(212,175,55,.35)',
-        fontSize: 11.5, fontWeight: 800, color: '#000',
+        height: 46, borderRadius: 12, background: `linear-gradient(135deg,${GD},${GL})`,
+        boxShadow: '0 3px 14px rgba(212,175,55,.35)', fontSize: 11.5, fontWeight: 800, color: '#000',
       }}>
         <Phone size={14} color="#000" strokeWidth={2.5} /> CALL NOW
       </a>
       <a href={WA} className="bp" style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-        height: 46, borderRadius: 12,
-        background: '#0d1e11', border: '1px solid rgba(37,211,102,.28)',
+        height: 46, borderRadius: 12, background: '#0d1e11', border: '1px solid rgba(37,211,102,.28)',
         fontSize: 11.5, fontWeight: 800, color: '#25D366',
       }}>
         <MessageCircle size={14} color="#25D366" /> WHATSAPP
       </a>
       <a href={WA_KONUM} className="bp" style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-        height: 46, borderRadius: 12,
-        background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)',
+        height: 46, borderRadius: 12, background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)',
         fontSize: 10.5, fontWeight: 700, color: 'rgba(255,255,255,.78)',
       }}>
         <MapPin size={13} color="rgba(255,255,255,.78)" /> SHARE LOCATION
