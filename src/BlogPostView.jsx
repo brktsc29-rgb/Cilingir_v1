@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Clock, ArrowLeft, Phone, MessageCircle, MapPin } from 'lucide-react';
+import { Clock, ArrowLeft, Phone, MessageCircle, MapPin, ChevronRight } from 'lucide-react';
 import {
   CSS, BG, GL, GD, BASE_URL, TEL, TEL_DISPLAY, WA,
   Navbar, MobileMenu, StickyBar, setSEO,
 } from './shared';
+import { getPostBySlug, formatDate, BLOG_POSTS } from './blogPosts';
 
 const DISTRICT_LINKS = [
   { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
@@ -12,7 +13,6 @@ const DISTRICT_LINKS = [
   { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
   { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
 ];
-import { getPostBySlug, formatDate } from './blogPosts';
 
 export default function BlogPostView({ slug }) {
   const [open, setOpen] = useState(false);
@@ -98,8 +98,10 @@ export default function BlogPostView({ slug }) {
             ))}
           </div>
 
+          <RelatedPosts currentSlug={post.slug} />
+
           <div style={{
-            marginTop: 32, paddingTop: 24,
+            marginTop: 24, paddingTop: 24,
             borderTop: '1px solid rgba(212,175,55,.1)',
           }}>
             <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.2em', marginBottom: 10 }}>
@@ -220,4 +222,35 @@ function Block({ block }) {
     default:
       return null;
   }
+}
+
+function RelatedPosts({ currentSlug }) {
+  const related = BLOG_POSTS.filter(p => p.slug !== currentSlug).slice(0, 3);
+  if (!related.length) return null;
+  return (
+    <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(212,175,55,.1)' }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.2em', marginBottom: 12 }}>
+        İLGİLİ YAZILAR
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {related.map(p => (
+          <a key={p.slug} href={`/blog/${p.slug}`} style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+            padding: '12px 14px', borderRadius: 10, textDecoration: 'none',
+            background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.12)',
+          }}>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', lineHeight: 1.3, marginBottom: 3 }}>
+                {p.title}
+              </div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,.35)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Clock size={9} color={GD} /> {p.readMin} dk okuma
+              </div>
+            </div>
+            <ChevronRight size={14} color={GD} style={{ flexShrink: 0 }} />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 }

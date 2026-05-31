@@ -3,7 +3,10 @@ import {
   Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
   ChevronRight, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
-import { CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, BASE_URL, Navbar, setSEO, setHreflang } from './shared';
+import {
+  CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, BASE_URL,
+  Navbar, setSEO, setHreflang, FAQSection, ReviewsSection, WhatsAppBubble,
+} from './shared';
 
 const SCHEMA_EN = {
   '@context': 'https://schema.org',
@@ -54,7 +57,10 @@ export default function EnLandingView() {
         <EnTrustCards />
         <EnServices />
         <EnDistricts />
+        <ReviewsSection />
+        <FAQSection />
         <EnSocialProof />
+        <WhatsAppBubble />
         <EnStickyBar />
       </div>
     </>
@@ -104,12 +110,16 @@ function EnHero() {
       minHeight: '560px', display: 'flex', alignItems: 'center',
       background: BG,
     }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
-        backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat',
-        zIndex: 0,
-      }} />
+      <img
+        src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+        alt="24/7 emergency locksmith service in Istanbul — Taşcı Çilingir"
+        style={{
+          position: 'absolute', inset: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover', objectPosition: 'right center',
+          zIndex: 0,
+        }}
+      />
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',

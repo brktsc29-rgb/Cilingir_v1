@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Home, Phone } from 'lucide-react';
 import { CSS, BG, GL, GD, TEL, TEL_DISPLAY, StickyBar } from './shared';
 
 export default function NotFoundView() {
+  useEffect(() => {
+    document.title = '404 Sayfa Bulunamadı | Taşcı Çilingir';
+    let m = document.querySelector('meta[name="robots"]');
+    if (!m) { m = document.createElement('meta'); m.name = 'robots'; document.head.appendChild(m); }
+    m.content = 'noindex,nofollow';
+    return () => { m.content = 'index,follow'; };
+  }, []);
+
   return (
     <>
       <style>{CSS}</style>
