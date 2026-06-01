@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
   ChevronRight, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
