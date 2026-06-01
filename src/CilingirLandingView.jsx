@@ -87,16 +87,18 @@ function Hero() {
       alignItems: 'center',
       background: BG,
     }}>
-      <img
-        src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
-        alt="İstanbul'da 7/24 acil çilingir hizmeti, Taşcı Çilingir kapı açma uzmanı"
-        style={{
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'right center',
-          zIndex: 0,
-        }}
-      />
+      <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <source srcSet="/images/hero.webp" type="image/webp" />
+        <img
+          src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+          alt="İstanbul'da 7/24 acil çilingir hizmeti, Taşcı Çilingir kapı açma uzmanı"
+          fetchPriority="high"
+          style={{
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'right center',
+          }}
+        />
+      </picture>
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',

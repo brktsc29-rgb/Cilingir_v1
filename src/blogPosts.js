@@ -91,6 +91,17 @@ export const BLOG_POSTS = [
         type: 'p',
         text: 'Araç kilidi ile ev kilidi açma birbirinden farklı uzmanlık alanlarıdır. Aracınız kilitliyse oto çilingir hizmeti veren bir firma arayın. Yanlış müdahale araç kapı contasına, kilit sistemine ya da alarm devresine zarar verebilir. Marka ve model bazlı deneyimi olan oto çilingirler bu konuda çok daha güvenlidir.',
       },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
+      },
       { type: 'cta' },
     ],
   },
@@ -208,6 +219,17 @@ export const BLOG_POSTS = [
         type: 'p',
         text: 'Bugün İstanbul\'un Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan gibi ilçelerinde faaliyet gösteren çilingirler, bu köklü geleneği modern ekipmanlar ve teknolojik bilgiyle birleştirmektedir.',
       },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
+      },
       { type: 'cta' },
     ],
   },
@@ -289,6 +311,17 @@ export const BLOG_POSTS = [
       {
         type: 'p',
         text: 'Kapınız açıldıktan sonra yaşanan bu deneyimi bir ders olarak değerlendirin. Aile üyelerinden birine ya da güvendiğiniz bir komşuya yedek anahtar bırakın. Ayrıca gelecekte acil bir durumda hızla ulaşabileceğiniz güvenilir bir çilingir numarası kaydedin.',
+      },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
       },
       { type: 'cta' },
     ],
@@ -382,6 +415,17 @@ export const BLOG_POSTS = [
         type: 'p',
         text: 'Kilit değişimi yaparken yalnızca fiyata bakılmamalıdır. Güvenlik sertifikaları (A sınıfı, B sınıfı), delmeye ve kırmaya direnç, kilit markaları ve kapı tipine uygunluk gibi faktörler değerlendirilmelidir. Deneyimli bir çilingir, kapınıza en uygun kilidi önerebilir.',
       },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
+      },
       { type: 'cta' },
     ],
   },
@@ -471,6 +515,17 @@ export const BLOG_POSTS = [
       {
         type: 'p',
         text: 'Taşcı Çilingir olarak İstanbul Avrupa Yakası\'nda çelik kapı danışmanlığı ve montaj hizmeti sunmaktayız. Mevcut kilit sisteminizi güçlendirmek ya da yeni bir çelik kapı için doğru seçimi yapmak için bizi arayabilirsiniz.',
+      },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
       },
       { type: 'cta' },
     ],
@@ -566,6 +621,17 @@ export const BLOG_POSTS = [
       {
         type: 'p',
         text: 'Kasko poliçelerinin bir kısmı araç kilidi açma hizmetini "yol yardımı" kapsamında karşılar. Sigorta şirketinizi arayarak bağlı olduğunuz yol yardımı hizmeti ve çilingir desteği konusunda bilgi alın. Bu hizmet mevcutsa önce sigorta hattını aramanız çok daha ekonomik olabilir.',
+      },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
       },
       { type: 'cta' },
     ],
@@ -665,6 +731,17 @@ export const BLOG_POSTS = [
       {
         type: 'p',
         text: 'Kilitlerin yıllık kontrolden geçirilmesi, beklenmedik anlarda arıza yaşanmasını önler. Bir çilingirc\'a kilitlerinizdeki mekanizma aşınması, silindir zayıflığı veya kasa gevşemesi konusunda değerlendirme yaptırabilirsiniz. Taşcı Çilingir olarak İstanbul Avrupa Yakası\'ndaki tüm ilçelerde ücretsiz ön değerlendirme sunmaktayız.',
+      },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',  path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',     path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',   path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir', path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir',path: 'eyupsultan-cilingir' },
+        ],
       },
       { type: 'cta' },
     ],

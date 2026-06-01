@@ -122,16 +122,18 @@ function EnHero() {
       minHeight: '560px', display: 'flex', alignItems: 'center',
       background: BG,
     }}>
-      <img
-        src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
-        alt="24/7 emergency locksmith service in Istanbul, Taşcı Çilingir"
-        style={{
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'right center',
-          zIndex: 0,
-        }}
-      />
+      <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <source srcSet="/images/hero.webp" type="image/webp" />
+        <img
+          src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+          alt="24/7 emergency locksmith service in Istanbul, Taşcı Çilingir"
+          fetchPriority="high"
+          style={{
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'right center',
+          }}
+        />
+      </picture>
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',

@@ -27,17 +27,25 @@ export default function BlogPostView({ slug }) {
       lang: 'tr',
       schema: {
         '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: post.title,
-        description: post.excerpt,
-        datePublished: post.date,
-        author: { '@type': 'Organization', name: 'Taşcı Çilingir' },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Taşcı Çilingir',
-          url: BASE_URL,
-        },
-        mainEntityOfPage: `${BASE_URL}/blog/${post.slug}`,
+        '@graph': [
+          {
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.date,
+            author: { '@type': 'Organization', name: 'Taşcı Çilingir' },
+            publisher: { '@type': 'Organization', name: 'Taşcı Çilingir', url: BASE_URL },
+            mainEntityOfPage: `${BASE_URL}/blog/${post.slug}`,
+          },
+          {
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+              { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: `${BASE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+              { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE_URL}/blog/${post.slug}` },
+            ],
+          },
+        ],
       },
     });
   }, [post]);
@@ -215,6 +223,29 @@ function Block({ block }) {
               <MessageCircle size={14} color="#25D366" />
               WhatsApp
             </a>
+          </div>
+        </div>
+      );
+
+    case 'districts':
+      return (
+        <div style={{ marginTop: 28, marginBottom: 8 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.18em', marginBottom: 10 }}>
+            {block.label || 'BÖLGELER'}
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {block.items.map(d => (
+              <a key={d.path} href={`/${d.path}`} className="pill" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 5,
+                padding: '7px 12px', borderRadius: 100,
+                background: 'rgba(212,175,55,.06)', border: '1px solid rgba(212,175,55,.18)',
+                fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,.7)',
+                textDecoration: 'none',
+              }}>
+                <MapPin size={10} color={GD} />
+                {d.name}
+              </a>
+            ))}
           </div>
         </div>
       );

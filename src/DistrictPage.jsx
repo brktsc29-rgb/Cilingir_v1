@@ -27,6 +27,15 @@ export default function DistrictPage({ page }) {
 
   useEffect(() => {
     const url = `${BASE_URL}/${page.path}`;
+    const breadcrumbItems = [
+      { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: `${BASE_URL}/` },
+    ];
+    if (page.isNeighborhood) {
+      breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: `${page.districtName} Çilingir`, item: `${BASE_URL}/${page.districtPath}` });
+      breadcrumbItems.push({ '@type': 'ListItem', position: 3, name: `${page.name} Çilingir`, item: url });
+    } else {
+      breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: `${page.name} Çilingir`, item: url });
+    }
     setSEO({
       title: page.metaTitle,
       desc: page.metaDesc,
@@ -34,22 +43,30 @@ export default function DistrictPage({ page }) {
       lang: 'tr',
       schema: {
         '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        'name': `Taşcı Çilingir — ${page.name}`,
-        'description': page.metaDesc,
-        'url': url,
-        'telephone': '+905426946920',
-        'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
-        'priceRange': '₺₺',
-        'openingHoursSpecification': {
-          '@type': 'OpeningHoursSpecification',
-          'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-          'opens': '00:00',
-          'closes': '23:59',
-        },
-        'areaServed': { '@type': 'Place', 'name': `${page.name}, İstanbul` },
-        'address': { '@type': 'PostalAddress', 'addressLocality': 'İstanbul', 'addressCountry': 'TR' },
-        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'bestRating': '5', 'reviewCount': '127' },
+        '@graph': [
+          {
+            '@type': 'LocalBusiness',
+            'name': `Taşcı Çilingir - ${page.name}`,
+            'description': page.metaDesc,
+            'url': url,
+            'telephone': '+905426946920',
+            'image': `${BASE_URL}/images/hero.webp`,
+            'priceRange': '₺₺',
+            'openingHoursSpecification': {
+              '@type': 'OpeningHoursSpecification',
+              'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+              'opens': '00:00',
+              'closes': '23:59',
+            },
+            'areaServed': { '@type': 'Place', 'name': `${page.name}, İstanbul` },
+            'address': { '@type': 'PostalAddress', 'addressLocality': 'İstanbul', 'addressCountry': 'TR' },
+            'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'bestRating': '5', 'reviewCount': '127' },
+          },
+          {
+            '@type': 'BreadcrumbList',
+            'itemListElement': breadcrumbItems,
+          },
+        ],
       },
     });
     window.scrollTo(0, 0);
@@ -84,12 +101,15 @@ function DistrictHero({ page }) {
       minHeight: '560px', display: 'flex', alignItems: 'center',
       background: BG,
     }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'url(/images/10902595-E9CD-474F-BD7D-A076279C1A41.png)',
-        backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat',
-        zIndex: 0,
-      }} />
+      <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <source srcSet="/images/hero.webp" type="image/webp" />
+        <img
+          src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+          alt={`${page.name} çilingir hizmeti`}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
+        />
+      </picture>
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',
