@@ -294,7 +294,7 @@ export function Districts() {
 
 export function SocialProof() {
   const items = [
-    { Icon: Users, val: '10.000+',  label: 'Mutlu Müşteri' },
+    { Icon: Users, val: '1.000+',   label: 'Tamamlanan İş' },
     { Icon: Star,  val: '4.9/5',    label: 'Müşteri Puanı' },
     { Icon: Clock, val: '20-30 DK', label: 'Ortalama Varış' },
   ];

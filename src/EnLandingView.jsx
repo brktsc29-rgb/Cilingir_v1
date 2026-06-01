@@ -313,7 +313,7 @@ function EnDistricts() {
 
 function EnSocialProof() {
   const items = [
-    { Icon: Users, val: '10,000+', label: 'Happy Customers' },
+    { Icon: Users, val: '1,000+',  label: 'Jobs Completed' },
     { Icon: Star,  val: '4.9/5',   label: 'Customer Rating' },
     { Icon: Clock, val: '20–30m',  label: 'Avg. Response' },
   ];
