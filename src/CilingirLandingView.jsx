@@ -3,6 +3,7 @@ import { Clock, Phone, MessageCircle } from 'lucide-react';
 import {
   CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, Services, Districts, SocialProof, StickyBar,
+  FAQSection, ReviewsSection, WhatsAppBubble,
   setSEO, setHreflang,
 } from './shared';
 
@@ -70,7 +71,10 @@ export default function CilingirLandingView() {
         <TrustCards />
         <Services />
         <Districts />
+        <ReviewsSection />
+        <FAQSection />
         <SocialProof />
+        <WhatsAppBubble />
         <StickyBar />
       </div>
     </>
