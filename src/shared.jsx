@@ -140,6 +140,8 @@ export function MobileMenu({ onClose }) {
   const NAV = [
     { label: 'Hizmetler', action: () => goTo('services', '/#services') },
     { label: 'Bölgeler',  action: () => goTo('districts', '/#districts') },
+    { label: 'Fiyatlar',  href: '/fiyatlar' },
+    { label: 'Blog',      href: '/blog' },
     { label: 'İletişim',  href: TEL },
   ];
 
@@ -255,7 +257,7 @@ function ServiceCard({ grad, Icon, title, desc }) {
 
 export function Services() {
   return (
-    <section id="services" style={{ padding: '0 20px 40px' }}>
+    <section id="services" style={{ padding: '0 20px 40px', scrollMarginTop: 72 }}>
       <SectionHeader eyebrow="HİZMETLERİMİZ" title="Profesyonel Çözümler" />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {SVC_DATA.map((s, i) => <ServiceCard key={i} {...s} />)}
@@ -273,7 +275,7 @@ export function Districts() {
     { name: 'Eyüpsultan', path: 'eyupsultan-cilingir' },
   ];
   return (
-    <section id="districts" style={{ padding: '0 20px 36px' }}>
+    <section id="districts" style={{ padding: '0 20px 36px', scrollMarginTop: 72 }}>
       <SectionHeader eyebrow="HİZMET VERİLEN BÖLGELER" title="Avrupa Yakası'nda Hizmetinizdeyiz!" />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {items.map((d, i) => (
