@@ -149,8 +149,8 @@ function EnHero() {
       }} />
       <div style={{
         position: 'relative', zIndex: 3,
-        width: '100%', maxWidth: 255,
-        padding: '28px 12px 48px 20px',
+        width: '100%', maxWidth: 'clamp(255px, 34vw, 380px)',
+        padding: '28px 12px 48px clamp(20px, 7vw, 80px)',
       }}>
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: 7,
