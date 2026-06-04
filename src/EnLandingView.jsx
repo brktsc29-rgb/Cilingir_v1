@@ -133,7 +133,7 @@ function EnHero() {
           fetchPriority="high"
           style={{
             width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'right center',
+            objectFit: 'cover', objectPosition: 'right 20%',
           }}
         />
       </picture>

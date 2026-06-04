@@ -107,7 +107,7 @@ function DistrictHero({ page }) {
           src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
           alt={`${page.name} çilingir hizmeti`}
           loading="lazy"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right 20%' }}
         />
       </picture>
       <div style={{
