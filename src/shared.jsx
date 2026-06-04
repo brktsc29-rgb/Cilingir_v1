@@ -73,8 +73,8 @@ function LogoMark() {
         <rect x="14" y="17" width="4" height="8.5" rx="1.5" fill="#07090e" />
       </svg>
       <div>
-        <div style={{ fontSize: 13.5, fontWeight: 800, color: GL, letterSpacing: '.09em', lineHeight: 1.1 }}>TAŞCI</div>
-        <div style={{ fontSize: 7.5, fontWeight: 700, color: GD, letterSpacing: '.3em', lineHeight: 1 }}>ÇİLİNGİR</div>
+        <div style={{ fontSize: 13.5, fontWeight: 800, color: GL, letterSpacing: '.09em', lineHeight: 1.1 }}>ÇİLİNGİR</div>
+        <div style={{ fontSize: 7.5, fontWeight: 700, color: GD, letterSpacing: '.3em', lineHeight: 1 }}>CİNİZ</div>
       </div>
     </div>
   );
