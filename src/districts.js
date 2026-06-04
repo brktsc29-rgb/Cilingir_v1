@@ -93,7 +93,7 @@ RAW.forEach(d => {
     name: d.name,
     isNeighborhood: false,
     districtName: d.name,
-    metaTitle: `${d.name} Çilingir | 7/24 Acil Hizmet | Taşcı Çilingir`,
+    metaTitle: `${d.name} Çilingir | 7/24 Acil Hizmet | Çilingirciniz`,
     metaDesc: `${d.name} bölgesinde 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızda. 0542 694 69 20`,
     nearby: hoods,
   });
@@ -109,7 +109,7 @@ RAW.forEach(d => {
       isNeighborhood: true,
       districtName: d.name,
       districtPath: `${d.base}-cilingir`,
-      metaTitle: `${hName} Çilingir | ${d.name} | 7/24 Acil | Taşcı Çilingir`,
+      metaTitle: `${hName} Çilingir | ${d.name} | 7/24 Acil | Çilingirciniz`,
       metaDesc: `${hName} (${d.name}) bölgesinde 7/24 acil çilingir hizmeti. Ortalama 20-30 dakikada kapınızda. 0542 694 69 20`,
       nearby: siblings,
     });

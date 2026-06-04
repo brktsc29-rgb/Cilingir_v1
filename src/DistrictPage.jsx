@@ -17,9 +17,9 @@ const DISTRICT_CTX = {
 function getIntro(page) {
   const ctx = DISTRICT_CTX[page.districtName] || page.districtName;
   if (page.isNeighborhood) {
-    return `${ctx} ilçesinde yer alan ${page.name} mahallesinde kapıda kalmak artık sorun değil. Taşcı Çilingir olarak ${page.name} genelinde 7/24 acil kapı açma, kilit değişimi, çelik kapı sistemleri ve oto çilingir hizmetleri sunuyoruz. Ortalama 20-30 dakikada yanınızdayız.`;
+    return `${ctx} ilçesinde yer alan ${page.name} mahallesinde kapıda kalmak artık sorun değil. Çilingirciniz olarak ${page.name} genelinde 7/24 acil kapı açma, kilit değişimi, çelik kapı sistemleri ve oto çilingir hizmetleri sunuyoruz. Ortalama 20-30 dakikada yanınızdayız.`;
   }
-  return `${ctx} ilçesinde 7/24 acil çilingir hizmetine mi ihtiyacınız var? Taşcı Çilingir, ${page.name} genelinde kapı açma, kilit değişimi, çelik kapı sistemleri ve oto çilingir hizmetleri sunmaktadır. Tüm mahallelere ortalama 20-30 dakikada ulaşıyoruz.`;
+  return `${ctx} ilçesinde 7/24 acil çilingir hizmetine mi ihtiyacınız var? Çilingirciniz, ${page.name} genelinde kapı açma, kilit değişimi, çelik kapı sistemleri ve oto çilingir hizmetleri sunmaktadır. Tüm mahallelere ortalama 20-30 dakikada ulaşıyoruz.`;
 }
 
 export default function DistrictPage({ page }) {
@@ -46,7 +46,7 @@ export default function DistrictPage({ page }) {
         '@graph': [
           {
             '@type': 'LocalBusiness',
-            'name': `Taşcı Çilingir - ${page.name}`,
+            'name': `Çilingirciniz - ${page.name}`,
             'description': page.metaDesc,
             'url': url,
             'telephone': '+905426946920',

@@ -9,7 +9,7 @@ const SCHEMA_EN = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${BASE_URL}/#business`,
-  'name': 'Taşcı Çilingir',
+  'name': 'Çilingirciniz',
   'description': '24/7 emergency locksmith service in Istanbul. Door opening, lock replacement, auto locksmith.',
   'url': `${BASE_URL}/en`,
   'telephone': '+905426946920',
@@ -31,7 +31,7 @@ export default function EnLandingView() {
 
   useEffect(() => {
     setSEO({
-      title: 'Istanbul Locksmith | 24/7 Emergency | Taşcı Çilingir',
+      title: 'Istanbul Locksmith | 24/7 Emergency | Çilingirciniz',
       desc: '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0542 694 69 20',
       url: `${BASE_URL}/en`,
       lang: 'en',
@@ -129,7 +129,7 @@ function EnHero() {
         <source srcSet="/images/hero.webp" type="image/webp" />
         <img
           src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
-          alt="24/7 emergency locksmith service in Istanbul, Taşcı Çilingir"
+          alt="24/7 emergency locksmith service in Istanbul, Çilingirciniz"
           fetchPriority="high"
           style={{
             width: '100%', height: '100%',

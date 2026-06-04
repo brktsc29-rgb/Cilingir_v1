@@ -21,7 +21,7 @@ export default function BlogPostView({ slug }) {
   useEffect(() => {
     if (!post) return;
     setSEO({
-      title: `${post.title} | Taşcı Çilingir`,
+      title: `${post.title} | Çilingirciniz`,
       desc: post.excerpt,
       url: `${BASE_URL}/blog/${post.slug}`,
       lang: 'tr',
@@ -33,8 +33,8 @@ export default function BlogPostView({ slug }) {
             headline: post.title,
             description: post.excerpt,
             datePublished: post.date,
-            author: { '@type': 'Organization', name: 'Taşcı Çilingir' },
-            publisher: { '@type': 'Organization', name: 'Taşcı Çilingir', url: BASE_URL },
+            author: { '@type': 'Organization', name: 'Çilingirciniz' },
+            publisher: { '@type': 'Organization', name: 'Çilingirciniz', url: BASE_URL },
             mainEntityOfPage: `${BASE_URL}/blog/${post.slug}`,
           },
           {

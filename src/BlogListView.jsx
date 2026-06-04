@@ -8,7 +8,7 @@ export default function BlogListView() {
 
   useEffect(() => {
     setSEO({
-      title: 'Çilingir Blog | Kilit, Güvenlik ve Tavsiyeler | Taşcı Çilingir',
+      title: 'Çilingir Blog | Kilit, Güvenlik ve Tavsiyeler | Çilingirciniz',
       desc: 'Çilingir hizmetleri, kilit güvenliği ve acil durum tavsiyeleri hakkında uzman içerikler. İstanbul Avrupa Yakası çilingir bilgi rehberi.',
       url: `${BASE_URL}/blog`,
       lang: 'tr',

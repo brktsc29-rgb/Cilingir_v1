@@ -514,7 +514,7 @@ export const BLOG_POSTS = [
       },
       {
         type: 'p',
-        text: 'Taşcı Çilingir olarak İstanbul Avrupa Yakası\'nda çelik kapı danışmanlığı ve montaj hizmeti sunmaktayız. Mevcut kilit sisteminizi güçlendirmek ya da yeni bir çelik kapı için doğru seçimi yapmak için bizi arayabilirsiniz.',
+        text: 'Çilingirciniz olarak İstanbul Avrupa Yakası\'nda çelik kapı danışmanlığı ve montaj hizmeti sunmaktayız. Mevcut kilit sisteminizi güçlendirmek ya da yeni bir çelik kapı için doğru seçimi yapmak için bizi arayabilirsiniz.',
       },
       {
         type: 'districts',
@@ -730,7 +730,7 @@ export const BLOG_POSTS = [
       },
       {
         type: 'p',
-        text: 'Kilitlerin yıllık kontrolden geçirilmesi, beklenmedik anlarda arıza yaşanmasını önler. Bir çilingirc\'a kilitlerinizdeki mekanizma aşınması, silindir zayıflığı veya kasa gevşemesi konusunda değerlendirme yaptırabilirsiniz. Taşcı Çilingir olarak İstanbul Avrupa Yakası\'ndaki tüm ilçelerde ücretsiz ön değerlendirme sunmaktayız.',
+        text: 'Kilitlerin yıllık kontrolden geçirilmesi, beklenmedik anlarda arıza yaşanmasını önler. Bir çilingirc\'a kilitlerinizdeki mekanizma aşınması, silindir zayıflığı veya kasa gevşemesi konusunda değerlendirme yaptırabilirsiniz. Çilingirciniz olarak İstanbul Avrupa Yakası\'ndaki tüm ilçelerde ücretsiz ön değerlendirme sunmaktayız.',
       },
       {
         type: 'districts',

@@ -11,7 +11,7 @@ const SCHEMA = {
   name: 'Çilingir Hizmetleri',
   provider: {
     '@type': 'LocalBusiness',
-    name: 'Taşcı Çilingir',
+    name: 'Çilingirciniz',
     telephone: '+905426946920',
     url: BASE_URL,
   },
@@ -58,7 +58,7 @@ export default function FiyatlarView() {
 
   useEffect(() => {
     setSEO({
-      title: 'Çilingir Fiyatları İstanbul | Taşcı Çilingir',
+      title: 'Çilingir Fiyatları İstanbul | Çilingirciniz',
       desc: 'İstanbul Avrupa Yakası çilingir hizmet fiyatları. Kapı açma, kilit değişimi, oto çilingir. Şeffaf fiyat garantisi, telefonda net bilgi.',
       url: `${BASE_URL}/fiyatlar`,
       lang: 'tr',

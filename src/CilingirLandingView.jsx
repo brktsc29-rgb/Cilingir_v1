@@ -11,7 +11,7 @@ const SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${BASE_URL}/#business`,
-  'name': 'Taşcı Çilingir',
+  'name': 'Çilingirciniz',
   'description': 'İstanbul Avrupa Yakası’nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir.',
   'url': BASE_URL,
   'telephone': '+905426946920',
@@ -48,7 +48,7 @@ export default function CilingirLandingView() {
 
   useEffect(() => {
     setSEO({
-      title: 'Taşcı Çilingir | İstanbul 7/24 Acil Çilingir Hizmeti',
+      title: 'Çilingirciniz | İstanbul 7/24 Acil Çilingir Hizmeti',
       desc: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızdayız. 0542 694 69 20',
       url: `${BASE_URL}/`,
       lang: 'tr',
@@ -95,7 +95,7 @@ function Hero() {
         <source srcSet="/images/hero.webp" type="image/webp" />
         <img
           src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
-          alt="İstanbul'da 7/24 acil çilingir hizmeti, Taşcı Çilingir kapı açma uzmanı"
+          alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
           fetchPriority="high"
           style={{
             width: '100%', height: '100%',
