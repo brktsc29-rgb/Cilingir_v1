@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Phone, MessageCircle, MapPin, ChevronRight, CheckCircle, Zap, Shield, Key } from 'lucide-react';
+import { Clock, Phone, MessageCircle, MapPin, ChevronRight, CheckCircle, Zap, Shield, Key, Home, Building2, Car, Lock } from 'lucide-react';
 import {
   CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, SocialProof, StickyBar, SectionHeader, Footer,
   setSEO,
 } from './shared';
+import { DISTRICT_EXTRAS, HOOD_EXTRAS } from './districtContent';
 
 const DISTRICT_CTX = {
   'Beşiktaş':   'Avrupa yakasının prestijli ilçelerinden Beşiktaş',
@@ -16,6 +17,13 @@ const DISTRICT_CTX = {
 
 export default function DistrictPage({ page }) {
   const [open, setOpen] = useState(false);
+
+  const contentKey = page.isNeighborhood
+    ? page.path.replace('-cilingir', '')
+    : page.districtBase;
+  const extras = page.isNeighborhood
+    ? HOOD_EXTRAS[contentKey]
+    : DISTRICT_EXTRAS[page.districtBase];
 
   useEffect(() => {
     const url = `${BASE_URL}/${page.path}`;
@@ -91,10 +99,26 @@ export default function DistrictPage({ page }) {
           <article>
             <DistrictIntro page={page} />
             <TrustCards />
+            {page.isNeighborhood && extras && (
+              <NeighborhoodDetails extras={extras} name={page.name} />
+            )}
             {!page.isNeighborhood && page.content?.services?.length > 0 && (
               <ServicesList services={page.content.services} name={page.name} />
             )}
+            {!page.isNeighborhood && extras && (
+              <ServicesDetail extras={extras} name={page.name} />
+            )}
             <HowItWorks />
+            {!page.isNeighborhood && extras && (
+              <>
+                <LockGuide extras={extras} name={page.name} />
+                <SecurityAdvice tip={extras.security} name={page.name} eyebrow="GÜVENLİK ÖNERİLERİ" />
+                <WhyChooseUs extras={extras} name={page.name} />
+              </>
+            )}
+            {page.isNeighborhood && extras?.securityTip && (
+              <SecurityAdvice tip={extras.securityTip} name={page.name} eyebrow="MAHALLE GÜVENLİK İPUCU" />
+            )}
             {(page.content?.landmarks || page.content?.transport) && (
               <LocalContext page={page} />
             )}
@@ -389,6 +413,139 @@ function NearbyAreas({ page }) {
           </a>
         ))}
       </div>
+    </section>
+  );
+}
+
+/* ── Neighborhood details (hood pages only) ────────────────────────────────── */
+function NeighborhoodDetails({ extras, name }) {
+  return (
+    <section aria-label={`${name} mahalle bilgisi`} style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow="MAHALLE BİLGİSİ" title={`${name} Mahallesinde Çilingir`} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ padding: '14px 16px', borderRadius: 12, background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)' }}>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+            <Building2 size={14} color={GD} style={{ flexShrink: 0, marginTop: 2 }} />
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: GD, letterSpacing: '.1em', marginBottom: 4 }}>YAPI DOKUSU</div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,.65)', lineHeight: 1.55 }}>{extras.buildingType}</div>
+            </div>
+          </div>
+        </div>
+        {extras.commonRequests?.length > 0 && (
+          <div style={{ padding: '14px 16px', borderRadius: 12, background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: GD, letterSpacing: '.1em', marginBottom: 8 }}>SIK TALEP EDİLEN HİZMETLER</div>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {extras.commonRequests.map((req, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <CheckCircle size={12} color={GD} />
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,.7)' }}>{req}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {extras.responseRoute && (
+          <div style={{ padding: '14px 16px', borderRadius: 12, background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)' }}>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+              <Zap size={14} color={GD} style={{ flexShrink: 0, marginTop: 2 }} />
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: GD, letterSpacing: '.1em', marginBottom: 4 }}>ULAŞIM GÜZERGAHI</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,.65)', lineHeight: 1.55 }}>{extras.responseRoute}</div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* ── Services detail (district pages) ──────────────────────────────────────── */
+function ServicesDetail({ extras, name }) {
+  const sections = [
+    { label: 'Konut Çilingir Hizmeti', Icon: Home, content: extras.residential },
+    { label: 'Ticari Çilingir Hizmeti', Icon: Building2, content: extras.commercial },
+    { label: 'Oto Çilingir Hizmeti', Icon: Car, content: extras.auto },
+  ].filter(s => s.content);
+
+  if (sections.length === 0) return null;
+  return (
+    <section aria-label={`${name} hizmet detayları`} style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow="HİZMET DETAYLARI" title={`${name}'de Tüm Çilingir Hizmetleri`} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {sections.map(({ label, Icon, content }) => (
+          <div key={label} style={{ padding: '16px', borderRadius: 12, background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)' }}>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <div style={{
+                width: 34, height: 34, borderRadius: 9, flexShrink: 0,
+                background: 'rgba(212,175,55,.09)', border: '1px solid rgba(212,175,55,.22)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Icon size={15} color={GD} />
+              </div>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{label}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,.6)', lineHeight: 1.68 }}>{content}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── Lock guide (district pages) ────────────────────────────────────────────── */
+function LockGuide({ extras, name }) {
+  if (!extras.lockGuide) return null;
+  return (
+    <section aria-label={`${name} kilit değişim rehberi`} style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow="KİLİT DEĞİŞİM REHBERİ" title={`${name}'de Ne Zaman Kilit Değiştirmelisiniz?`} />
+      <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)' }}>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+          <Lock size={14} color={GD} style={{ flexShrink: 0, marginTop: 3 }} />
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,.65)', lineHeight: 1.7, margin: 0 }}>{extras.lockGuide}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Security advice (district + hood pages) ────────────────────────────────── */
+function SecurityAdvice({ tip, name, eyebrow }) {
+  if (!tip) return null;
+  return (
+    <section aria-label={`${name} güvenlik önerileri`} style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow={eyebrow} title={`${name} için Güvenlik Tavsiyeleri`} />
+      <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(212,175,55,.04)', border: '1px solid rgba(212,175,55,.2)' }}>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+          <Shield size={14} color={GD} style={{ flexShrink: 0, marginTop: 3 }} />
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,.7)', lineHeight: 1.7, margin: 0 }}>{tip}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Why choose us (district pages) ────────────────────────────────────────── */
+function WhyChooseUs({ extras, name }) {
+  if (!extras.whyUs?.length) return null;
+  return (
+    <section aria-label={`${name} neden bizi seçmeli`} style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow="NEDEN BİZ" title={`${name}'de Çilingirciniz'i Tercih Edin`} />
+      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {extras.whyUs.map((item, i) => (
+          <li key={i} style={{
+            display: 'flex', alignItems: 'flex-start', gap: 10,
+            padding: '12px 14px', borderRadius: 10,
+            background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)',
+          }}>
+            <CheckCircle size={14} color={GD} style={{ flexShrink: 0, marginTop: 1 }} />
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,.75)' }}>{item}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

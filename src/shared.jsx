@@ -29,13 +29,24 @@ export const CSS = `
   .bp:active{transform:scale(.97)!important;transition:transform .1s!important}
 `;
 
-export function setSEO({ title, desc, url, lang, schema }) {
+export function setSEO({ title, desc, url, lang, schema, image }) {
   document.title = title;
-  const s = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
-  s('meta[name="description"]', desc);
-  s('meta[property="og:title"]', title);
-  s('meta[property="og:description"]', desc);
-  if (url) s('meta[property="og:url"]', url);
+  const ogImage = image || `${BASE_URL}/images/hero.webp`;
+  const s = (sel, attr, val) => {
+    const el = document.querySelector(sel);
+    if (el) el.setAttribute(attr, val);
+  };
+  s('meta[name="description"]',        'content', desc);
+  s('meta[property="og:title"]',       'content', title);
+  s('meta[property="og:description"]', 'content', desc);
+  s('meta[property="og:image"]',       'content', ogImage);
+  s('meta[name="twitter:title"]',      'content', title);
+  s('meta[name="twitter:description"]','content', desc);
+  s('meta[name="twitter:image"]',      'content', ogImage);
+  if (url) {
+    s('meta[property="og:url"]', 'content', url);
+    s('meta[property="og:locale"]', 'content', lang === 'en' ? 'en_US' : 'tr_TR');
+  }
   if (lang) document.documentElement.lang = lang;
 
   let can = document.querySelector('link[rel="canonical"]');
