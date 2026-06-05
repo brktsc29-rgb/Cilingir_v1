@@ -502,6 +502,81 @@ export function ReviewsSection() {
   );
 }
 
+export function Footer() {
+  const districts = [
+    { name: 'Beşiktaş Çilingir',   path: 'besiktas-cilingir' },
+    { name: 'Şişli Çilingir',      path: 'sisli-cilingir' },
+    { name: 'Sarıyer Çilingir',    path: 'sariyer-cilingir' },
+    { name: 'Kağıthane Çilingir',  path: 'kagithane-cilingir' },
+    { name: 'Eyüpsultan Çilingir', path: 'eyupsultan-cilingir' },
+  ];
+  const services = [
+    'Kapı Açma', 'Kilit Değişimi', 'Çelik Kapı',
+    'Oto Çilingir', 'Kasa Açma', 'Anahtar Kopyalama',
+  ];
+  const year = new Date().getFullYear();
+  return (
+    <footer itemScope itemType="https://schema.org/LocalBusiness" style={{
+      background: 'rgba(255,255,255,.03)', borderTop: '1px solid rgba(255,255,255,.07)',
+      padding: '40px 20px 28px',
+    }}>
+      <div style={{ maxWidth: 600, margin: '0 auto' }}>
+        <div style={{ marginBottom: 28 }}>
+          <span itemProp="name" style={{ display: 'block', fontSize: 15, fontWeight: 800, color: GL, letterSpacing: '.06em', marginBottom: 6 }}>
+            ÇİLİNGİRCİNİZ
+          </span>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,.45)', lineHeight: 1.6, marginBottom: 12 }}>
+            İstanbul Avrupa Yakası'nda 7/24 acil çilingir hizmeti.
+          </p>
+          <a href={TEL} itemProp="telephone" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 14, fontWeight: 700, color: GL }}>
+            <Phone size={14} color={GL} />
+            <span>{TEL_DISPLAY}</span>
+          </a>
+          <meta itemProp="addressLocality" content="İstanbul" />
+          <meta itemProp="addressCountry" content="TR" />
+          <link itemProp="url" href="https://cilingirciniz.com" />
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 28 }}>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.18em', marginBottom: 10 }}>HİZMET BÖLGELERİ</div>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 7 }}>
+              {districts.map(d => (
+                <li key={d.path}>
+                  <a href={`/${d.path}`} style={{ fontSize: 12.5, color: 'rgba(255,255,255,.55)', display: 'flex', alignItems: 'center', gap: 5 }}>
+                    <MapPin size={10} color={GD} />{d.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.18em', marginBottom: 10 }}>HİZMETLER</div>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 7 }}>
+              {services.map(s => (
+                <li key={s}>
+                  <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,.55)', display: 'flex', alignItems: 'center', gap: 5 }}>
+                    <ChevronRight size={10} color={GD} />{s}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div style={{ borderTop: '1px solid rgba(255,255,255,.07)', paddingTop: 16, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+          <p style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>© {year} Çilingirciniz. Tüm hakları saklıdır.</p>
+          <div style={{ display: 'flex', gap: 16 }}>
+            <a href="/" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Ana Sayfa</a>
+            <a href="/fiyatlar" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Fiyatlar</a>
+            <a href="/blog" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Blog</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export function WhatsAppBubble() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {

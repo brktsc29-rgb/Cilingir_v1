@@ -3,7 +3,7 @@ import {
   Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
   ChevronRight, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
-import { CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, BASE_URL, Navbar, setSEO, setHreflang, FAQSection, ReviewsSection, WhatsAppBubble } from './shared';
+import { CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, BASE_URL, Navbar, setSEO, setHreflang, FAQSection, ReviewsSection, WhatsAppBubble, Footer } from './shared';
 
 const SCHEMA_EN = {
   '@context': 'https://schema.org',
@@ -57,6 +57,7 @@ export default function EnLandingView() {
         <ReviewsSection />
         <FAQSection lang="en" />
         <EnSocialProof />
+        <Footer />
         <WhatsAppBubble />
         <EnStickyBar />
       </div>
