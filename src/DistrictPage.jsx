@@ -3,7 +3,7 @@ import { Clock, Phone, MessageCircle, MapPin, ChevronRight, CheckCircle, Zap, Sh
 import {
   CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, SocialProof, StickyBar, SectionHeader, Footer,
-  setSEO,
+  setSEO, ReviewsSection,
 } from './shared';
 import { DISTRICT_EXTRAS, HOOD_EXTRAS } from './districtContent';
 
@@ -60,7 +60,23 @@ export default function DistrictPage({ page }) {
           opens: '00:00',
           closes: '23:59',
         },
-        areaServed: { '@type': 'Place', name: `${page.name}, İstanbul` },
+        areaServed: page.isNeighborhood
+          ? { '@type': 'Place', name: `${page.name}, ${page.districtName}, İstanbul` }
+          : [
+              { '@type': 'Place', name: `${page.name}, İstanbul` },
+              ...(page.nearby || []).map(n => ({ '@type': 'Place', name: `${n.name}, ${page.name}, İstanbul` })),
+            ],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Çilingir Hizmetleri',
+          itemListElement: [
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kapı Açma' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kilit Değişimi' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Oto Çilingir' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Çelik Kapı Kilidi Kurulumu' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Anahtar Kopyalama' } },
+          ],
+        },
         address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' },
         aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', bestRating: '5', reviewCount: '127' },
       },
@@ -99,6 +115,7 @@ export default function DistrictPage({ page }) {
           <article>
             <DistrictIntro page={page} />
             <TrustCards />
+            <TrustAuthority name={page.name} />
             {page.isNeighborhood && extras && (
               <NeighborhoodDetails extras={extras} name={page.name} />
             )}
@@ -122,7 +139,9 @@ export default function DistrictPage({ page }) {
             {(page.content?.landmarks || page.content?.transport) && (
               <LocalContext page={page} />
             )}
+            <BusinessContact page={page} />
             <NearbyAreas page={page} />
+            {!page.isNeighborhood && <ReviewsSection />}
             {page.content?.faq?.length > 0 && (
               <PageFAQ faq={page.content.faq} name={page.name} />
             )}
@@ -412,6 +431,79 @@ function NearbyAreas({ page }) {
             {n.name}
           </a>
         ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── Trust authority (E-E-A-T) ──────────────────────────────────────────────── */
+function TrustAuthority({ name }) {
+  const items = [
+    { title: '10+ Yıl Sahada Deneyim', desc: `${name} ve İstanbul Avrupa Yakası'nda on yılı aşkın profesyonel çilingir hizmeti. Her kilit markası ve yapı tipinde kanıtlanmış uzmanlık.` },
+    { title: 'Hasarsız Açma Garantisi', desc: 'Kapı ve kilidi koruyarak açmak temel prensibimizdır. Zarar riski varsa işlem öncesi mutlaka bilgi verilip onayınız alınır.' },
+    { title: 'Şeffaf Fiyat — Gizli Ücret Yok', desc: 'Telefonda belirlenen fiyat, kapı açıldıktan sonra ödenecek fiyattır. Gece tarifesi veya ek ücret varsa önceden söylenir.' },
+    { title: 'Kimliği Doğrulanmış Ekip', desc: 'Teknisyenlerimiz mesleki yeterlilik belgesine sahip, sigortası olan ustalardan oluşur. Güvenliğiniz için kimlik ibrazı talep edebilirsiniz.' },
+    { title: 'Arama Anında Müdahale', desc: 'Aramanız anında sahaya ulaşır; çağrı merkezi gecikmesi yoktur. En yakın usta doğrudan görevlendirilir, ortalama bekleme 20-30 dakikadır.' },
+  ];
+  return (
+    <section aria-label="güven ve garanti" style={{ padding: '24px 20px 8px' }}>
+      <SectionHeader eyebrow="NEDEN GÜVENİLİR" title="Çilingirciniz Güvencesi" />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {items.map(({ title, desc }, i) => (
+          <div key={i} style={{
+            display: 'flex', gap: 12, padding: '13px 14px', borderRadius: 11,
+            background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)',
+          }}>
+            <div style={{
+              width: 3, flexShrink: 0, borderRadius: 3, alignSelf: 'stretch', minHeight: 36,
+              background: `linear-gradient(180deg,${GD},${GL})`,
+            }} />
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 3 }}>{title}</div>
+              <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,.52)', lineHeight: 1.6 }}>{desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── Business contact + embedded map ───────────────────────────────────────── */
+function BusinessContact({ page }) {
+  const mapQuery = encodeURIComponent(`${page.name} istanbul çilingir`);
+  return (
+    <section aria-label="iletişim ve konum" style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow="İLETİŞİM VE KONUM" title={`${page.name} Çilingir — Bize Ulaşın`} />
+      <div
+        itemScope itemType="https://schema.org/LocalBusiness"
+        style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,.07)' }}
+      >
+        <meta itemProp="name" content="Çilingirciniz" />
+        <meta itemProp="telephone" content="+905426946920" />
+        <meta itemProp="openingHours" content="Mo-Su 00:00-23:59" />
+        <link itemProp="url" href="https://cilingirciniz.com" />
+        <iframe
+          title={`${page.name} çilingir konum harita`}
+          src={`https://maps.google.com/maps?q=${mapQuery}&output=embed&z=14`}
+          width="100%"
+          height="180"
+          style={{ border: 0, display: 'block' }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div style={{ padding: '12px 14px', background: 'rgba(255,255,255,.03)', display: 'flex', flexDirection: 'column', gap: 7 }}>
+          <a href={TEL} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 800, color: GL }}>
+            <Phone size={14} color={GL} />
+            <span itemProp="telephone">{TEL_DISPLAY}</span>
+          </a>
+          <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,.4)', display: 'flex', alignItems: 'center', gap: 5 }}>
+            <Clock size={11} color={GD} />7 gün 24 saat — tatil ve gece dahil
+          </div>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,.3)' }}>
+            <span itemProp="addressLocality">İstanbul</span>, <span itemProp="addressCountry">TR</span>
+          </div>
+        </div>
       </div>
     </section>
   );

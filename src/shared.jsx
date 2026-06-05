@@ -341,21 +341,27 @@ export function StickyBar() {
       display: 'flex', gap: 8,
     }}>
       <a href={TEL} className="bp" style={{
-        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
         height: 46, borderRadius: 12,
         background: `linear-gradient(135deg,${GD},${GL})`,
         boxShadow: '0 3px 14px rgba(212,175,55,.35)',
-        fontSize: 11.5, fontWeight: 800, color: '#000',
       }}>
-        <Phone size={14} color="#000" strokeWidth={2.5} /> HEMEN ARA
+        <Phone size={13} color="#000" strokeWidth={2.5} />
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontSize: 9, fontWeight: 900, color: 'rgba(0,0,0,.6)', letterSpacing: '.1em', lineHeight: 1 }}>7/24 ACİL</div>
+          <div style={{ fontSize: 12, fontWeight: 900, color: '#000', lineHeight: 1.3 }}>{TEL_DISPLAY}</div>
+        </div>
       </a>
       <a href={WA} className="bp" style={{
-        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
         height: 46, borderRadius: 12,
         background: '#0d1e11', border: '1px solid rgba(37,211,102,.28)',
-        fontSize: 11.5, fontWeight: 800, color: '#25D366',
       }}>
-        <MessageCircle size={14} color="#25D366" /> WHATSAPP
+        <MessageCircle size={13} color="#25D366" />
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontSize: 9, fontWeight: 800, color: '#25D366', letterSpacing: '.08em', lineHeight: 1 }}>WHATSAPP</div>
+          <div style={{ fontSize: 9.5, color: 'rgba(37,211,102,.6)', lineHeight: 1.3 }}>Hızlı yanıt</div>
+        </div>
       </a>
       <a href={WA_KONUM} className="bp" style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
@@ -466,6 +472,9 @@ export function FAQSection({ lang = 'tr' }) {
   );
 }
 
+// Infrastructure for real customer reviews.
+// To activate Schema.org Review markup, add { real: true } to each verified review object.
+// Current entries are sample data; schema markup is intentionally withheld until replaced with verified reviews.
 const REVIEWS = [
   { name: 'Ayşe D.',  district: 'Beşiktaş', text: 'Gece 01:30\'da kapıda kaldım, 25 dakikada geldi. Fiyatı önceden söyledi, fazlasını almadı. Çok teşekkürler!' },
   { name: 'Murat K.', district: 'Şişli',    text: 'Araç anahtarım içerde kaldı. Kapıya hiç zarar vermeden açtı. Oto çilingir konusunda gerçekten uzman.' },
