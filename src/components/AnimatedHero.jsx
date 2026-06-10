@@ -23,18 +23,15 @@ import { TEL, TEL_DISPLAY, WA, GL, GD, BG } from '../shared';
 // Never use Math.random() here — causes hydration mismatch.
 
 const PARTICLES = [
-  { id: 0,  cx: 110, cy: 12,  r: 1.9, dur: 3.2, del: 0.00 },
-  { id: 1,  cx: 178, cy: 48,  r: 1.5, dur: 2.8, del: 0.45 },
-  { id: 2,  cx: 204, cy: 105, r: 2.1, dur: 3.7, del: 0.90 },
-  { id: 3,  cx: 188, cy: 166, r: 1.7, dur: 3.1, del: 1.35 },
-  { id: 4,  cx: 140, cy: 208, r: 1.4, dur: 2.6, del: 0.60 },
-  { id: 5,  cx: 80,  cy: 208, r: 2.0, dur: 3.5, del: 1.80 },
-  { id: 6,  cx: 32,  cy: 166, r: 1.6, dur: 2.9, del: 0.75 },
-  { id: 7,  cx: 16,  cy: 105, r: 1.3, dur: 3.3, del: 1.10 },
-  { id: 8,  cx: 42,  cy: 48,  r: 1.8, dur: 2.7, del: 0.25 },
-  { id: 9,  cx: 110, cy: 4,   r: 1.2, dur: 3.4, del: 1.55 },
-  { id: 10, cx: 155, cy: 22,  r: 1.5, dur: 2.5, del: 0.85 },
-  { id: 11, cx: 200, cy: 70,  r: 1.7, dur: 3.0, del: 0.35 },
+  { id: 0,  cx: 110, cy: 18,  r: 1.2, dur: 3.2, del: 0.00 },
+  { id: 1,  cx: 168, cy: 52,  r: 1.0, dur: 2.8, del: 0.45 },
+  { id: 2,  cx: 196, cy: 110, r: 1.3, dur: 3.7, del: 0.90 },
+  { id: 3,  cx: 178, cy: 170, r: 1.0, dur: 3.1, del: 1.35 },
+  { id: 4,  cx: 135, cy: 200, r: 0.9, dur: 2.6, del: 0.60 },
+  { id: 5,  cx: 75,  cy: 200, r: 1.1, dur: 3.5, del: 1.80 },
+  { id: 6,  cx: 42,  cy: 170, r: 1.0, dur: 2.9, del: 0.75 },
+  { id: 7,  cx: 24,  cy: 110, r: 0.9, dur: 3.3, del: 1.10 },
+  { id: 8,  cx: 52,  cy: 52,  r: 1.1, dur: 2.7, del: 0.25 },
 ];
 
 // ─── Injected CSS keyframes ───────────────────────────────────────────────────
@@ -67,13 +64,6 @@ const KEYFRAMES = `
   }
   .hk-ptcl { animation:_hkp ease-in-out infinite; will-change:transform,opacity; }
 
-  /* Glow pulse around key area */
-  @keyframes _hkglow {
-    0%,100%{ box-shadow:0 0 0 0 rgba(255,215,0,0); }
-    50%{ box-shadow:0 0 55px 18px rgba(255,215,0,.13); }
-  }
-  .hk-glow { animation:_hkglow 4.6s ease-in-out infinite; }
-
   /* CTA hover shine */
   .hk-btn { position:relative; overflow:hidden; isolation:isolate; }
   .hk-btn::after {
@@ -91,7 +81,7 @@ const KEYFRAMES = `
 
   /* Honour prefers-reduced-motion */
   @media (prefers-reduced-motion:reduce) {
-    .hk-float,.hk-ring-a,.hk-ring-b,.hk-ptcl,.hk-glow,.hk-btn::after {
+    .hk-float,.hk-ring-a,.hk-ring-b,.hk-ptcl,.hk-btn::after {
       animation:none!important;
     }
   }
@@ -127,21 +117,22 @@ const LightRings = memo(() => (
       </radialGradient>
     </defs>
 
-    {/* Soft core glow */}
-    <circle cx="110" cy="110" r="60" fill="url(#rg-core)" />
+    {/* Soft core glow — very subtle */}
+    <circle cx="110" cy="110" r="55" fill="url(#rg-core)" opacity=".45" />
 
-    {/* Static outer halo ring */}
+    {/* Static outer halo */}
     <circle cx="110" cy="110" r="104" fill="none"
-      stroke="#FFD700" strokeWidth=".8" opacity=".1" />
+      stroke="#FFD700" strokeWidth=".5" opacity=".06" />
 
     {/* Primary arc — rotates CW */}
     <circle className="hk-ring-a"
       cx="110" cy="110" r="92"
       fill="none"
       stroke="url(#rg-a)"
-      strokeWidth="2.2"
-      strokeDasharray="148 434"
+      strokeWidth="1.4"
+      strokeDasharray="100 434"
       strokeLinecap="round"
+      opacity=".5"
     />
 
     {/* Secondary arc — rotates CCW */}
@@ -149,10 +140,10 @@ const LightRings = memo(() => (
       cx="110" cy="110" r="78"
       fill="none"
       stroke="url(#rg-b)"
-      strokeWidth="1.5"
-      strokeDasharray="70 434"
+      strokeWidth="1"
+      strokeDasharray="50 434"
       strokeLinecap="round"
-      opacity=".6"
+      opacity=".3"
     />
   </svg>
 ));
@@ -303,13 +294,19 @@ export default function AnimatedHero() {
            * right: ~15-20% puts it in the right-center area where the
            * key is visible after the left gradient cuts in.
            */}
+          {/*
+           * Overlay centered on the key in the photo.
+           * translate(-50%,-50%) anchors the center of the 220px ring
+           * to the (left, top) coordinate — easy to tune.
+           * left: ~72% = just past the gradient's transparent edge,
+           * where the key in the photo sits.
+           */}
           <div
-            className={shouldReduce ? undefined : 'hk-glow'}
             style={{
               position: 'absolute',
-              right: 'clamp(8%, 16vw, 24%)',
-              top: '50%',
-              transform: 'translateY(-50%)',
+              left: '72%',
+              top: '48%',
+              transform: 'translate(-50%, -50%)',
               width: 220,
               height: 220,
               pointerEvents: 'none',
