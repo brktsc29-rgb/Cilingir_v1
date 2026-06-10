@@ -22,8 +22,8 @@ const KEYFRAMES = `
   }
   @media (max-width:640px) {
     .hero-img {
-      transform: scale(1.2) translateX(8%) translateY(-6%);
-      transform-origin: center center;
+      object-position: 70% center !important;
+      transform: none;
     }
     .hero-grad {
       background: linear-gradient(90deg,
