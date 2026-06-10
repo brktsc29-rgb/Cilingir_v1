@@ -20,6 +20,24 @@ const KEYFRAMES = `
   @media (prefers-reduced-motion:reduce) {
     .hk-btn::after { animation:none!important; }
   }
+  @media (max-width:640px) {
+    .hero-img {
+      transform: scale(1.2) translateX(8%) translateY(-6%);
+      transform-origin: center center;
+    }
+    .hero-grad {
+      background: linear-gradient(90deg,
+        rgba(0,0,0,.97) 0%,
+        rgba(0,0,0,.93) 35%,
+        rgba(0,0,0,.65) 60%,
+        rgba(0,0,0,.18) 82%,
+        transparent 95%
+      ) !important;
+    }
+    .hero-glow {
+      display: block !important;
+    }
+  }
 `;
 
 const container = {
@@ -89,23 +107,37 @@ export default function AnimatedHero() {
         display: 'flex',
         alignItems: 'center',
         background: BG,
+        overflow: 'hidden',
       }}>
 
         {/* Background image — static */}
-        <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, overflow: 'hidden' }}>
           <img
             src="/images/hero.png"
             alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
             fetchPriority="high"
+            className="hero-img"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
           />
         </picture>
 
         {/* Left gradient */}
-        <div style={{
+        <div className="hero-grad" style={{
           position: 'absolute', inset: 0, zIndex: 1,
           background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',
           pointerEvents: 'none',
+        }} />
+
+        {/* Mobile golden glow — hidden on desktop */}
+        <div className="hero-glow" style={{
+          display: 'none',
+          position: 'absolute', zIndex: 2,
+          top: '30%', right: '18%',
+          width: 180, height: 180,
+          background: 'radial-gradient(circle, rgba(212,175,55,.18) 0%, rgba(212,175,55,.08) 40%, transparent 70%)',
+          borderRadius: '50%',
+          pointerEvents: 'none',
+          transform: 'translateY(-50%)',
         }} />
 
         {/* Bottom fade */}
