@@ -20,6 +20,12 @@ const KEYFRAMES = `
   @media (prefers-reduced-motion:reduce) {
     .hk-btn::after { animation:none!important; }
   }
+  @media (min-width:641px) {
+    .hero-img {
+      transform: scale(0.88);
+      transform-origin: center center;
+    }
+  }
   @media (max-width:640px) {
     .hero-img {
       object-position: 70% center !important;
