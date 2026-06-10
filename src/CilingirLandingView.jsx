@@ -14,7 +14,7 @@ const SCHEMA = {
   'name': 'Çilingirciniz',
   'description': 'İstanbul Avrupa Yakası’nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir.',
   'url': BASE_URL,
-  'telephone': '+905426946920',
+  'telephone': '+905380590173',
   'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
   'priceRange': '₺₺',
   'openingHoursSpecification': {
@@ -49,7 +49,7 @@ export default function CilingirLandingView() {
   useEffect(() => {
     setSEO({
       title: 'Çilingirciniz | İstanbul 7/24 Acil Çilingir Hizmeti',
-      desc: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızdayız. 0542 694 69 20',
+      desc: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızdayız. 0538 059 01 73',
       url: `${BASE_URL}/`,
       lang: 'tr',
       schema: SCHEMA,

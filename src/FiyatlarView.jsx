@@ -12,13 +12,13 @@ const SCHEMA = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'Çilingirciniz',
-    telephone: '+905426946920',
+    telephone: '+905380590173',
     url: BASE_URL,
   },
   areaServed: ['Beşiktaş', 'Şişli', 'Sarıyer', 'Kağıthane', 'Eyüpsultan'],
   availableChannel: {
     '@type': 'ServiceChannel',
-    servicePhone: { '@type': 'ContactPoint', telephone: '+905426946920', contactType: 'customer service' },
+    servicePhone: { '@type': 'ContactPoint', telephone: '+905380590173', contactType: 'customer service' },
   },
 };
 

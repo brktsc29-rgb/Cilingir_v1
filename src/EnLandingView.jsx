@@ -12,7 +12,7 @@ const SCHEMA_EN = {
   'name': 'Çilingirciniz',
   'description': '24/7 emergency locksmith service in Istanbul. Door opening, lock replacement, auto locksmith.',
   'url': `${BASE_URL}/en`,
-  'telephone': '+905426946920',
+  'telephone': '+905380590173',
   'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
   'priceRange': '₺₺',
   'openingHoursSpecification': {
@@ -32,7 +32,7 @@ export default function EnLandingView() {
   useEffect(() => {
     setSEO({
       title: 'Istanbul Locksmith | 24/7 Emergency | Çilingirciniz',
-      desc: '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0542 694 69 20',
+      desc: '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0538 059 01 73',
       url: `${BASE_URL}/en`,
       lang: 'en',
       schema: SCHEMA_EN,

@@ -2,14 +2,14 @@
 const DISTRICT_CONTENT = {
   besiktas: {
     metaTitle: 'Beşiktaş Çilingir | 7/24 Acil Kapı Açma',
-    metaDesc: 'Beşiktaş\'ta 7/24 acil çilingir. Etiler, Ortaköy, Levent ve tüm mahallelere 20-30 dk\'da ulaşıyoruz. Kapı açma, kilit değişimi. 0542 694 69 20',
+    metaDesc: 'Beşiktaş\'ta 7/24 acil çilingir. Etiler, Ortaköy, Levent ve tüm mahallelere 20-30 dk\'da ulaşıyoruz. Kapı açma, kilit değişimi. 0538 059 01 73',
     intro: 'Avrupa yakasının en prestijli ilçelerinden Beşiktaş\'ta kapıda kaldınız mı? Çilingirciniz ekibi Dolmabahçe\'den Etiler\'e, Ortaköy\'den Levent\'e tüm mahallelerde 7/24 hizmetinizdedir. Çelik kapı açma, silindir değişimi, bina ana kapı sistemleri ve oto çilingir dahil kapsamlı hizmetimizle ortalama 20-30 dakikada kapınızdayız. Gece geç saatlerde ya da tatil günlerinde dahi tek bir telefonla profesyonel destek alırsınız.',
     landmarks: 'Dolmabahçe Sarayı, Beşiktaş Meydanı ve Kabataş İskelesi',
     transport: 'Beşiktaş vapur iskelesi, 29E ve 43T otobüs hatları, Kabataş tramvay',
     scenario: 'Çarşı\'da alışveriş sonrası arabanıza anahtarı kilitleyip kapıda kalmak ya da Etiler\'deki sitenizde şifreli kapının pili bitmesi — bunlar en sık karşılaştığımız durumlar. Telefonla konum bildirmeniz yeterli, gerisini biz hallederiz.',
     services: ['Çelik kapı açma ve kilit değişimi', 'Bina giriş kilidi ve silindir değişimi', 'Oto çilingir ve araç kapı açma', 'Kasa açma', 'Anahtar kopyalama'],
     faq: [
-      { q: 'Beşiktaş\'ta gece kapıda kalsam ne yapmalıyım?', a: '0542 694 69 20\'yi arayın. Gece yarısı dahil 7/24 hizmetimiz aktif olup Beşiktaş genelinde ortalama 20-30 dakikada yanınızdayız.' },
+      { q: 'Beşiktaş\'ta gece kapıda kalsam ne yapmalıyım?', a: '0538 059 01 73\'yi arayın. Gece yarısı dahil 7/24 hizmetimiz aktif olup Beşiktaş genelinde ortalama 20-30 dakikada yanınızdayız.' },
       { q: 'Beşiktaş\'ta kilit değişimi fiyatları nasıl?', a: 'Fiyat kilit markasına ve kapı tipine göre değişir. Kapınızı yerinde inceleyip net teklif veriyoruz; ek ücret çıkmaz.' },
       { q: 'Etiler, Ortaköy ve Levent\'e hizmet veriyor musunuz?', a: 'Evet, Beşiktaş\'ın tüm mahallelerine — Etiler, Ortaköy, Levent, Bebek, Arnavutköy dahil — hizmet veriyoruz.' },
       { q: 'Çelik kapı açılırken hasar olur mu?', a: 'Profesyonel ekibimiz mümkün her durumda hasarsız açma tekniklerini kullanır. Kapı ve kilit tipine göre en az etkili yöntemi seçiyoruz.' },
@@ -17,14 +17,14 @@ const DISTRICT_CONTENT = {
   },
   sisli: {
     metaTitle: 'Şişli Çilingir | 20-30 Dk Acil Çilingir',
-    metaDesc: 'Şişli\'de 7/24 acil çilingir hizmeti. Mecidiyeköy, Nişantaşı, Bomonti ve tüm mahallelere 20-30 dk\'da çilingir. Kapı açma, kilit. 0542 694 69 20',
+    metaDesc: 'Şişli\'de 7/24 acil çilingir hizmeti. Mecidiyeköy, Nişantaşı, Bomonti ve tüm mahallelere 20-30 dk\'da çilingir. Kapı açma, kilit. 0538 059 01 73',
     intro: 'İstanbul\'un iş ve eğlence merkezi Şişli\'de kapıda kalmak ya da kilit değiştirmek istiyorsanız Çilingirciniz ekibi her an yanınızdadır. Cevahir AVM\'den İş Kulelerine, Nişantaşı\'nın butik sokaklarından Bomonti\'nin yükselen rezidanslarına kadar tüm Şişli\'ye 7/24 hizmet veriyoruz. Yoğun trafik saatlerinde bile araç filosuyla en kısa yoldan 20-30 dakikada kapınızdayız.',
     landmarks: 'Cevahir AVM, İş Kuleleri ve Mecidiyeköy metrobüs kavşağı',
     transport: 'M2 Mecidiyeköy ve Osmanbey istasyonları, Zincirlikuyu metrobüs durağı',
     scenario: 'Mecidiyeköy\'de ofis çıkışı arabaya anahtarı kilitlemek ya da Nişantaşı\'ndaki daireye girememeniz artık büyük sorun değil. Birkaç dakika içinde teknisyenimiz yolda olur.',
     services: ['Ofis kapısı açma ve kilit değişimi', 'Rezidans ve lüks konut kilitleri', 'Oto çilingir', 'Akıllı kilit kurulumu', 'Anahtar kopyalama'],
     faq: [
-      { q: 'Şişli\'de 7/24 çilingir bulabilir miyim?', a: 'Evet, Çilingirciniz olarak Şişli\'nin tüm mahallelerinde 7/24 hizmet veriyoruz. 0542 694 69 20\'yi arayın, 20-30 dakikada yanınızdayız.' },
+      { q: 'Şişli\'de 7/24 çilingir bulabilir miyim?', a: 'Evet, Çilingirciniz olarak Şişli\'nin tüm mahallelerinde 7/24 hizmet veriyoruz. 0538 059 01 73\'yi arayın, 20-30 dakikada yanınızdayız.' },
       { q: 'Mecidiyeköy\'de ofis kapısı açılır mı?', a: 'Evet, ofis ve iş yeri kapılarında uzman kadromuzla hizmet veriyoruz. Kurumsal kilitlerin yanı sıra elektronik kilit sistemlerinde de deneyimliyiz.' },
       { q: 'Nişantaşı\'nda kilit değişimi yapıyor musunuz?', a: 'Evet, Nişantaşı\'nın tüm sokak ve apartmanlarına ulaşıyoruz. Yüksek güvenlikli kilit markaları konusunda da yönlendirme yapıyoruz.' },
       { q: 'Bomonti\'deki yeni rezidans kapıları açılır mı?', a: 'Evet, Bomonti\'deki modern rezidansların çelik kapı sistemlerinde tecrübeli teknisyenlerimiz çalışmaktadır.' },
@@ -32,7 +32,7 @@ const DISTRICT_CONTENT = {
   },
   sariyer: {
     metaTitle: 'Sarıyer Çilingir | 7/24 Boğaz Hizmeti',
-    metaDesc: 'Sarıyer\'de 7/24 acil çilingir. Maslak, İstinye, Zekeriyaköy ve tüm bölgelere 20-30 dk\'da ulaşıyoruz. Kapı açma, villa kilit. 0542 694 69 20',
+    metaDesc: 'Sarıyer\'de 7/24 acil çilingir. Maslak, İstinye, Zekeriyaköy ve tüm bölgelere 20-30 dk\'da ulaşıyoruz. Kapı açma, villa kilit. 0538 059 01 73',
     intro: 'İstanbul Boğazı\'nın Avrupa kıyısını takip eden Sarıyer, Maslak\'taki plaza binalarından Zekeriyaköy\'ün villa evlerine ve Kilyos\'un sahil konutlarına kadar geniş bir coğrafyayı kapsar. Çilingirciniz olarak bu geniş ilçenin tüm noktalarına 7/24 hizmet veriyoruz. Uzak mahallelere bile ortalama 30-40 dakikada ulaşabilen araç filomuzla Sarıyer\'in hiçbir köşesi erişilmez değildir.',
     landmarks: 'Emirgan Korusu, İstinye Park AVM ve Maslak plaza binaları',
     transport: 'M2 Maslak ve Hacıosman istasyonları, Sarıyer vapur iskelesi',
@@ -42,19 +42,19 @@ const DISTRICT_CONTENT = {
       { q: 'Sarıyer\'in uzak mahallelerine de hizmet veriyor musunuz?', a: 'Evet, Zekeriyaköy, Kilyos, Rumelifeneri, Kumköy gibi uzak noktalara da ulaşıyoruz. Varış süresi 30-40 dakika olabilir.' },
       { q: 'Maslak\'ta iş yeri kapısı açılır mı?', a: 'Evet, Maslak\'taki plaza ve ofis binalarında 7/24 hizmet veriyoruz. Kurumsal kapı sistemleri konusunda deneyimliyiz.' },
       { q: 'Zekeriyaköy\'de villa kapısı açıyor musunuz?', a: 'Evet, Zekeriyaköy ve Göktürk villa bölgelerinde özel kapı sistemleri için uzman ekibimizle hizmet veriyoruz.' },
-      { q: 'Sarıyer\'de gece çilingir bulunur mu?', a: '7/24 hizmetimiz Sarıyer\'in tüm mahallelerini kapsar. Gece saatlerinde de 0542 694 69 20\'den ulaşabilirsiniz.' },
+      { q: 'Sarıyer\'de gece çilingir bulunur mu?', a: '7/24 hizmetimiz Sarıyer\'in tüm mahallelerini kapsar. Gece saatlerinde de 0538 059 01 73\'den ulaşabilirsiniz.' },
     ],
   },
   kagithane: {
     metaTitle: 'Kağıthane Çilingir | 7/24 Acil Hizmet',
-    metaDesc: 'Kağıthane\'de 7/24 acil çilingir. Çağlayan, Seyrantepe, Gültepe ve tüm mahallelere 20-30 dk\'da. Kapı açma, kilit değişimi. 0542 694 69 20',
+    metaDesc: 'Kağıthane\'de 7/24 acil çilingir. Çağlayan, Seyrantepe, Gültepe ve tüm mahallelere 20-30 dk\'da. Kapı açma, kilit değişimi. 0538 059 01 73',
     intro: 'Hızla dönüşen Kağıthane, modern konut projeleri, kentsel dönüşüm alanları ve köklü mahallelerin bir arada yaşadığı dinamik bir ilçedir. Kağıthane Vadisi çevresindeki yeni yapılardan Gültepe\'nin köklü apartmanlarına, Seyrantepe\'nin rezidanslarından Çağlayan\'ın iş merkezlerine kadar 7/24 acil çilingir hizmetindeyiz. M7 metro hattı sayesinde ulaşım kolaylaştı; biz de size daha hızlı ulaşıyoruz.',
     landmarks: 'Kağıthane Vadisi, İstanbul Adliye Sarayı ve M7 Kağıthane istasyonu',
     transport: 'M7 Kağıthane ve Seyrantepe istasyonları, Çağlayan metrobüs durağı',
     scenario: 'Kentsel dönüşümle yeni teslim edilen dairenizin kapısında kalmak ya da Çağlayan\'daki iş yerinizin kilidini kaybetmek — her durumda Çilingirciniz yanınızdadır.',
     services: ['Kentsel dönüşüm yeni kapı kilitleri', 'Apartman giriş sistemleri', 'İş yeri kapı açma', 'Oto çilingir', 'Anahtar kopyalama'],
     faq: [
-      { q: 'Kağıthane\'de 7/24 çilingir var mı?', a: 'Evet, Kağıthane\'nin tüm mahallelerinde 7/24 hizmet veriyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Kağıthane\'de 7/24 çilingir var mı?', a: 'Evet, Kağıthane\'nin tüm mahallelerinde 7/24 hizmet veriyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Seyrantepe\'de rezidans kapısı açılır mı?', a: 'Evet, Seyrantepe\'deki yeni rezidans ve site kapıları için deneyimliyiz. 20-30 dakikada kapınızdayız.' },
       { q: 'Kağıthane\'de kilit değişimi ne kadar sürer?', a: 'Standart silindir değişimi 15-30 dakika sürer. Çelik kapı kilidi değişimi biraz daha uzun olabilir; yerinde bilgi veririz.' },
       { q: 'Kağıthane\'nin tüm mahallelerine gidiyor musunuz?', a: 'Evet, Çağlayan, Gültepe, Sultan Selim, Nurtepe dahil tüm Kağıthane mahallelerine hizmet veriyoruz.' },
@@ -62,14 +62,14 @@ const DISTRICT_CONTENT = {
   },
   eyupsultan: {
     metaTitle: 'Eyüpsultan Çilingir | 7/24 Acil Kapı Açma',
-    metaDesc: 'Eyüpsultan\'da 7/24 acil çilingir. Alibeyköy, Göktürk, Kemerburgaz ve tüm mahallelere 20-30 dk\'da. Kapı açma, villa kilit. 0542 694 69 20',
+    metaDesc: 'Eyüpsultan\'da 7/24 acil çilingir. Alibeyköy, Göktürk, Kemerburgaz ve tüm mahallelere 20-30 dk\'da. Kapı açma, villa kilit. 0538 059 01 73',
     intro: 'Eyüp Sultan Camii\'nin tarihi dokusuyla Göktürk\'ün yeşil villa bölgelerini, Alibeyköy\'ün modern sitelerini ve Kemerburgaz\'ın orman kenarı yaşamını bünyesinde barındıran Eyüpsultan\'da Çilingirciniz 7/24 hizmetinizde. Haliç kıyısındaki tarihi yapılardan TEM Otoyolu yakınındaki villalara kadar geniş bir coğrafyaya ulaşıyoruz. Eyüpsultan\'ın uzak noktalarına ortalama 25-40 dakikada varış sağlıyoruz.',
     landmarks: 'Eyüp Sultan Camii, Pierre Loti Tepesi ve Alibeyköy Göleti',
     transport: 'T5 Alibeyköy tramvay hattı, T4 Rami durağı, Haliç vapuru',
     scenario: 'Alibeyköy\'deki sitenin kapısında kalmak, Göktürk villasının kilidini değiştirmek ya da Kemerburgaz\'daki orman kenarı evinizin anahtarını kaybetmek — telefona sarılın, gerisini biz halledelim.',
     services: ['Villa ve müstakil ev kapı sistemleri', 'Tarihi bina kapı açma', 'Site giriş kilidi değişimi', 'Oto çilingir', 'Anahtar kopyalama'],
     faq: [
-      { q: 'Eyüpsultan\'da 7/24 çilingir hizmeti var mı?', a: 'Evet, Eyüpsultan\'ın tüm mahallelerinde 7/24 hizmet veriyoruz. 0542 694 69 20\'den bize ulaşın.' },
+      { q: 'Eyüpsultan\'da 7/24 çilingir hizmeti var mı?', a: 'Evet, Eyüpsultan\'ın tüm mahallelerinde 7/24 hizmet veriyoruz. 0538 059 01 73\'den bize ulaşın.' },
       { q: 'Göktürk\'te villa kapısı açılır mı?', a: 'Evet, Göktürk ve Kemerburgaz villa bölgelerinde özel kapı ve güvenlik sistemleri konusunda deneyimliyiz.' },
       { q: 'Alibeyköy\'e kaç dakikada gelirsiniz?', a: 'Alibeyköy\'e ortalama 15-25 dakikada ulaşıyoruz. Trafik durumuna göre değişebilir; arayanları önceden bilgilendiriyoruz.' },
       { q: 'Tarihi mahalle yapılarında eski kilit sistemleri açılır mı?', a: 'Evet, Eyüp\'ün tarihi yapılarındaki eski tip kilit sistemlerinde de hizmet veriyoruz. Hasar vermeden açma konusunda tecrübeliyiz.' },
@@ -85,7 +85,7 @@ const HOOD_CONTENT = {
     landmark: 'Akmerkez AVM ve Etiler\'in seçkin siteler bölgesi',
     transport: '59F otobüs, Etiler-Levent minibüs güzergahı',
     faq: [
-      { q: 'Etiler\'de gece kapıda kalsam ne yapmalıyım?', a: '0542 694 69 20\'yi arayın. Etiler\'e ortalama 20-25 dakikada ulaşıyoruz, gece gündüz fark etmez.' },
+      { q: 'Etiler\'de gece kapıda kalsam ne yapmalıyım?', a: '0538 059 01 73\'yi arayın. Etiler\'e ortalama 20-25 dakikada ulaşıyoruz, gece gündüz fark etmez.' },
       { q: 'Etiler\'de villa kapısı açılır mı?', a: 'Evet, Etiler\'deki müstakil ev ve villa kapıları için özel deneyimimiz mevcuttur. Güvenli çelik kapılar da açıyoruz.' },
     ],
   },
@@ -94,7 +94,7 @@ const HOOD_CONTENT = {
     landmark: 'Levazım Caddesi ve çevresindeki lüks siteler',
     transport: 'Etiler otobüs hatları, taksi güzergahı',
     faq: [
-      { q: 'Levazım\'da site güvenlik kapısı açılır mı?', a: 'Evet, Levazım\'daki güvenlikli site kapılarında ve konutlarda hizmet veriyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Levazım\'da site güvenlik kapısı açılır mı?', a: 'Evet, Levazım\'daki güvenlikli site kapılarında ve konutlarda hizmet veriyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Levazım\'da kilit değişimi yapıyor musunuz?', a: 'Evet, tüm kilit tiplerinde değişim yapıyoruz. Güvenlik sınıfı yüksek kilit markaları konusunda da öneride bulunuyoruz.' },
     ],
   },
@@ -112,7 +112,7 @@ const HOOD_CONTENT = {
     landmark: 'Ortaköy Camii ve Boğaz Köprüsü',
     transport: 'Ortaköy vapur iskelesi, otobüs hatları',
     faq: [
-      { q: 'Ortaköy\'de gece çilingir bulunur mu?', a: 'Evet, Ortaköy\'de 7/24 hizmet veriyoruz. Gece saatlerinde de 0542 694 69 20\'yi arayabilirsiniz.' },
+      { q: 'Ortaköy\'de gece çilingir bulunur mu?', a: 'Evet, Ortaköy\'de 7/24 hizmet veriyoruz. Gece saatlerinde de 0538 059 01 73\'yi arayabilirsiniz.' },
       { q: 'Ortaköy\'deki iş yeri kapısı açılır mı?', a: 'Evet, restoran, kafe ve ticari işyerlerinde kilit açma ve değişimi yapıyoruz.' },
     ],
   },
@@ -131,7 +131,7 @@ const HOOD_CONTENT = {
     transport: 'Arnavutköy vapur iskelesi',
     faq: [
       { q: 'Arnavutköy\'deki eski yalı kapısı açılır mı?', a: 'Evet, tarihi yapılardaki eski tip kilitleri hasar vermeden açma konusunda deneyimliyiz.' },
-      { q: 'Arnavutköy\'de 7/24 hizmet var mı?', a: 'Evet, 0542 694 69 20\'yi arayın. Arnavutköy\'e 20-30 dakikada ulaşıyoruz.' },
+      { q: 'Arnavutköy\'de 7/24 hizmet var mı?', a: 'Evet, 0538 059 01 73\'yi arayın. Arnavutköy\'e 20-30 dakikada ulaşıyoruz.' },
     ],
   },
   'besiktas-akatlar': {
@@ -140,7 +140,7 @@ const HOOD_CONTENT = {
     transport: 'Levent metrobüs bağlantıları, minibüs hatları',
     faq: [
       { q: 'Akatlar\'da site giriş kilidi değişimi yapılır mı?', a: 'Evet, Akatlar\'daki sitelerin giriş kapısı ve daire kilit değişimlerini yapıyoruz.' },
-      { q: 'Akatlar\'a kaç dakikada gelirsiniz?', a: 'Ortalama 20-25 dakikada Akatlar\'a ulaşıyoruz. 0542 694 69 20\'den bilgi alın.' },
+      { q: 'Akatlar\'a kaç dakikada gelirsiniz?', a: 'Ortalama 20-25 dakikada Akatlar\'a ulaşıyoruz. 0538 059 01 73\'den bilgi alın.' },
     ],
   },
   'besiktas-balmumcu': {
@@ -148,7 +148,7 @@ const HOOD_CONTENT = {
     landmark: 'Barbaros Bulvarı bağlantısı',
     transport: 'Beşiktaş-Zincirlikuyu otobüs hatları',
     faq: [
-      { q: 'Balmumcu\'da acil çilingir var mı?', a: 'Evet, Balmumcu\'ya 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Balmumcu\'da acil çilingir var mı?', a: 'Evet, Balmumcu\'ya 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Balmumcu\'da kilit değişimi yapıyor musunuz?', a: 'Evet, silindir ve çelik kapı kilidi değişimi yapıyoruz.' },
     ],
   },
@@ -167,7 +167,7 @@ const HOOD_CONTENT = {
     transport: 'M2 Gayrettepe, Zincirlikuyu metrobüs',
     faq: [
       { q: 'Gayrettepe\'de ofis kapısı açılır mı?', a: 'Evet, Gayrettepe\'deki ofis ve iş yerleri için 7/24 hizmet veriyoruz.' },
-      { q: 'Gayrettepe\'ye kaç dakikada gelirsiniz?', a: 'Gayrettepe\'ye 15-25 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Gayrettepe\'ye kaç dakikada gelirsiniz?', a: 'Gayrettepe\'ye 15-25 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
     ],
   },
   'besiktas-yildiz': {
@@ -175,7 +175,7 @@ const HOOD_CONTENT = {
     landmark: 'Yıldız Sarayı ve Çırağan Sarayı',
     transport: 'Beşiktaş otobüs hatları',
     faq: [
-      { q: 'Yıldız\'da lüks konut kapısı açılır mı?', a: 'Evet, yüksek güvenlikli kapı ve kilit sistemlerinde deneyimliyiz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Yıldız\'da lüks konut kapısı açılır mı?', a: 'Evet, yüksek güvenlikli kapı ve kilit sistemlerinde deneyimliyiz. 0538 059 01 73\'yi arayın.' },
       { q: 'Yıldız\'da kilit değişimi yapıyor musunuz?', a: 'Evet, silindir değişimi ve çelik kapı kilidi değişimi hizmeti sunuyoruz.' },
     ],
   },
@@ -193,7 +193,7 @@ const HOOD_CONTENT = {
     landmark: 'Beşiktaş merkezi ve sahile yakınlık',
     transport: 'Beşiktaş minibüs hatları',
     faq: [
-      { q: 'Vişnezade\'de çilingir hizmeti alabilir miyim?', a: 'Evet, Vişnezade\'ye 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Vişnezade\'de çilingir hizmeti alabilir miyim?', a: 'Evet, Vişnezade\'ye 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Vişnezade\'de eski apartman kapısı açılır mı?', a: 'Evet, eski tip kilit ve kapı sistemlerinde de hizmet veriyoruz.' },
     ],
   },
@@ -202,7 +202,7 @@ const HOOD_CONTENT = {
     landmark: 'Abbasağa Parkı',
     transport: 'Beşiktaş ana güzergahları',
     faq: [
-      { q: 'Abbasağa\'da acil kapı açma hizmeti var mı?', a: 'Evet, Abbasağa\'ya 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Abbasağa\'da acil kapı açma hizmeti var mı?', a: 'Evet, Abbasağa\'ya 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Abbasağa\'da kilit değişimi yapıyor musunuz?', a: 'Evet, silindir ve çelik kapı kilidi dahil tüm kilit tiplerinde hizmet veriyoruz.' },
     ],
   },
@@ -211,7 +211,7 @@ const HOOD_CONTENT = {
     landmark: 'Beşiktaş-Şişli sınır bölgesi',
     transport: 'Gayrettepe bağlantı hatları',
     faq: [
-      { q: 'Dikilitaş\'ta yeni bina kapısı açılır mı?', a: 'Evet, modern çelik kapı sistemleri için deneyimliyiz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Dikilitaş\'ta yeni bina kapısı açılır mı?', a: 'Evet, modern çelik kapı sistemleri için deneyimliyiz. 0538 059 01 73\'yi arayın.' },
       { q: 'Dikilitaş\'ta kilit değişimi fiyatı nedir?', a: 'Yerinde inceleme sonrası net fiyat veriyoruz. Gizli ücret uygulamıyoruz.' },
     ],
   },
@@ -250,7 +250,7 @@ const HOOD_CONTENT = {
     transport: 'Şişli-Bomonti minibüs ve otobüs hatları',
     faq: [
       { q: 'Bomonti\'de rezidans kapısı açılır mı?', a: 'Evet, yeni rezidansların çelik kapı sistemlerinde tecrübeli ekibimizle hizmet veriyoruz.' },
-      { q: 'Bomonti\'de gece çilingir bulunur mu?', a: 'Evet, 7/24 hizmetimiz aktif. 0542 694 69 20\'yi arayın.' },
+      { q: 'Bomonti\'de gece çilingir bulunur mu?', a: 'Evet, 7/24 hizmetimiz aktif. 0538 059 01 73\'yi arayın.' },
     ],
   },
   'sisli-harbiye': {
@@ -267,7 +267,7 @@ const HOOD_CONTENT = {
     landmark: 'Gülbahar Caddesi konut dokusu',
     transport: 'Şişli bağlantı otobüs hatları',
     faq: [
-      { q: 'Gülbahar\'da acil çilingir var mı?', a: 'Evet, 7/24 hizmet veriyoruz. 0542 694 69 20\'yi arayın, 20-30 dakikada geliyoruz.' },
+      { q: 'Gülbahar\'da acil çilingir var mı?', a: 'Evet, 7/24 hizmet veriyoruz. 0538 059 01 73\'yi arayın, 20-30 dakikada geliyoruz.' },
       { q: 'Gülbahar\'da kilit değişimi yapıyor musunuz?', a: 'Evet, silindir ve kapı kilidi değişimi hizmeti sunuyoruz.' },
     ],
   },
@@ -277,7 +277,7 @@ const HOOD_CONTENT = {
     transport: 'Şişli-Okmeydanı otobüs hatları',
     faq: [
       { q: 'Feriköy\'de eski bina kilidi açılır mı?', a: 'Evet, eski tip kilit ve kapı sistemlerinde deneyimliyiz. Hasar vermeden açma yapıyoruz.' },
-      { q: 'Feriköy\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Feriköy\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'sisli-tesvikiye': {
@@ -295,7 +295,7 @@ const HOOD_CONTENT = {
     transport: 'Şişli-Kurtuluş otobüs hatları',
     faq: [
       { q: 'Kurtuluş\'ta eski bina kapısı açılır mı?', a: 'Evet, eski tip binalardaki kilitleri hasar vermeden açıyoruz.' },
-      { q: 'Kurtuluş\'ta 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Kurtuluş\'ta 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'sisli-pangalti': {
@@ -303,7 +303,7 @@ const HOOD_CONTENT = {
     landmark: 'Pangaltı hastaneleri ve okulları',
     transport: 'Şişli-Gayrettepe otobüs hatları',
     faq: [
-      { q: 'Pangaltı\'da acil çilingir alabilir miyim?', a: 'Evet, Pangaltı\'ya 20-25 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Pangaltı\'da acil çilingir alabilir miyim?', a: 'Evet, Pangaltı\'ya 20-25 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Pangaltı\'da kilit değişimi yapıyor musunuz?', a: 'Evet, konut ve iş yeri kilit değişimi hizmetleri sunuyoruz.' },
     ],
   },
@@ -351,7 +351,7 @@ const HOOD_CONTENT = {
     transport: 'Yeniköy vapur iskelesi',
     faq: [
       { q: 'Yeniköy\'de ahşap bina kapısı açılır mı?', a: 'Evet, tarihi yapılardaki özel kilit sistemlerinde deneyimliyiz.' },
-      { q: 'Yeniköy\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Yeniköy\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'sariyer-buyukdere': {
@@ -387,7 +387,7 @@ const HOOD_CONTENT = {
     transport: 'Sarıyer-Bahçeköy minibüs güzergahı',
     faq: [
       { q: 'Bahçeköy\'e kaç dakikada gelirsiniz?', a: 'Bahçeköy\'e ortalama 35-45 dakikada ulaşıyoruz.' },
-      { q: 'Bahçeköy\'de 7/24 çilingir var mı?', a: 'Evet, uzak mesafelere de hizmet veriyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Bahçeköy\'de 7/24 çilingir var mı?', a: 'Evet, uzak mesafelere de hizmet veriyoruz. 0538 059 01 73\'yi arayın.' },
     ],
   },
   'sariyer-kilyos': {
@@ -404,7 +404,7 @@ const HOOD_CONTENT = {
     landmark: 'Rumeli Hisarı\'na yakınlık',
     transport: 'Sarıyer otobüs güzergahı',
     faq: [
-      { q: 'Derbent\'te 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın. Derbent\'e 30-40 dakikada ulaşıyoruz.' },
+      { q: 'Derbent\'te 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın. Derbent\'e 30-40 dakikada ulaşıyoruz.' },
       { q: 'Derbent\'te kilit değişimi yapıyor musunuz?', a: 'Evet, köy evi ve Boğaz manzaralı konutlarda kilit değişimi yapıyoruz.' },
     ],
   },
@@ -414,7 +414,7 @@ const HOOD_CONTENT = {
     transport: 'Sarıyer-Rumelifeneri minibüs hattı',
     faq: [
       { q: 'Rumelifeneri\'ne kaç dakikada gelirsiniz?', a: 'Rumelifeneri\'ne ortalama 45-60 dakikada ulaşıyoruz; durum önceden bildirilir.' },
-      { q: 'Rumelifeneri\'nde 7/24 çilingir var mı?', a: 'Evet, uzak noktalara da hizmet veriyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Rumelifeneri\'nde 7/24 çilingir var mı?', a: 'Evet, uzak noktalara da hizmet veriyoruz. 0538 059 01 73\'yi arayın.' },
     ],
   },
   'sariyer-pinar': {
@@ -431,7 +431,7 @@ const HOOD_CONTENT = {
     landmark: 'Gümüşdere sahili ve tatil tesisleri',
     transport: 'Kilyos güzergahı minibüs hatları',
     faq: [
-      { q: 'Gümüşdere\'de yazlık konut kapısı açılır mı?', a: 'Evet, mevsimlik konutlarda da hizmet veriyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Gümüşdere\'de yazlık konut kapısı açılır mı?', a: 'Evet, mevsimlik konutlarda da hizmet veriyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Gümüşdere\'ye kaç dakikada gelirsiniz?', a: 'Ortalama 40-55 dakikada Gümüşdere\'ye ulaşıyoruz.' },
     ],
   },
@@ -441,7 +441,7 @@ const HOOD_CONTENT = {
     transport: 'İstanbul-Kilyos güzergahı',
     faq: [
       { q: 'Kumköy\'e kaç dakikada gelirsiniz?', a: 'Kumköy\'e ortalama 45-60 dakikada ulaşıyoruz; önceden bilgi veriyoruz.' },
-      { q: 'Kumköy\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Kumköy\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
 
@@ -470,7 +470,7 @@ const HOOD_CONTENT = {
     transport: 'Kağıthane-Gültepe minibüs güzergahı',
     faq: [
       { q: 'Gültepe\'de eski apartman kilidi açılır mı?', a: 'Evet, eski tip kilit ve bina kapılarında deneyimliyiz.' },
-      { q: 'Gültepe\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Gültepe\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'kagithane-hamidiye': {
@@ -478,7 +478,7 @@ const HOOD_CONTENT = {
     landmark: 'Kağıthane Vadisi yakınlığı',
     transport: 'Kağıthane otobüs hatları',
     faq: [
-      { q: 'Hamidiye\'de acil kapı açma hizmeti var mı?', a: 'Evet, 7/24 hizmet veriyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Hamidiye\'de acil kapı açma hizmeti var mı?', a: 'Evet, 7/24 hizmet veriyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Hamidiye\'de kilit değişimi yapıyor musunuz?', a: 'Evet, konut ve apartman kapısı kilidi değişimi yapıyoruz.' },
     ],
   },
@@ -497,7 +497,7 @@ const HOOD_CONTENT = {
     transport: 'Kağıthane metrobüs bağlantısı',
     faq: [
       { q: 'Çeliktepe\'de sanayi dükkanı kapısı açılır mı?', a: 'Evet, ticari ve konut kapıları için 7/24 hizmet veriyoruz.' },
-      { q: 'Çeliktepe\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Çeliktepe\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'kagithane-gursel': {
@@ -506,7 +506,7 @@ const HOOD_CONTENT = {
     transport: 'Kağıthane otobüs hatları',
     faq: [
       { q: 'Gürsel\'de kentsel dönüşüm yeni bina kapısı açılır mı?', a: 'Evet, modern çelik kapı sistemlerinde tecrübeli ekibimizle hizmet veriyoruz.' },
-      { q: 'Gürsel\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Gürsel\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'kagithane-harmantepe': {
@@ -514,7 +514,7 @@ const HOOD_CONTENT = {
     landmark: 'Harmantepe Parkı ve konut dokusu',
     transport: 'Kağıthane otobüs hatları',
     faq: [
-      { q: 'Harmantepe\'de acil çilingir alabilir miyim?', a: 'Evet, Harmantepe\'ye 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Harmantepe\'de acil çilingir alabilir miyim?', a: 'Evet, Harmantepe\'ye 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Harmantepe\'de kilit değişimi yapıyor musunuz?', a: 'Evet, silindir ve kapı kilidi değişimi hizmeti sunuyoruz.' },
     ],
   },
@@ -532,7 +532,7 @@ const HOOD_CONTENT = {
     landmark: 'Kağıthane Vadisi çevresi',
     transport: 'Kağıthane otobüs güzergahı',
     faq: [
-      { q: 'Ortabayır\'da 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Ortabayır\'da 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
       { q: 'Ortabayır\'da kilit değişimi yapıyor musunuz?', a: 'Evet, her türlü kilit sisteminde değişim hizmeti sunuyoruz.' },
     ],
   },
@@ -550,7 +550,7 @@ const HOOD_CONTENT = {
     landmark: 'Gülbağ Parkı ve konut bölgesi',
     transport: 'Kağıthane yerel otobüs hatları',
     faq: [
-      { q: 'Gülbağ\'da acil çilingir var mı?', a: 'Evet, Gülbağ\'a 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Gülbağ\'da acil çilingir var mı?', a: 'Evet, Gülbağ\'a 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Gülbağ\'da kilit değişimi yapıyor musunuz?', a: 'Evet, konut kilidi değişimi hizmeti sunuyoruz.' },
     ],
   },
@@ -560,7 +560,7 @@ const HOOD_CONTENT = {
     transport: 'Kağıthane otobüs hatları',
     faq: [
       { q: 'Hürriyet\'te yeni bina kapısı açılır mı?', a: 'Evet, modern çelik kapı sistemlerinde tecrübeliyiz.' },
-      { q: 'Hürriyet\'te 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Hürriyet\'te 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'kagithane-emniyetevleri': {
@@ -577,7 +577,7 @@ const HOOD_CONTENT = {
     landmark: 'Sultan Selim Camii ve büyük konut dokusu',
     transport: 'Kağıthane-Eyüp bağlantı güzergahı',
     faq: [
-      { q: 'Sultan Selim\'de acil kapı açma hizmeti var mı?', a: 'Evet, Sultan Selim\'e 15-25 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Sultan Selim\'de acil kapı açma hizmeti var mı?', a: 'Evet, Sultan Selim\'e 15-25 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Sultan Selim\'de kilit değişimi yapıyor musunuz?', a: 'Evet, her türlü konut kilidi değişimi hizmeti sunuyoruz.' },
     ],
   },
@@ -625,7 +625,7 @@ const HOOD_CONTENT = {
     transport: 'Eyüpsultan otobüs güzergahı',
     faq: [
       { q: 'İslambey\'de eski bina kapısı açılır mı?', a: 'Evet, tarihi yapı kapılarında hasar vermeden açma yapıyoruz.' },
-      { q: 'İslambey\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'İslambey\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'eyupsultan-topculer': {
@@ -642,7 +642,7 @@ const HOOD_CONTENT = {
     landmark: 'Santral İstanbul (eski Silahtarağa Elektrik Santrali)',
     transport: 'Eyüpsultan otobüs güzergahı',
     faq: [
-      { q: 'Silahtarağa\'da 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Silahtarağa\'da 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
       { q: 'Silahtarağa\'da konut kapısı açılır mı?', a: 'Evet, her türlü konut tipinde hizmet veriyoruz.' },
     ],
   },
@@ -660,7 +660,7 @@ const HOOD_CONTENT = {
     landmark: 'Haliç kıyısı ve tarihi dokular',
     transport: 'Haliç güzergahı, Eyüpsultan bağlantı hatları',
     faq: [
-      { q: 'Düğmeciler\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Düğmeciler\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
       { q: 'Düğmeciler\'de ticari kapı açılır mı?', a: 'Evet, sanayi ve konut kapıları için hizmet veriyoruz.' },
     ],
   },
@@ -669,7 +669,7 @@ const HOOD_CONTENT = {
     landmark: 'Yeşilpınar Caddesi ve karma kullanım bölgesi',
     transport: 'Eyüpsultan otobüs güzergahı',
     faq: [
-      { q: 'Yeşilpınar\'da acil çilingir alabilir miyim?', a: 'Evet, Yeşilpınar\'a 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Yeşilpınar\'da acil çilingir alabilir miyim?', a: 'Evet, Yeşilpınar\'a 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Yeşilpınar\'da kilit değişimi yapıyor musunuz?', a: 'Evet, konut ve iş yeri kilidi değişimi hizmeti sunuyoruz.' },
     ],
   },
@@ -688,7 +688,7 @@ const HOOD_CONTENT = {
     transport: 'Haliç vapuru, Eyüp iskelesi',
     faq: [
       { q: 'Nüsratiye\'de tarihi konut kapısı açılır mı?', a: 'Evet, tarihi yapılardaki özel kilit sistemlerinde deneyimliyiz.' },
-      { q: 'Nüsratiye\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Nüsratiye\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'eyupsultan-aksemsettin': {
@@ -697,7 +697,7 @@ const HOOD_CONTENT = {
     transport: 'Eyüpsultan merkezi ulaşım',
     faq: [
       { q: 'Akşemsettin\'de eski konut kapısı açılır mı?', a: 'Evet, tarihi yapıların özgün kilit sistemlerini hasar vermeden açıyoruz.' },
-      { q: 'Akşemsettin\'de 7/24 çilingir var mı?', a: 'Evet, 0542 694 69 20\'yi arayın.' },
+      { q: 'Akşemsettin\'de 7/24 çilingir var mı?', a: 'Evet, 0538 059 01 73\'yi arayın.' },
     ],
   },
   'eyupsultan-nisanca': {
@@ -705,7 +705,7 @@ const HOOD_CONTENT = {
     landmark: 'Eyüpsultan güneyi ve müstakil konut bölgesi',
     transport: 'Eyüpsultan otobüs hatları',
     faq: [
-      { q: 'Nişanca\'da acil kapı açma hizmeti var mı?', a: 'Evet, Nişanca\'ya 20-30 dakikada ulaşıyoruz. 0542 694 69 20\'yi arayın.' },
+      { q: 'Nişanca\'da acil kapı açma hizmeti var mı?', a: 'Evet, Nişanca\'ya 20-30 dakikada ulaşıyoruz. 0538 059 01 73\'yi arayın.' },
       { q: 'Nişanca\'da müstakil ev kapısı açılır mı?', a: 'Evet, müstakil konutlarda da deneyimliyiz.' },
     ],
   },
@@ -811,7 +811,7 @@ RAW.forEach(d => {
     districtName: d.name,
     districtBase: d.base,
     metaTitle: dc.metaTitle || `${d.name} Çilingir | 7/24 Acil Hizmet | Çilingirciniz`,
-    metaDesc:  dc.metaDesc  || `${d.name} bölgesinde 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi. 0542 694 69 20`,
+    metaDesc:  dc.metaDesc  || `${d.name} bölgesinde 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi. 0538 059 01 73`,
     content: {
       intro:     dc.intro     || '',
       landmarks: dc.landmarks || '',
@@ -839,7 +839,7 @@ RAW.forEach(d => {
       districtBase: d.base,
       districtPath: `${d.base}-cilingir`,
       metaTitle: `${hName} Çilingir | ${d.name} 7/24 Acil`,
-      metaDesc:  `${hName} mahallesinde (${d.name}) 7/24 acil çilingir. ${hc.landmark ? hc.landmark + ' yakınında.' : ''} Kapı açma, kilit değişimi, 20-30 dk. 0542 694 69 20`.slice(0, 160),
+      metaDesc:  `${hName} mahallesinde (${d.name}) 7/24 acil çilingir. ${hc.landmark ? hc.landmark + ' yakınında.' : ''} Kapı açma, kilit değişimi, 20-30 dk. 0538 059 01 73`.slice(0, 160),
       content: {
         intro:    hc.intro    || `${hName} mahallesinde kapıda kaldınız mı? Çilingirciniz olarak 7/24 acil çilingir hizmeti sunuyoruz. Ortalama 20-30 dakikada yanınızdayız.`,
         landmark: hc.landmark || '',

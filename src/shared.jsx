@@ -4,10 +4,10 @@ import {
   ChevronRight, ChevronDown, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
 
-export const TEL = 'tel:+905426946920';
-export const TEL_DISPLAY = '0542 694 69 20';
-export const WA = 'https://wa.me/905426946920';
-export const WA_KONUM = 'https://wa.me/905426946920?text=Merhaba%2C%20konumumu%20payla%C5%9Fmak%20istiyorum.%20L%C3%BCtfen%20en%20yak%C4%B1n%20ustay%C4%B1%20y%C3%B6nlendirebilir%20misiniz%3F';
+export const TEL = 'tel:+905380590173';
+export const TEL_DISPLAY = '0538 059 01 73';
+export const WA = 'https://wa.me/905380590173';
+export const WA_KONUM = 'https://wa.me/905380590173?text=Merhaba%2C%20konumumu%20payla%C5%9Fmak%20istiyorum.%20L%C3%BCtfen%20en%20yak%C4%B1n%20ustay%C4%B1%20y%C3%B6nlendirebilir%20misiniz%3F';
 export const GL = '#FFD700';
 export const GD = '#C9A84C';
 export const BG = '#07090e';

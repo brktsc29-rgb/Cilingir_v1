@@ -51,7 +51,7 @@ export default function DistrictPage({ page }) {
         name: `Çilingirciniz - ${page.name}`,
         description: page.metaDesc,
         url,
-        telephone: '+905426946920',
+        telephone: '+905380590173',
         image: `${BASE_URL}/images/hero.webp`,
         priceRange: '₺₺',
         openingHoursSpecification: {
@@ -325,7 +325,7 @@ function ServicesList({ services, name }) {
 /* ── How it works ───────────────────────────────────────────────────────────── */
 function HowItWorks() {
   const steps = [
-    { Icon: Phone,         title: 'Bizi Arayın',         desc: '0542 694 69 20\'yi arayın veya WhatsApp\'tan yazın. Konumunuzu bildirin.' },
+    { Icon: Phone,         title: 'Bizi Arayın',         desc: '0538 059 01 73\'yi arayın veya WhatsApp\'tan yazın. Konumunuzu bildirin.' },
     { Icon: Zap,           title: 'Hızlı Yönlendirme',   desc: 'En yakın teknisyen anında yola çıkar. Tahmini varış süresini bildiririz.' },
     { Icon: CheckCircle,   title: 'Sorun Çözülür',        desc: 'Kapınız açılır veya kilit değiştirilir. Gizli ücret yoktur.' },
   ];
@@ -480,7 +480,7 @@ function BusinessContact({ page }) {
         style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,.07)' }}
       >
         <meta itemProp="name" content="Çilingirciniz" />
-        <meta itemProp="telephone" content="+905426946920" />
+        <meta itemProp="telephone" content="+905380590173" />
         <meta itemProp="openingHours" content="Mo-Su 00:00-23:59" />
         <link itemProp="url" href="https://cilingirciniz.com" />
         <iframe
