@@ -1,145 +1,103 @@
 /**
  * AnimatedHero — Apple / Stripe / Linear level polish
- * Lazy-loaded via React.lazy() — Framer Motion + GSAP land in a separate chunk.
+ * Lazy-loaded via React.lazy() — Framer Motion lands in a separate chunk.
  *
  * Animation map
  * ─────────────
- * Framer Motion  entrance stagger (badge, headline words, subtitle, CTAs)
- *                CTA hover shine sweep
- * GSAP           mouse-parallax on background image (desktop only)
- * CSS keyframes  key float, ring rotate ×2, particle float
- *                all paused by prefers-reduced-motion media query
+ * CSS keyframes  image + ring + particles float together (same wrapper)
+ *                ring rotate ×2 (CW / CCW)
+ *                particle float, staggered
+ *                CTA hover shine (::after pseudo-element)
+ * Framer Motion  staggered entrance: badge → headline → subtitle → CTAs
+ *                CTA scale on hover / tap
+ * prefers-reduced-motion  all keyframes paused; Framer Motion skips entrance
  */
 
-import { useEffect, useRef, memo, useCallback } from 'react';
+import { memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { gsap } from 'gsap';
 import { Clock, Phone, MessageCircle } from 'lucide-react';
 import { TEL, TEL_DISPLAY, WA, GL, GD, BG } from '../shared';
 
-// ─── Deterministic particle coords — never Math.random() in render ──────────
+// ─── Deterministic particle coords ───────────────────────────────────────────
+// Placed around a 220×220 viewBox centered on the key in the photo.
+// Never use Math.random() here — causes hydration mismatch.
 
 const PARTICLES = [
-  { id: 0,  cx: 90,  cy: 15,  r: 1.9, dur: 3.2, del: 0.0  },
-  { id: 1,  cx: 148, cy: 42,  r: 1.5, dur: 2.8, del: 0.45 },
-  { id: 2,  cx: 168, cy: 92,  r: 2.2, dur: 3.7, del: 0.9  },
-  { id: 3,  cx: 158, cy: 148, r: 1.7, dur: 3.1, del: 1.35 },
-  { id: 4,  cx: 120, cy: 178, r: 1.4, dur: 2.6, del: 0.6  },
-  { id: 5,  cx: 75,  cy: 185, r: 2.0, dur: 3.5, del: 1.8  },
-  { id: 6,  cx: 22,  cy: 158, r: 1.6, dur: 2.9, del: 0.75 },
-  { id: 7,  cx: 8,   cy: 100, r: 1.3, dur: 3.3, del: 1.1  },
-  { id: 8,  cx: 20,  cy: 48,  r: 1.8, dur: 2.7, del: 0.25 },
-  { id: 9,  cx: 58,  cy: 8,   r: 1.5, dur: 3.4, del: 1.55 },
-  { id: 10, cx: 110, cy: 4,   r: 1.2, dur: 2.5, del: 0.85 },
-  { id: 11, cx: 178, cy: 122, r: 1.7, dur: 3.0, del: 0.35 },
+  { id: 0,  cx: 110, cy: 12,  r: 1.9, dur: 3.2, del: 0.00 },
+  { id: 1,  cx: 178, cy: 48,  r: 1.5, dur: 2.8, del: 0.45 },
+  { id: 2,  cx: 204, cy: 105, r: 2.1, dur: 3.7, del: 0.90 },
+  { id: 3,  cx: 188, cy: 166, r: 1.7, dur: 3.1, del: 1.35 },
+  { id: 4,  cx: 140, cy: 208, r: 1.4, dur: 2.6, del: 0.60 },
+  { id: 5,  cx: 80,  cy: 208, r: 2.0, dur: 3.5, del: 1.80 },
+  { id: 6,  cx: 32,  cy: 166, r: 1.6, dur: 2.9, del: 0.75 },
+  { id: 7,  cx: 16,  cy: 105, r: 1.3, dur: 3.3, del: 1.10 },
+  { id: 8,  cx: 42,  cy: 48,  r: 1.8, dur: 2.7, del: 0.25 },
+  { id: 9,  cx: 110, cy: 4,   r: 1.2, dur: 3.4, del: 1.55 },
+  { id: 10, cx: 155, cy: 22,  r: 1.5, dur: 2.5, del: 0.85 },
+  { id: 11, cx: 200, cy: 70,  r: 1.7, dur: 3.0, del: 0.35 },
 ];
 
-// ─── CSS keyframes injected once ─────────────────────────────────────────────
+// ─── Injected CSS keyframes ───────────────────────────────────────────────────
 
 const KEYFRAMES = `
-  /* Key float */
-  @keyframes _hkf { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
-  .hk-float { animation: _hkf 4.4s ease-in-out infinite; will-change:transform; }
+  /* Float — image wrapper, ring, particles all share this */
+  @keyframes _hkf { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hk-float { animation:_hkf 4.6s ease-in-out infinite; will-change:transform; }
 
-  /* Ring clockwise */
+  /* Ring — clockwise */
   @keyframes _hkra { to{transform:rotate(360deg)} }
   .hk-ring-a {
-    animation: _hkra 9s linear infinite;
-    transform-origin: 110px 110px;
-    will-change: transform;
+    animation:_hkra 9s linear infinite;
+    transform-origin:110px 110px;
+    will-change:transform;
   }
 
-  /* Ring counter-clockwise */
+  /* Ring — counter-clockwise, offset phase */
   @keyframes _hkrb { to{transform:rotate(-360deg)} }
   .hk-ring-b {
-    animation: _hkrb 15s linear infinite;
-    transform-origin: 110px 110px;
-    will-change: transform;
+    animation:_hkrb 15s linear infinite;
+    transform-origin:110px 110px;
+    will-change:transform;
   }
 
   /* Particles */
-  @keyframes _hkp { 0%,100%{transform:translate(0,0) scale(1);opacity:.5} 50%{transform:translate(0,-8px) scale(1.4);opacity:.95} }
-  .hk-ptcl { animation: _hkp ease-in-out infinite; will-change:transform,opacity; }
+  @keyframes _hkp {
+    0%,100%{transform:translate(0,0) scale(1);opacity:.45}
+    50%{transform:translate(0,-8px) scale(1.5);opacity:.95}
+  }
+  .hk-ptcl { animation:_hkp ease-in-out infinite; will-change:transform,opacity; }
 
-  /* Desktop-only key sculpture */
-  @media (max-width:639px) { .hk-sculpture { display:none!important } }
+  /* Glow pulse around key area */
+  @keyframes _hkglow {
+    0%,100%{ box-shadow:0 0 0 0 rgba(255,215,0,0); }
+    50%{ box-shadow:0 0 55px 18px rgba(255,215,0,.13); }
+  }
+  .hk-glow { animation:_hkglow 4.6s ease-in-out infinite; }
 
-  /* CTA shine — CSS pseudo-element, triggered on parent hover */
+  /* CTA hover shine */
   .hk-btn { position:relative; overflow:hidden; isolation:isolate; }
   .hk-btn::after {
     content:'';
     position:absolute; inset:0;
-    background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);
+    background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.26) 50%,transparent 70%);
     transform:translateX(-112%);
     border-radius:12px;
     pointer-events:none;
   }
   @media (hover:hover) {
-    .hk-btn:hover::after { animation:_hkshine .52s cubic-bezier(.4,0,.2,1) forwards; }
+    .hk-btn:hover::after { animation:_hkshine .5s cubic-bezier(.4,0,.2,1) forwards; }
   }
-  @keyframes _hkshine { to { transform:translateX(112%); } }
+  @keyframes _hkshine { to{transform:translateX(112%)} }
 
   /* Honour prefers-reduced-motion */
   @media (prefers-reduced-motion:reduce) {
-    .hk-float,.hk-ring-a,.hk-ring-b,.hk-ptcl,.hk-btn::after { animation:none!important }
+    .hk-float,.hk-ring-a,.hk-ring-b,.hk-ptcl,.hk-glow,.hk-btn::after {
+      animation:none!important;
+    }
   }
 `;
 
-// ─── SVG: Golden key ──────────────────────────────────────────────────────────
-
-const GoldKey = memo(() => (
-  <svg
-    viewBox="0 0 80 190"
-    width="76"
-    height="190"
-    aria-hidden="true"
-    focusable="false"
-    style={{ display: 'block', filter: 'drop-shadow(0 0 10px rgba(255,215,0,.45))' }}
-  >
-    <defs>
-      <linearGradient id="gk-lg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%"   stopColor="#A87820" />
-        <stop offset="28%"  stopColor="#FFD700" />
-        <stop offset="55%"  stopColor="#FFF5B0" />
-        <stop offset="80%"  stopColor="#FFD700" />
-        <stop offset="100%" stopColor="#B8912E" />
-      </linearGradient>
-      <radialGradient id="gk-rg" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"   stopColor="#FFE066" stopOpacity=".55" />
-        <stop offset="100%" stopColor="#C9A84C" stopOpacity=".05" />
-      </radialGradient>
-      <filter id="gk-glow" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="2.5" result="b" />
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-
-    {/* Soft outer glow halo */}
-    <circle cx="40" cy="38" r="35" fill="none" stroke="#FFD700" strokeWidth="20" opacity=".06" />
-
-    {/* Key head ring */}
-    <circle cx="40" cy="38" r="28" fill="none" stroke="url(#gk-lg)" strokeWidth="13"
-      filter="url(#gk-glow)" />
-
-    {/* Key head centre fill */}
-    <circle cx="40" cy="38" r="12" fill="url(#gk-rg)" />
-    <circle cx="40" cy="38" r="5.5" fill="url(#gk-lg)" opacity=".7" />
-
-    {/* Key shaft */}
-    <rect x="37" y="66" width="6" height="104" rx="3" fill="url(#gk-lg)" />
-
-    {/* Key teeth */}
-    <rect x="43" y="90"  width="14" height="7" rx="2.5" fill="url(#gk-lg)" />
-    <rect x="43" y="112" width="10" height="7" rx="2.5" fill="url(#gk-lg)" />
-    <rect x="43" y="132" width="14" height="7" rx="2.5" fill="url(#gk-lg)" />
-
-    {/* Key tip */}
-    <rect x="34" y="162" width="12" height="7" rx="3" fill="url(#gk-lg)" />
-  </svg>
-));
-GoldKey.displayName = 'GoldKey';
-
-// ─── SVG: Rotating light rings ────────────────────────────────────────────────
+// ─── Rotating gold rings (overlaid on photo key) ──────────────────────────────
 
 const LightRings = memo(() => (
   <svg
@@ -148,7 +106,7 @@ const LightRings = memo(() => (
     height="220"
     aria-hidden="true"
     focusable="false"
-    style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+    style={{ display: 'block', overflow: 'visible' }}
   >
     <defs>
       <linearGradient id="rg-a" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -160,50 +118,61 @@ const LightRings = memo(() => (
       </linearGradient>
       <linearGradient id="rg-b" x1="100%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%"   stopColor="#FFD700" stopOpacity="0"   />
-        <stop offset="40%"  stopColor="#FFD700" stopOpacity=".55" />
+        <stop offset="40%"  stopColor="#FFD700" stopOpacity=".5"  />
         <stop offset="100%" stopColor="#C9A84C" stopOpacity="0"   />
       </linearGradient>
+      <radialGradient id="rg-core" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"   stopColor="#FFD700" stopOpacity=".12" />
+        <stop offset="100%" stopColor="#FFD700" stopOpacity="0"   />
+      </radialGradient>
     </defs>
 
-    {/* Outer static halo */}
-    <circle cx="110" cy="110" r="104" fill="none" stroke="#FFD700" strokeWidth=".7" opacity=".12" />
+    {/* Soft core glow */}
+    <circle cx="110" cy="110" r="60" fill="url(#rg-core)" />
+
+    {/* Static outer halo ring */}
+    <circle cx="110" cy="110" r="104" fill="none"
+      stroke="#FFD700" strokeWidth=".8" opacity=".1" />
 
     {/* Primary arc — rotates CW */}
-    <circle
-      className="hk-ring-a"
+    <circle className="hk-ring-a"
       cx="110" cy="110" r="92"
       fill="none"
       stroke="url(#rg-a)"
-      strokeWidth="2"
-      strokeDasharray="145 434"
+      strokeWidth="2.2"
+      strokeDasharray="148 434"
       strokeLinecap="round"
     />
 
-    {/* Secondary arc — rotates CCW, offset phase */}
-    <circle
-      className="hk-ring-b"
-      cx="110" cy="110" r="80"
+    {/* Secondary arc — rotates CCW */}
+    <circle className="hk-ring-b"
+      cx="110" cy="110" r="78"
       fill="none"
       stroke="url(#rg-b)"
       strokeWidth="1.5"
-      strokeDasharray="68 434"
+      strokeDasharray="70 434"
       strokeLinecap="round"
-      opacity=".65"
+      opacity=".6"
     />
   </svg>
 ));
 LightRings.displayName = 'LightRings';
 
-// ─── SVG: Particle field ──────────────────────────────────────────────────────
+// ─── Particle field ───────────────────────────────────────────────────────────
 
 const ParticleField = memo(({ reduced }) => {
   if (reduced) return null;
   return (
     <svg
-      viewBox="0 0 190 200"
+      viewBox="0 0 220 220"
+      width="220"
+      height="220"
       aria-hidden="true"
       focusable="false"
-      style={{ position: 'absolute', inset: -10, overflow: 'visible', pointerEvents: 'none' }}
+      style={{
+        position: 'absolute', inset: 0,
+        overflow: 'visible', pointerEvents: 'none',
+      }}
     >
       <defs>
         <radialGradient id="pg" cx="50%" cy="50%" r="50%">
@@ -214,9 +183,7 @@ const ParticleField = memo(({ reduced }) => {
       {PARTICLES.map(p => (
         <circle
           key={p.id}
-          cx={p.cx}
-          cy={p.cy}
-          r={p.r}
+          cx={p.cx} cy={p.cy} r={p.r}
           fill="url(#pg)"
           className="hk-ptcl"
           style={{ animationDuration: `${p.dur}s`, animationDelay: `${p.del}s` }}
@@ -231,43 +198,29 @@ ParticleField.displayName = 'ParticleField';
 
 const container = {
   hidden: {},
-  show: {
-    transition: { staggerChildren: 0.11, delayChildren: 0.18 },
-  },
+  show: { transition: { staggerChildren: 0.11, delayChildren: 0.2 } },
 };
-
 const fromLeft = {
   hidden: { opacity: 0, x: -22 },
-  show: {
-    opacity: 1, x: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
+  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
-
 const fromBottom = {
   hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1, y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-  },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 };
-
 const subtle = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { duration: 0.55, ease: 'easeOut' },
-  },
+  show: { opacity: 1, transition: { duration: 0.55, ease: 'easeOut' } },
 };
 
-// ─── CTA button with hover shine ─────────────────────────────────────────────
+// ─── CTA button ───────────────────────────────────────────────────────────────
 
 const CTAButton = memo(({ href, primary, icon, label, sub, reduced }) => (
   <motion.a
     href={href}
     className="bp hk-btn"
     variants={fromBottom}
-    whileHover={reduced ? undefined : { scale: 1.028, transition: { duration: 0.22, ease: 'easeOut' } }}
+    whileHover={reduced ? undefined : { scale: 1.028, transition: { duration: 0.2, ease: 'easeOut' } }}
     whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
     style={{
       display: 'flex', alignItems: 'center', gap: 11,
@@ -302,116 +255,93 @@ CTAButton.displayName = 'CTAButton';
 
 export default function AnimatedHero() {
   const shouldReduce = useReducedMotion();
-  const bgRef        = useRef(null);
-  const gsapCtxRef   = useRef(null);
-
-  /* Mouse parallax — desktop only, GSAP driven */
-  const onMouseMove = useCallback((e) => {
-    if (!bgRef.current) return;
-    const dx = (e.clientX / window.innerWidth  - 0.5) * 14;
-    const dy = (e.clientY / window.innerHeight - 0.5) * 8;
-    gsap.to(bgRef.current, { x: dx, y: dy, duration: 1.4, ease: 'power2.out' });
-  }, []);
-
-  useEffect(() => {
-    if (shouldReduce) return;
-
-    const isTouch = window.matchMedia('(hover:none)').matches;
-    if (isTouch) return;
-
-    gsapCtxRef.current = gsap.context(() => {});
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      gsapCtxRef.current?.revert();
-    };
-  }, [shouldReduce, onMouseMove]);
 
   return (
     <>
-      {/* Inject keyframe CSS once */}
       <style>{KEYFRAMES}</style>
 
-      <section
-        style={{
-          position: 'relative',
-          paddingTop: 64,
-          minHeight: '560px',
-          display: 'flex',
-          alignItems: 'center',
-          background: BG,
-          contain: 'layout',
-        }}
-      >
-        {/* ── Background image (parallax target) ── */}
-        <picture
-          ref={bgRef}
+      <section style={{
+        position: 'relative',
+        paddingTop: 64,
+        minHeight: '560px',
+        display: 'flex',
+        alignItems: 'center',
+        background: BG,
+        contain: 'layout',
+      }}>
+
+        {/*
+         * ── Background image wrapper ───────────────────────────────────────
+         * The wrapper floats with the CSS animation.
+         * Inside it: the photo + the ring/particle overlay.
+         * Because they share the same animated parent, the effects stay
+         * locked on the key in the photo as it moves up and down.
+         */}
+        <div
+          className={shouldReduce ? undefined : 'hk-float'}
           style={{
             position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
             zIndex: 0,
             willChange: 'transform',
           }}
         >
-          <source srcSet="/images/hero.webp" type="image/webp" />
-          <img
-            src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
-            alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
-            fetchPriority="high"
-            style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'right center' }}
-          />
-        </picture>
+          {/* Photo */}
+          <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+            <source srcSet="/images/hero.webp" type="image/webp" />
+            <img
+              src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+              alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
+              fetchPriority="high"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'right center' }}
+            />
+          </picture>
 
-        {/* ── Gradient overlays ── */}
+          {/*
+           * ── Key overlay ─────────────────────────────────────────────────
+           * Positioned over the key in the photo.
+           * Adjust right/top if the ring doesn't align with the key.
+           * right: ~15-20% puts it in the right-center area where the
+           * key is visible after the left gradient cuts in.
+           */}
+          <div
+            className={shouldReduce ? undefined : 'hk-glow'}
+            style={{
+              position: 'absolute',
+              right: 'clamp(8%, 16vw, 24%)',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: 220,
+              height: 220,
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          >
+            <ParticleField reduced={shouldReduce} />
+            <LightRings />
+          </div>
+        </div>
+
+        {/* ── Left gradient overlay ── */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 1,
           background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',
+          pointerEvents: 'none',
         }} />
+
+        {/* ── Bottom fade ── */}
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0, height: 160, zIndex: 2,
           background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
           pointerEvents: 'none',
         }} />
 
-        {/* ── Golden key sculpture — desktop only ── */}
-        <div
-          className="hk-sculpture"
-          style={{
-            position: 'absolute',
-            right: 'clamp(6%, 13vw, 20%)',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 3,
-            width: 220,
-            height: 220,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none',
-          }}
-        >
-          {/* Particles */}
-          <ParticleField reduced={shouldReduce} />
-
-          {/* Rotating rings */}
-          <LightRings />
-
-          {/* Floating key */}
-          <div
-            className={shouldReduce ? undefined : 'hk-float'}
-            style={{ position: 'relative', zIndex: 1 }}
-          >
-            <GoldKey />
-          </div>
-        </div>
-
-        {/* ── Left content panel (Framer Motion stagger) ── */}
+        {/* ── Left content (Framer Motion stagger) ── */}
         <motion.div
           variants={container}
           initial={shouldReduce ? 'show' : 'hidden'}
           animate="show"
           style={{
-            position: 'relative', zIndex: 4,
+            position: 'relative', zIndex: 3,
             width: '100%',
             maxWidth: 'clamp(255px, 34vw, 380px)',
             padding: 'clamp(28px,5vw,44px) 12px 48px clamp(20px,7vw,80px)',
@@ -440,10 +370,7 @@ export default function AnimatedHero() {
             fontWeight: 900, lineHeight: .9,
             marginBottom: 14, letterSpacing: '-.02em',
           }}>
-            <motion.span
-              variants={fromBottom}
-              style={{ display: 'block', color: '#fff' }}
-            >
+            <motion.span variants={fromBottom} style={{ display: 'block', color: '#fff' }}>
               Kapıda mı
             </motion.span>
             <motion.span
@@ -475,23 +402,20 @@ export default function AnimatedHero() {
           {/* CTA — phone */}
           <motion.div variants={fromBottom} style={{ marginBottom: 10 }}>
             <CTAButton
-              href={TEL}
-              primary
+              href={TEL} primary reduced={shouldReduce}
               icon={<Phone size={17} color="#000" strokeWidth={2.5} />}
               label="HEMEN ARA"
               sub={TEL_DISPLAY}
-              reduced={shouldReduce}
             />
           </motion.div>
 
           {/* CTA — WhatsApp */}
           <motion.div variants={fromBottom}>
             <CTAButton
-              href={WA}
+              href={WA} reduced={shouldReduce}
               icon={<MessageCircle size={17} color="#25D366" />}
               label="WHATSAPP'TAN YAZ"
               sub="Hızlı destek alın"
-              reduced={shouldReduce}
             />
           </motion.div>
         </motion.div>
