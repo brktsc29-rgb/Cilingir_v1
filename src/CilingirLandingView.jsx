@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Clock, Phone, MessageCircle } from 'lucide-react';
 import {
   CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
@@ -6,6 +6,10 @@ import {
   FAQSection, ReviewsSection, WhatsAppBubble, Footer,
   setSEO, setHreflang,
 } from './shared';
+
+// Lazy-load animated hero — Framer Motion + GSAP land in a separate chunk,
+// keeping the initial bundle lean and LCP fast.
+const AnimatedHero = lazy(() => import('./components/AnimatedHero'));
 
 const SCHEMA = {
   '@context': 'https://schema.org',
@@ -67,7 +71,9 @@ export default function CilingirLandingView() {
       }}>
         <Navbar open={open} setOpen={setOpen} />
         {open && <MobileMenu onClose={() => setOpen(false)} />}
-        <Hero />
+        <Suspense fallback={<Hero />}>
+          <AnimatedHero />
+        </Suspense>
         <TrustCards />
         <Services />
         <Districts />
