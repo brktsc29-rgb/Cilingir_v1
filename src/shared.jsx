@@ -31,7 +31,7 @@ export const CSS = `
 
 export function setSEO({ title, desc, url, lang, schema, image }) {
   document.title = title;
-  const ogImage = image || `${BASE_URL}/images/hero.webp`;
+  const ogImage = image || `${BASE_URL}/images/hero.png`;
   const s = (sel, attr, val) => {
     const el = document.querySelector(sel);
     if (el) el.setAttribute(attr, val);

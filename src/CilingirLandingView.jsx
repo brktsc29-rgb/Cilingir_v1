@@ -19,7 +19,7 @@ const SCHEMA = {
   'description': 'İstanbul Avrupa Yakası’nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir.',
   'url': BASE_URL,
   'telephone': '+905380590173',
-  'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
+  'image': `${BASE_URL}/images/hero.png`,
   'priceRange': '₺₺',
   'openingHoursSpecification': {
     '@type': 'OpeningHoursSpecification',
@@ -99,9 +99,9 @@ function Hero() {
       background: BG,
     }}>
       <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
-        <source srcSet="/images/hero.webp" type="image/webp" />
+        
         <img
-          src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+          src="/images/hero.png"
           alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
           fetchPriority="high"
           style={{

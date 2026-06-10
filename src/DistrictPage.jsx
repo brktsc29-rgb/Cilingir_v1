@@ -52,7 +52,7 @@ export default function DistrictPage({ page }) {
         description: page.metaDesc,
         url,
         telephone: '+905380590173',
-        image: `${BASE_URL}/images/hero.webp`,
+        image: `${BASE_URL}/images/hero.png`,
         priceRange: '₺₺',
         openingHoursSpecification: {
           '@type': 'OpeningHoursSpecification',
@@ -191,9 +191,9 @@ function DistrictHero({ page }) {
       background: BG,
     }}>
       <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
-        <source srcSet="/images/hero.webp" type="image/webp" />
+        
         <img
-          src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+          src="/images/hero.png"
           alt={`${page.name} acil çilingir hizmeti — Çilingirciniz`}
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'right center' }}

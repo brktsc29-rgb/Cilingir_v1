@@ -278,9 +278,9 @@ export default function AnimatedHero() {
         >
           {/* Photo */}
           <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-            <source srcSet="/images/hero.webp" type="image/webp" />
+            
             <img
-              src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+              src="/images/hero.png"
               alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
               fetchPriority="high"
               style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'right center' }}

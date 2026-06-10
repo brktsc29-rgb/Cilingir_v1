@@ -13,7 +13,7 @@ const SCHEMA_EN = {
   'description': '24/7 emergency locksmith service in Istanbul. Door opening, lock replacement, auto locksmith.',
   'url': `${BASE_URL}/en`,
   'telephone': '+905380590173',
-  'image': `${BASE_URL}/images/10902595-E9CD-474F-BD7D-A076279C1A41.png`,
+  'image': `${BASE_URL}/images/hero.png`,
   'priceRange': '₺₺',
   'openingHoursSpecification': {
     '@type': 'OpeningHoursSpecification',
@@ -127,9 +127,9 @@ function EnHero() {
       background: BG,
     }}>
       <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
-        <source srcSet="/images/hero.webp" type="image/webp" />
+        
         <img
-          src="/images/10902595-E9CD-474F-BD7D-A076279C1A41.png"
+          src="/images/hero.png"
           alt="24/7 emergency locksmith service in Istanbul, Çilingirciniz"
           fetchPriority="high"
           style={{
