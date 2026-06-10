@@ -119,34 +119,60 @@ function EnMobileMenu({ onClose }) {
   );
 }
 
+const HERO_CSS = `
+  @media (min-width:641px) {
+    .hero-img { transform:scale(0.88); transform-origin:center center; }
+  }
+  @media (max-width:640px) {
+    .hero-img { object-position:70% center !important; transform:none; }
+    .hero-grad {
+      background:linear-gradient(90deg,
+        rgba(0,0,0,.97) 0%,rgba(0,0,0,.93) 35%,
+        rgba(0,0,0,.65) 60%,rgba(0,0,0,.18) 82%,transparent 95%
+      ) !important;
+    }
+    .hero-glow { display:block !important; }
+  }
+`;
+
 function EnHero() {
   return (
-    <section style={{
-      position: 'relative', paddingTop: 64,
-      minHeight: '560px', display: 'flex', alignItems: 'center',
-      background: BG,
-    }}>
-      <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
-        
-        <img
-          src="/images/hero.png"
-          alt="24/7 emergency locksmith service in Istanbul, Çilingirciniz"
-          fetchPriority="high"
-          style={{
-            width: '100%', height: '100%',
-            objectFit: 'contain', objectPosition: 'right center',
-          }}
-        />
-      </picture>
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 1,
-        background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, height: 160, zIndex: 2,
-        background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
-        pointerEvents: 'none',
-      }} />
+    <>
+      <style>{HERO_CSS}</style>
+      <section style={{
+        position: 'relative', paddingTop: 64,
+        minHeight: '560px', display: 'flex', alignItems: 'center',
+        background: BG, overflow: 'hidden',
+      }}>
+        <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, overflow: 'hidden' }}>
+          <img
+            src="/images/hero.png"
+            alt="24/7 emergency locksmith service in Istanbul, Çilingirciniz"
+            fetchPriority="high"
+            className="hero-img"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
+          />
+        </picture>
+        <div className="hero-grad" style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'linear-gradient(90deg,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 30%,rgba(0,0,0,.20) 55%,transparent 72%)',
+          pointerEvents: 'none',
+        }} />
+        <div className="hero-glow" style={{
+          display: 'none',
+          position: 'absolute', zIndex: 2,
+          top: '30%', right: '18%',
+          width: 180, height: 180,
+          background: 'radial-gradient(circle, rgba(212,175,55,.18) 0%, rgba(212,175,55,.08) 40%, transparent 70%)',
+          borderRadius: '50%',
+          pointerEvents: 'none',
+          transform: 'translateY(-50%)',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: 160, zIndex: 2,
+          background: 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.95) 100%)',
+          pointerEvents: 'none',
+        }} />
       <div style={{
         position: 'relative', zIndex: 3,
         width: '100%', maxWidth: 'clamp(255px, 34vw, 380px)',
@@ -205,7 +231,8 @@ function EnHero() {
           </div>
         </a>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
 
