@@ -13,7 +13,7 @@ const SCHEMA_EN = {
   '@id': `${BASE_URL}/#business`,
   'name': 'Çilingirciniz',
   'description': '24/7 emergency locksmith service in Istanbul. Door opening, lock replacement, auto locksmith.',
-  'url': `${BASE_URL}/en`,
+  'url': `${BASE_URL}/locksmith-istanbul`,
   'telephone': '+905380590173',
   'image': `${BASE_URL}/images/hero.png`,
   'priceRange': '₺₺',
@@ -35,11 +35,11 @@ export default function EnLandingView() {
     setSEO({
       title: 'Istanbul Locksmith | 24/7 Emergency | Çilingirciniz',
       desc: '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0538 059 01 73',
-      url: `${BASE_URL}/en`,
+      url: `${BASE_URL}/locksmith-istanbul`,
       lang: 'en',
       schema: SCHEMA_EN,
     });
-    setHreflang(`${BASE_URL}/`, `${BASE_URL}/en`);
+    setHreflang(`${BASE_URL}/`, `${BASE_URL}/locksmith-istanbul`);
   }, []);
 
   return (
@@ -81,8 +81,8 @@ function EnMobileMenu({ onClose }) {
   };
 
   const NAV = [
-    { label: 'Services',  action: () => goTo('services', '/en#services') },
-    { label: 'Districts', action: () => goTo('districts', '/en#districts') },
+    { label: 'Services',  action: () => goTo('services', '/locksmith-istanbul#services') },
+    { label: 'Districts', action: () => goTo('districts', '/locksmith-istanbul#districts') },
     { label: 'Contact',   href: TEL },
   ];
 

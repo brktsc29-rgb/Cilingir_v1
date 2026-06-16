@@ -25,7 +25,7 @@ export default function App() {
     <Suspense fallback={<Fallback />}>
       <Routes>
         <Route path="/" element={<CilingirLandingView />} />
-        <Route path="/en" element={<EnLandingView />} />
+        <Route path="/locksmith-istanbul" element={<EnLandingView />} />
         <Route path="/fiyatlar" element={<FiyatlarView />} />
         <Route path="/blog" element={<BlogListView />} />
         <Route path="/blog/:slug" element={<BlogPostRoute />} />

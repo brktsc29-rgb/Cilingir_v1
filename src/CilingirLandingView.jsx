@@ -58,7 +58,7 @@ export default function CilingirLandingView() {
       lang: 'tr',
       schema: SCHEMA,
     });
-    setHreflang(`${BASE_URL}/`, `${BASE_URL}/en`);
+    setHreflang(`${BASE_URL}/`, `${BASE_URL}/locksmith-istanbul`);
   }, []);
 
   return (

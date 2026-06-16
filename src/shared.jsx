@@ -121,7 +121,7 @@ export function Navbar({ open, setOpen, lang = 'tr' }) {
           padding: '4px 6px',
         }}>TR</a>
         <span style={{ color: 'rgba(255,255,255,.18)', fontSize: 9 }}>|</span>
-        <a href="/en" style={{
+        <a href="/locksmith-istanbul" style={{
           fontSize: 10.5, fontWeight: 800, letterSpacing: '.06em',
           color: lang === 'en' ? GL : 'rgba(255,255,255,.3)',
           padding: '4px 6px',

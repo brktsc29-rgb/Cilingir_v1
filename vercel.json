@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/en", "destination": "/locksmith-istanbul", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!sitemap\\.xml|sitemap\\.xsl|robots\\.txt).*)", "destination": "/index.html" }
   ],
