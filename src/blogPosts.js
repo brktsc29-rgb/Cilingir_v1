@@ -747,6 +747,70 @@ export const BLOG_POSTS = [
     ],
   },
 
+  {
+    slug: 'cilingir-dolandiricilarindan-nasil-korunulur',
+    title: 'Çilingir Dolandırıcılarından Nasıl Korunulur? Bilmeniz Gereken 7 İşaret',
+    excerpt: 'Kapınız kilitli kaldığında panik anında doğru çilingiri bulmak kritik. Sahte çilingir tuzaklarını ve fahiş fiyat taktiklerini önceden tanıyın.',
+    date: '2026-06-16',
+    readMin: 5,
+    content: [
+      {
+        type: 'intro',
+        text: 'Kapınız kilitli kaldığında aklınızın bir köşesi her zaman fiyatı merak eder — ama panik anında insanlar çoğu zaman araştırma yapamaz ve ilk bulunan numarayı arar. Ne yazık ki bazı sahte çilingirler tam da bu anı fırsat bilir. Bu yazıda gerçek bir çilingiri nasıl tanıyacağınızı, ne zaman uyarı alarmı çalacağınızı ve kendinizi nasıl koruyacağınızı anlatıyoruz.',
+      },
+      {
+        type: 'section',
+        heading: '1. Telefonda fiyat vermekten kaçınıyorlarsa dikkat',
+        text: 'Profesyonel bir çilingir telefonda tahmini fiyat aralığı verebilir. "Görünce söylerim", "kapıya geleyim de anlayayım" gibi yanıtlar veren ve kesinlikle rakam söylemeyenler genellikle yüksek fiyat taktiklerine hazırlanıyordur. Bizi arayın — telefonda net bilgi alırsınız.',
+      },
+      {
+        type: 'section',
+        heading: '2. Arama sonuçlarında "reklam" etiketi',
+        text: '"Acil çilingir", "ucuz çilingir" gibi aramalarda üstte çıkan bazı reklamlar sahte firmalara aittir. Reklam etiketi varlığı tek başına sorun değil, ama yorum sayısı sıfır, iletişim adresi belirsiz, web sitesi bir haftalık olan firmalara karşı dikkatli olun.',
+      },
+      {
+        type: 'section',
+        heading: '3. Kapıya geldikten sonra fiyat katlanıyorsa',
+        text: 'Telefonda "200-300 lira" denilip kapıda "kilit çok zormuş, parça lazım, 1.500 lira oldu" durumu sahte firmaların klasik taktiğidir. Bu noktada kapınız açıkken teklifi reddetme hakkınız var — ödeme yapmadan gidin, güvendiğiniz bir firmayı arayın.',
+      },
+      {
+        type: 'section',
+        heading: '4. Fatura veya makbuz vermiyorlarsa',
+        text: 'Yasal çalışan her çilingir firma fatura ya da en azından makbuz vermek zorundadır. "Biz fatura kesmiyoruz" yanıtı kayıt dışı çalışmanın işaretidir. Bu hem sizi hem de işi koruyan bir belgedir.',
+      },
+      {
+        type: 'section',
+        heading: '5. Gereksiz parça değişimi öneriyorlarsa',
+        text: 'Kapı açma işleminin büyük çoğunluğunda kilit değişimine gerek yoktur. Çilingir gelmeden önce "kilidi mutlaka değiştirmek gerekecek" diyorsa bu bir uyarı işaretidir. İşi gördükten sonra gereksiz parça satmaya çalışan firmaları tercih etmeyin.',
+      },
+      {
+        type: 'section',
+        heading: '6. Kimlik veya yetki belgesi göstermiyorlarsa',
+        text: 'Özellikle gece geç saatlerde gelen bir kişiden kapıyı açmasını istemek güven gerektirir. Firma adı, araç plakası ve isim bilgisi olmayan kişileri içeri almayın. Güvenilir çilingirler bu bilgileri paylaşmaktan çekinmez.',
+      },
+      {
+        type: 'section',
+        heading: '7. Online yorumlar tutarsızsa',
+        text: 'Aynı tarihte onlarca 5 yıldız yorum, birbirine benzer cümleler ve yanıtsız kalan şikayetler sahte yorum belirtisidir. Google Maps\'te farklı tarihlere yayılmış, detaylı yorumları olan firmaları tercih edin.',
+      },
+      {
+        type: 'section',
+        heading: 'Güvenli çilingir seçimi için pratik ipuçları',
+        text: 'Acil durum öncesinde güvendiğiniz bir çilingir numarasını kaydedin. Fiyatı telefondan onaylayın ve yazılı isteyin. Panik anında ilk çıkan numarayı değil, tanıdığınız bir firmayı tercih edin. Çilingirciniz olarak her iş öncesi telefonda net fiyat bilgisi veriyoruz.',
+      },
+      {
+        type: 'links',
+        heading: 'İlgili İçerikler',
+        items: [
+          { name: 'Çilingir Çağırırken Dikkat Edilmesi Gerekenler', path: 'cilingir-cagirilirken-dikkat-edilmesi-gerekenler' },
+          { name: 'Kilit Değişimi Ne Zaman Gerekir?', path: 'kilit-degisimi-ne-zaman-gerekir' },
+          { name: 'Kapınız Kilitli Kaldığında Ne Yapmalısınız?', path: 'kapiniz-kilitli-kaldi-ne-yapmali' },
+        ],
+      },
+      { type: 'cta' },
+    ],
+  },
+
 ];
 
 export function getPostBySlug(slug) {

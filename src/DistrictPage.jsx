@@ -208,6 +208,7 @@ function DistrictHero({ page }) {
         background: BG, overflow: 'hidden',
       }}>
         <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, overflow: 'hidden' }}>
+          <source type="image/webp" srcSet="/images/hero.webp" />
           <img
             src="/images/hero.png"
             alt={`${page.name} acil çilingir hizmeti — Çilingirciniz`}

@@ -99,6 +99,7 @@ function Hero() {
       background: BG,
     }}>
       <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          <source type="image/webp" srcSet="/images/hero.webp" />
         
         <img
           src="/images/hero.png"
