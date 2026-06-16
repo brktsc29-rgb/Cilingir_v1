@@ -3,6 +3,22 @@ import { Clock, ChevronRight } from 'lucide-react';
 import { CSS, BG, GL, GD, BASE_URL, Navbar, MobileMenu, StickyBar, setSEO } from './shared';
 import { BLOG_POSTS, formatDate } from './blogPosts';
 
+const BLOG_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Çilingir Blog | Kilit, Güvenlik ve Tavsiyeler',
+  description: 'Çilingir hizmetleri, kilit güvenliği ve acil durum tavsiyeleri hakkında uzman içerikler.',
+  url: `${BASE_URL}/blog`,
+  hasPart: BLOG_POSTS.map(post => ({
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    url: `${BASE_URL}/blog/${post.slug}`,
+    datePublished: post.date,
+    author: { '@type': 'Organization', name: 'Çilingirciniz' },
+  })),
+};
+
 export default function BlogListView() {
   const [open, setOpen] = useState(false);
 
@@ -12,6 +28,7 @@ export default function BlogListView() {
       desc: 'Çilingir hizmetleri, kilit güvenliği ve acil durum tavsiyeleri hakkında uzman içerikler. İstanbul Avrupa Yakası çilingir bilgi rehberi.',
       url: `${BASE_URL}/blog`,
       lang: 'tr',
+      schema: BLOG_SCHEMA,
     });
   }, []);
 

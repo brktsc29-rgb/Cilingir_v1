@@ -1,8 +1,8 @@
 /**
  * Static prerender: runs after `vite build`.
  * For every known route, creates dist/{route}/index.html
- * with the correct <title>, <meta description>, and <link rel="canonical">
- * so Googlebot sees accurate per-page meta before JavaScript runs.
+ * with the correct <title>, <meta description>, <link rel="canonical">
+ * and per-page hreflang tags so Googlebot sees accurate meta before JS runs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
@@ -20,10 +20,11 @@ function escAttr(str) {
   return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
 
-function patchHTML(html, { title, desc, url }) {
+function patchHTML(html, { title, desc, url, trUrl, enUrl }) {
   const safeTitle = title.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const safeDesc  = escAttr(desc);
-  return html
+
+  let out = html
     .replace(/<title>[^<]*<\/title>/, `<title>${safeTitle}</title>`)
     .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/,         `$1${safeDesc}$2`)
     .replace(/(<link\s+rel="canonical"\s+href=")[^"]*(")/,               `$1${url}$2`)
@@ -32,6 +33,24 @@ function patchHTML(html, { title, desc, url }) {
     .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/,          `$1${url}$2`)
     .replace(/(<meta\s+name="twitter:title"\s+content=")[^"]*(")/,       `$1${escAttr(title)}$2`)
     .replace(/(<meta\s+name="twitter:description"\s+content=")[^"]*(")/,  `$1${safeDesc}$2`);
+
+  // Per-page hreflang
+  const tr = trUrl || url;
+  if (enUrl) {
+    // Bilingual page (homepage, /en)
+    out = out
+      .replace(/(<link\s+rel="alternate"\s+hreflang="tr"\s+href=")[^"]*(")/,         `$1${tr}$2`)
+      .replace(/(<link\s+rel="alternate"\s+hreflang="en"\s+href=")[^"]*(")/,         `$1${enUrl}$2`)
+      .replace(/(<link\s+rel="alternate"\s+hreflang="x-default"\s+href=")[^"]*(")/,  `$1${tr}$2`);
+  } else {
+    // Turkish-only page: point tr + x-default to self, remove en hreflang
+    out = out
+      .replace(/(<link\s+rel="alternate"\s+hreflang="tr"\s+href=")[^"]*(")/,         `$1${tr}$2`)
+      .replace(/(<link\s+rel="alternate"\s+hreflang="x-default"\s+href=")[^"]*(")/,  `$1${tr}$2`)
+      .replace(/\n?\s*<link\s+rel="alternate"\s+hreflang="en"[^>]*>/g,               '');
+  }
+
+  return out;
 }
 
 function write(routePath, meta) {
@@ -44,17 +63,18 @@ function write(routePath, meta) {
 
 let count = 0;
 
-// District + neighborhood pages (74 pages)
+// District + neighborhood pages — Turkish-only, hreflang points to self
 for (const page of ALL_PAGES) {
+  const url = `${BASE_URL}/${page.path}`;
   write(page.path, {
     title: page.metaTitle,
     desc:  page.metaDesc,
-    url:   `${BASE_URL}/${page.path}`,
+    url,
   });
   count++;
 }
 
-// Blog list
+// Blog list — Turkish-only
 write('blog', {
   title: 'Çilingir Blog | Kilit, Güvenlik ve Tavsiyeler | Çilingirciniz',
   desc:  'Çilingir hizmetleri, kilit güvenliği ve acil durum tavsiyeleri hakkında uzman içerikler. İstanbul Avrupa Yakası çilingir bilgi rehberi.',
@@ -62,7 +82,7 @@ write('blog', {
 });
 count++;
 
-// Blog post pages
+// Blog post pages — Turkish-only
 for (const post of BLOG_POSTS) {
   const excerpt = (post.excerpt || '').slice(0, 160);
   write(`blog/${post.slug}`, {
@@ -73,13 +93,15 @@ for (const post of BLOG_POSTS) {
   count++;
 }
 
-// Other static pages
+// Static pages
 const staticPages = [
   {
     path:  'en',
     title: 'Istanbul Locksmith | 24/7 Emergency | Çilingirciniz',
-    desc:  '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0542 694 69 20',
+    desc:  '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0538 059 01 73',
     url:   `${BASE_URL}/en`,
+    enUrl: `${BASE_URL}/en`,
+    trUrl: `${BASE_URL}/`,
   },
   {
     path:  'fiyatlar',
@@ -90,7 +112,7 @@ const staticPages = [
 ];
 
 for (const p of staticPages) {
-  write(p.path, { title: p.title, desc: p.desc, url: p.url });
+  write(p.path, { title: p.title, desc: p.desc, url: p.url, enUrl: p.enUrl, trUrl: p.trUrl });
   count++;
 }
 

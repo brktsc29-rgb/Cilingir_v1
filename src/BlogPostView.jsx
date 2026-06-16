@@ -32,9 +32,16 @@ export default function BlogPostView({ slug }) {
             '@type': 'Article',
             headline: post.title,
             description: post.excerpt,
+            image: `${BASE_URL}/images/hero.png`,
             datePublished: post.date,
-            author: { '@type': 'Organization', name: 'Çilingirciniz' },
-            publisher: { '@type': 'Organization', name: 'Çilingirciniz', url: BASE_URL },
+            dateModified: post.date,
+            author: { '@type': 'Organization', name: 'Çilingirciniz', url: BASE_URL },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Çilingirciniz',
+              url: BASE_URL,
+              logo: { '@type': 'ImageObject', url: `${BASE_URL}/android-chrome-192x192.png` },
+            },
             mainEntityOfPage: `${BASE_URL}/blog/${post.slug}`,
           },
           {
