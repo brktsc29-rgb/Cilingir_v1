@@ -3,7 +3,7 @@ import { Clock, Phone, MessageCircle, MapPin, ChevronRight, CheckCircle, Zap, Sh
 import {
   CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, SocialProof, StickyBar, SectionHeader, Footer,
-  setSEO, ReviewsSection,
+  setSEO, ReviewsSection, gtagEvent,
 } from './shared';
 import { DISTRICT_EXTRAS, HOOD_EXTRAS } from './districtContent';
 
@@ -525,7 +525,7 @@ function BusinessContact({ page }) {
           referrerPolicy="no-referrer-when-downgrade"
         />
         <div style={{ padding: '12px 14px', background: 'rgba(255,255,255,.03)', display: 'flex', flexDirection: 'column', gap: 7 }}>
-          <a href={TEL} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 800, color: GL }}>
+          <a href={TEL} onClick={() => gtagEvent('phone_click')} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 800, color: GL }}>
             <Phone size={14} color={GL} />
             <span itemProp="telephone">{TEL_DISPLAY}</span>
           </a>

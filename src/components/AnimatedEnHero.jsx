@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Clock, Phone, MessageCircle } from 'lucide-react';
-import { TEL, TEL_DISPLAY, WA, GL, GD, BG } from '../shared';
+import { TEL, TEL_DISPLAY, WA, GL, GD, BG, gtagEvent } from '../shared';
 
 const KEYFRAMES = `
   .hk-btn { position:relative; overflow:hidden; isolation:isolate; }
@@ -63,9 +63,15 @@ const subtle = {
   show: { opacity: 1, transition: { duration: 0.55, ease: 'easeOut' } },
 };
 
-const CTAButton = memo(({ href, primary, icon, label, sub, reduced }) => (
+const CTAButton = memo(({ href, primary, icon, label, sub, reduced }) => {
+  const handleClick = () => {
+    if (href && href.startsWith('tel:')) gtagEvent('phone_click');
+    else if (href && (href.includes('wa.me') || href.includes('whatsapp'))) gtagEvent('whatsapp_click');
+  };
+  return (
   <motion.a
     href={href}
+    onClick={handleClick}
     className="bp hk-btn"
     variants={fromBottom}
     whileHover={reduced ? undefined : { scale: 1.028, transition: { duration: 0.2, ease: 'easeOut' } }}
@@ -96,7 +102,8 @@ const CTAButton = memo(({ href, primary, icon, label, sub, reduced }) => (
       }}>{sub}</div>
     </div>
   </motion.a>
-));
+  );
+});
 CTAButton.displayName = 'CTAButton';
 
 export default function AnimatedEnHero() {

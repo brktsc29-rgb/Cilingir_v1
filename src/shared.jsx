@@ -13,6 +13,12 @@ export const GD = '#C9A84C';
 export const BG = '#07090e';
 export const BASE_URL = 'https://cilingirciniz.com';
 
+export function gtagEvent(name) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', name, { event_category: 'engagement' });
+  }
+}
+
 export const CSS = `
   @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -101,7 +107,7 @@ export function Navbar({ open, setOpen, lang = 'tr' }) {
       borderBottom: '1px solid rgba(212,175,55,.09)',
     }}>
       <LogoMark />
-      <a href={TEL} className="bp" style={{
+      <a href={TEL} className="bp" onClick={() => gtagEvent('phone_click')} style={{
         display: 'flex', alignItems: 'center', gap: 8,
         padding: '7px 12px',
         background: 'rgba(212,175,55,.08)', border: '1px solid rgba(212,175,55,.2)', borderRadius: 10,
@@ -176,7 +182,7 @@ export function MobileMenu({ onClose }) {
           }}>{label}</button>
         )
       )}
-      <a href={TEL} onClick={onClose} style={{
+      <a href={TEL} onClick={() => { onClose(); gtagEvent('phone_click'); }} style={{
         display: 'flex', alignItems: 'center', gap: 14, marginTop: 28,
         padding: '16px 20px', borderRadius: 14,
         background: `linear-gradient(135deg,${GD},${GL})`,
@@ -226,7 +232,7 @@ const SVC_DATA = [
 
 function ServiceCard({ grad, Icon, title, desc }) {
   return (
-    <a href={TEL} className="svc" style={{
+    <a href={TEL} className="svc" onClick={() => gtagEvent('phone_click')} style={{
       display: 'flex', alignItems: 'center',
       background: 'rgba(255,255,255,.04)',
       border: '1px solid rgba(212,175,55,.18)',
@@ -340,7 +346,7 @@ export function StickyBar() {
       paddingBottom: 'max(10px,env(safe-area-inset-bottom))',
       display: 'flex', gap: 8,
     }}>
-      <a href={TEL} className="bp" style={{
+      <a href={TEL} className="bp" onClick={() => gtagEvent('phone_click')} style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
         height: 46, borderRadius: 12,
         background: `linear-gradient(135deg,${GD},${GL})`,
@@ -352,7 +358,7 @@ export function StickyBar() {
           <div style={{ fontSize: 12, fontWeight: 900, color: '#000', lineHeight: 1.3 }}>{TEL_DISPLAY}</div>
         </div>
       </a>
-      <a href={WA} className="bp" style={{
+      <a href={WA} className="bp" onClick={() => gtagEvent('whatsapp_click')} style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
         height: 46, borderRadius: 12,
         background: '#0d1e11', border: '1px solid rgba(37,211,102,.28)',
@@ -363,7 +369,7 @@ export function StickyBar() {
           <div style={{ fontSize: 9.5, color: 'rgba(37,211,102,.6)', lineHeight: 1.3 }}>Hızlı yanıt</div>
         </div>
       </a>
-      <a href={WA_KONUM} className="bp" style={{
+      <a href={WA_KONUM} className="bp" onClick={() => gtagEvent('whatsapp_click')} style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
         height: 46, borderRadius: 12,
         background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)',
@@ -548,7 +554,7 @@ export function Footer() {
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,.45)', lineHeight: 1.6, marginBottom: 12 }}>
             İstanbul Avrupa Yakası'nda 7/24 acil çilingir hizmeti.
           </p>
-          <a href={TEL} itemProp="telephone" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 14, fontWeight: 700, color: GL }}>
+          <a href={TEL} itemProp="telephone" onClick={() => gtagEvent('phone_click')} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 14, fontWeight: 700, color: GL }}>
             <Phone size={14} color={GL} />
             <span>{TEL_DISPLAY}</span>
           </a>
@@ -606,7 +612,7 @@ export function WhatsAppBubble() {
   }, []);
   if (!visible) return null;
   return (
-    <a href={WA} className="bp" style={{
+    <a href={WA} className="bp" onClick={() => gtagEvent('whatsapp_click')} style={{
       position: 'fixed', right: 16, bottom: 90, zIndex: 150,
       width: 52, height: 52, borderRadius: '50%',
       background: '#25D366',
