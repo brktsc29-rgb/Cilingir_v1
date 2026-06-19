@@ -122,6 +122,7 @@ export default function AnimatedEnHero() {
             src="/images/hero.png"
             alt="24/7 emergency locksmith service in Istanbul, Çilingirciniz"
             fetchPriority="high"
+            width="1536" height="1024"
             className="hero-img"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
           />

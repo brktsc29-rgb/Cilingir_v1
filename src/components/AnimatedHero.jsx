@@ -123,6 +123,7 @@ export default function AnimatedHero() {
             src="/images/hero.png"
             alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
             fetchPriority="high"
+            width="1536" height="1024"
             className="hero-img"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
           />

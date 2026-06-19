@@ -140,6 +140,7 @@ export default function DistrictPage({ page }) {
             )}
             <BusinessContact page={page} />
             <NearbyAreas page={page} />
+            <BlogLinks />
             {!page.isNeighborhood && <ReviewsSection />}
             {page.content?.faq?.length > 0 && (
               <PageFAQ faq={page.content.faq} name={page.name} />
@@ -213,6 +214,7 @@ function DistrictHero({ page }) {
             src="/images/hero.png"
             alt={`${page.name} acil çilingir hizmeti — Çilingirciniz`}
             loading="lazy"
+            width="1536" height="1024"
             className="hero-img"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center' }}
           />
@@ -708,6 +710,34 @@ function PageFAQ({ faq, name }) {
               </div>
             )}
           </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── Blog links ──────────────────────────────────────────────────────────────── */
+const BLOG_LINK_LIST = [
+  { title: 'Çilingir Çağırırken Dikkat Edilmesi Gerekenler', slug: 'cilingir-cagirilirken-dikkat-edilmesi-gerekenler' },
+  { title: 'Kapınız Kilitli Kaldığında Ne Yapmalısınız?',    slug: 'kapiniz-kilitli-kaldi-ne-yapmali' },
+  { title: 'Ev Güvenliği İçin Kilit Önerileri',             slug: 'ev-guvenligi-icin-kilit-onerileri' },
+];
+
+function BlogLinks() {
+  return (
+    <section aria-label="blog rehberi" style={{ padding: '20px 20px 8px' }}>
+      <SectionHeader eyebrow="BLOG REHBERİ" title="Çilingir Hizmetleri Hakkında" />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
+        {BLOG_LINK_LIST.map(link => (
+          <a key={link.slug} href={`/blog/${link.slug}`} style={{
+            display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px',
+            borderRadius: 10, border: '1px solid rgba(255,255,255,.07)',
+            background: 'rgba(255,255,255,.02)', textDecoration: 'none',
+            color: 'rgba(255,255,255,.75)', fontSize: 13, lineHeight: 1.45,
+          }}>
+            <span style={{ color: GD, fontSize: 16, flexShrink: 0 }}>→</span>
+            {link.title}
+          </a>
         ))}
       </div>
     </section>
