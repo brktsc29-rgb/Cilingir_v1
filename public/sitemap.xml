@@ -32,7 +32,7 @@
 
   <url>
     <loc>https://cilingirciniz.com/blog</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -89,6 +89,20 @@
   <url>
     <loc>https://cilingirciniz.com/blog/cilingir-dolandiricilarindan-nasil-korunulur</loc>
     <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cilingirciniz.com/blog/gece-kapida-kaldiyseniz-ne-yapmali</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cilingirciniz.com/blog/yeni-eve-tasinirken-kilit-degistirmeli-misiniz</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
