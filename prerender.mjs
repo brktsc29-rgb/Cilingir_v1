@@ -109,6 +109,12 @@ const staticPages = [
     desc:  'İstanbul Avrupa Yakası çilingir hizmet fiyatları. Kapı açma, kilit değişimi, oto çilingir. Şeffaf fiyat garantisi, telefonda net bilgi.',
     url:   `${BASE_URL}/fiyatlar`,
   },
+  {
+    path:  'hakkimizda',
+    title: 'Hakkımızda | Çilingirciniz — İstanbul 7/24 Acil Çilingir',
+    desc:  '2014\'ten beri İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. 10+ yıl deneyim, şeffaf fiyat, hasarsız açma garantisi. Kimliği doğrulanmış ekip.',
+    url:   `${BASE_URL}/hakkimizda`,
+  },
 ];
 
 for (const p of staticPages) {

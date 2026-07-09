@@ -326,7 +326,13 @@ function EnServices() {
 }
 
 function EnDistricts() {
-  const districts = ['Beşiktaş', 'Şişli', 'Sarıyer', 'Kağıthane', 'Eyüpsultan'];
+  const districts = [
+    { name: 'Beşiktaş',  path: 'besiktas-cilingir' },
+    { name: 'Şişli',     path: 'sisli-cilingir' },
+    { name: 'Sarıyer',   path: 'sariyer-cilingir' },
+    { name: 'Kağıthane', path: 'kagithane-cilingir' },
+    { name: 'Eyüpsultan',path: 'eyupsultan-cilingir' },
+  ];
   return (
     <section id="districts" style={{ padding: '0 20px 36px' }}>
       <div style={{ marginBottom: 18 }}>
@@ -334,16 +340,17 @@ function EnDistricts() {
         <h2 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-.01em' }}>European Side of Istanbul!</h2>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-        {districts.map((d, i) => (
-          <span key={i} className="pill" style={{
+        {districts.map(d => (
+          <a key={d.path} href={`/${d.path}`} className="pill" style={{
             display: 'inline-flex', alignItems: 'center', gap: 5,
             padding: '8px 13px', borderRadius: 100,
             background: 'rgba(212,175,55,.06)', border: '1px solid rgba(212,175,55,.18)',
             fontSize: 12.5, fontWeight: 600, color: 'rgba(255,255,255,.76)',
+            textDecoration: 'none',
           }}>
             <MapPin size={11} color={GD} />
-            {d}
-          </span>
+            {d.name}
+          </a>
         ))}
       </div>
     </section>

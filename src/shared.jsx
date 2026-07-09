@@ -154,11 +154,12 @@ export function MobileMenu({ onClose }) {
   };
 
   const NAV = [
-    { label: 'Hizmetler', action: () => goTo('services', '/#services') },
-    { label: 'Bölgeler',  action: () => goTo('districts', '/#districts') },
-    { label: 'Fiyatlar',  href: '/fiyatlar' },
-    { label: 'Blog',      href: '/blog' },
-    { label: 'İletişim',  href: TEL },
+    { label: 'Hizmetler',  action: () => goTo('services', '/#services') },
+    { label: 'Bölgeler',   action: () => goTo('districts', '/#districts') },
+    { label: 'Fiyatlar',   href: '/fiyatlar' },
+    { label: 'Hakkımızda', href: '/hakkimizda' },
+    { label: 'Blog',       href: '/blog' },
+    { label: 'İletişim',   href: TEL },
   ];
 
   return (
@@ -595,6 +596,7 @@ export function Footer() {
           <div style={{ display: 'flex', gap: 16 }}>
             <a href="/" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Ana Sayfa</a>
             <a href="/fiyatlar" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Fiyatlar</a>
+            <a href="/hakkimizda" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Hakkımızda</a>
             <a href="/blog" style={{ fontSize: 11, color: 'rgba(255,255,255,.28)' }}>Blog</a>
           </div>
         </div>
