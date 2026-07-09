@@ -811,6 +811,203 @@ export const BLOG_POSTS = [
     ],
   },
 
+  {
+    slug: 'gece-kapida-kaldiyseniz-ne-yapmali',
+    title: 'Gece Kapıda Kaldınız mı? İlk 10 Dakikada Yapmanız Gerekenler',
+    excerpt: 'Saat gece 02:00, anahtarınız içeride ve kapı kilitli. Paniklemeden doğru adımları atan kişi sorunu çok daha hızlı çözer. İşte ilk 10 dakika rehberi.',
+    date: '2026-06-17',
+    readMin: 4,
+    content: [
+      {
+        type: 'lead',
+        text: 'Gece saatlerinde kapıda kalmak, gündüz yaşanan aynı durumdan çok daha streslidir. Sokak sessizdir, çevrede az kişi vardır ve yardım bulmak güçleşir. Ancak doğru adımları bilmek bu stresi önemli ölçüde azaltır. İlk 10 dakikada ne yapıp ne yapmamanız gerektiğini anlatalım.',
+      },
+      {
+        type: 'h2',
+        text: '1. Paniklemeden Önce Tekrar Kontrol Edin',
+      },
+      {
+        type: 'p',
+        text: 'Stres altında anahtar gözden kaçabilir. Önce çantanızın tüm gözlerini, ceket ve pantolon ceplerinizi, alışveriş çantanızı ve varsa arabanızı kontrol edin. Bazı durumlarda anahtar baldırın ucunda sallanıyorken "kayboldu" diye aranır.',
+      },
+      {
+        type: 'h2',
+        text: '2. Kapıyı Zorlamaya Çalışmayın',
+      },
+      {
+        type: 'p',
+        text: 'Kredi kartı, bıçak veya tel gibi DIY yöntemleri denemek hem işe yaramaz hem de kapıya ve kilide kalıcı hasar verebilir. Bu hasar, ardından gelecek çilingir işlemini zorlaştırır ve maliyeti artırır. Kapıyı omuzla itmek ise kasayı bozar ve masrafı katlar.',
+      },
+      {
+        type: 'h2',
+        text: '3. Güvenli Bir Noktada Bekleyin',
+      },
+      {
+        type: 'p',
+        text: 'Kapı önünde saatlerce beklemeye gerek yok. Binanın giriş holü, yakındaki 24 saat açık bir market, akaryakıt istasyonu veya güvendiğiniz bir komşunun kapısı güvenli bekleme noktalarıdır. Yalnız ve ıssız bir sokakta uzun süre beklemekten kaçının.',
+      },
+      {
+        type: 'h2',
+        text: '4. Kayıtlı Çilingir Numarasını Arayın',
+      },
+      {
+        type: 'p',
+        text: 'Panik anında Google\'da "gece çilingir" diye aramak risklidir; reklamda öne çıkan bazı sahte firmalar gece saatlerinde çok yüksek fiyat talep eder. Bu yüzden acil durum öncesinde güvendiğiniz bir çilingirin numarasını telefonunuza kaydedin.',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Çilingirciniz 7/24 aktif: 0538 059 01 73',
+          'Telefonda konum bildirin — adres, apartman adı veya yakın bir cadde',
+          'İstanbul Avrupa Yakasında ortalama 20-30 dakikada kapınızdayız',
+        ],
+      },
+      {
+        type: 'h2',
+        text: '5. Telefonda Fiyatı Teyit Edin',
+      },
+      {
+        type: 'p',
+        text: 'Çilingiri aramadan önce bile olmasa, en azından telefondayken "toplam ücret ne kadar olacak?" diye net bir şekilde sorun. Gece tarifesi ek ücreti, uzak mesafe farkı varsa öğrenin. Gelip fiyat söyleyeceğini söyleyen firmaları tercih etmeyin.',
+      },
+      {
+        type: 'h2',
+        text: '6. Kapı Açılınca Kilidi Kontrol Edin',
+      },
+      {
+        type: 'p',
+        text: 'Kapınız açıldıktan sonra bir dakika ayırın: kilit düzgün çalışıyor mu, kapı kasaya tam oturuyor mu, ek hasar var mı? Çilingir hâlâ oradayken fark ettiğiniz sorunları belirtin. Ayrıca bu durum tekrarlanmasın diye yedek anahtar yaptırmayı düşünün.',
+      },
+      {
+        type: 'h2',
+        text: '7. Acil Durum İçin Önceden Hazırlanın',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Güvendiğiniz bir kişide (eş, aile, komşu) yedek anahtar bırakın.',
+          'Çilingircinizin numarasını "Acil Çilingir" adıyla telefona kaydedin.',
+          'Akıllı kilit kullanıyorsanız uygulama şifresini aklınızda veya güvenli bir yerde bulundurun.',
+          'Birden fazla kişiye anahtarınızı verirken kopyayı takip edin.',
+        ],
+      },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',   path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',      path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',    path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir',  path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir', path: 'eyupsultan-cilingir' },
+        ],
+      },
+      { type: 'cta' },
+    ],
+  },
+
+  {
+    slug: 'yeni-eve-tasinirken-kilit-degistirmeli-misiniz',
+    title: 'Yeni Eve Taşınırken Kilit Değiştirmeli misiniz? Uzman Yanıtı',
+    excerpt: 'Yeni evinizin anahtarının kaç kopyasının dolaştığını bilmiyorsunuz. Önceki kiracı, emlakçı, taşıma şirketi... Bu riski ortadan kaldırmanın tek yolu kilidi değiştirmektir.',
+    date: '2026-06-17',
+    readMin: 5,
+    content: [
+      {
+        type: 'lead',
+        text: 'Yeni bir eve taşınmak heyecan vericidir. Ancak güvenlik açısından genellikle göz ardı edilen bir detay var: kapı kilidi. Elinizde kaç anahtar olduğunu biliyorsunuz ama önceki kiracının, ev sahibinin, emlakçının ya da taşıma şirketinin kopyaları var mı? Bu soruya net yanıt veremiyorsanız kilidi değiştirmeyi ciddi ciddi düşünmelisiniz.',
+      },
+      {
+        type: 'h2',
+        text: 'Neden Kilit Değiştirmelisiniz?',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Anahtarın kaç kopyasının çıkarıldığını bilemezsiniz — önceki kiracı, ev sahibi, temizlikçi, yönetici...',
+          'Kilit eskimiş ya da aşınmış olabilir; acil durumda sizi içeride kilitleyebilir.',
+          'Düşük sınıf kilit silindiri bump ve pick saldırılarına karşı savunmasız kalabilir.',
+          'Güvenlik sigortanız belirli standartların altındaki kilitleri kapsam dışı bırakabilir.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Silindir mi Değiştirilmeli, Kilit mi?',
+      },
+      {
+        type: 'p',
+        text: 'Çoğu durumda tüm kilidi söküp yenisini takmaya gerek yoktur. Silindir (göbek) değişimi daha hızlı ve ekonomik bir çözümdür. Kapı kasası ve kilitleme mekanizması sağlamsa yalnızca içindeki silindiri yeni bir B sınıfı silindir ile değiştirmek yeterlidir. Kilit mekanizması eskimiş veya hasarlıysa komple değişim önerilir.',
+      },
+      {
+        type: 'h2',
+        text: 'Hangi Noktaları Değiştirmelisiniz?',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Ana kapı: Her zaman öncelikli, mutlaka değiştirin.',
+          'Arka kapı veya balkon kapısı (kilidi varsa): İhmal edilmemeli.',
+          'Depo, garaj, bodrum kapısı: Eşya güvenliği için önemli.',
+          'Bina giriş kapısı: Site veya apartman yönetimiyle görüşerek yeniden anahtar çıkarılmasını isteyin.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Kiracılar için Önemli Not',
+      },
+      {
+        type: 'p',
+        text: 'Kiracıysanız kira sözleşmenizi kontrol edin; bazı sözleşmelerde kilit değişimi için ev sahibinin iznini almanız gerekir. Uygulamada çoğu ev sahibi buna itiraz etmez — yeter ki siz de onlara bir yedek anahtar verin. Ev sahibini bilgilendirmek hem yasal hem de ilişki açısından doğru yaklaşımdır.',
+      },
+      {
+        type: 'h2',
+        text: 'Hangi Kilit Sınıfını Seçmelisiniz?',
+      },
+      {
+        type: 'p',
+        text: 'Türkiye\'de TS EN 1303 standardına göre A ve B sınıfı kilit silindiri bulunur. B sınıfı, anti-pick, anti-bump ve anti-drill özelliklidir; konut kullanımı için minimum önerilen standarttır. Çelik kapınız varsa EN 1627 RC2 veya RC3 sınıfı kilit mekanizması da değerlendirilebilir.',
+      },
+      {
+        type: 'ul',
+        items: [
+          'B sınıfı silindir: Güçlü kopyalama ve bump koruması.',
+          'Çok noktalı kilitleme sistemi: Kapıyı üst, orta ve alt üç noktadan sabitler.',
+          'Manyetik veya lazerli anahtar: Kopyalanması çok daha güç.',
+          'Akıllı kilit: Telefon uygulamasıyla yönetim; eski anahtar otomatik devre dışı bırakılabilir.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Ne Zaman Yapılmalı?',
+      },
+      {
+        type: 'p',
+        text: 'İdeal olan taşınma günü veya ilk birkaç gün içinde halletmektir. Eşyalar gelmeden önce kilit değiştirilirse hem taşıma süreci güvenli olur hem de yeni evde ilk geceyi tam güven içinde geçirirsiniz. Beklemek için hiçbir neden yok.',
+      },
+      {
+        type: 'links',
+        heading: 'İlgili İçerikler',
+        items: [
+          { name: 'Ev Güvenliği İçin Kilit Önerileri: Uzman Rehberi', path: 'ev-guvenligi-icin-kilit-onerileri' },
+          { name: 'Kilit Değişimi Ne Zaman Gerekir?', path: 'kilit-degisimi-ne-zaman-gerekir' },
+          { name: 'Çilingir Çağırırken Dikkat Edilmesi Gerekenler', path: 'cilingir-cagirilirken-dikkat-edilmesi-gerekenler' },
+        ],
+      },
+      {
+        type: 'districts',
+        label: 'HİZMET VERDİĞİMİZ İLÇELER',
+        items: [
+          { name: 'Beşiktaş Çilingir',   path: 'besiktas-cilingir' },
+          { name: 'Şişli Çilingir',      path: 'sisli-cilingir' },
+          { name: 'Sarıyer Çilingir',    path: 'sariyer-cilingir' },
+          { name: 'Kağıthane Çilingir',  path: 'kagithane-cilingir' },
+          { name: 'Eyüpsultan Çilingir', path: 'eyupsultan-cilingir' },
+        ],
+      },
+      { type: 'cta' },
+    ],
+  },
+
 ];
 
 export function getPostBySlug(slug) {

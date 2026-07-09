@@ -105,9 +105,10 @@ function Hero() {
           src="/images/hero.png"
           alt="İstanbul'da 7/24 acil çilingir hizmeti, Çilingirciniz kapı açma uzmanı"
           fetchPriority="high"
+          width="1536" height="1024"
           style={{
             width: '100%', height: '100%',
-            objectFit: 'contain', objectPosition: 'right center',
+            objectFit: 'cover', objectPosition: 'right center',
           }}
         />
       </picture>

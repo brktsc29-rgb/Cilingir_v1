@@ -4,12 +4,13 @@ import CilingirLandingView from './CilingirLandingView';
 import { ALL_PAGES } from './districts';
 import { BG } from './shared';
 
-const EnLandingView  = lazy(() => import('./EnLandingView'));
-const DistrictPage   = lazy(() => import('./DistrictPage'));
-const BlogListView   = lazy(() => import('./BlogListView'));
-const BlogPostView   = lazy(() => import('./BlogPostView'));
-const FiyatlarView   = lazy(() => import('./FiyatlarView'));
-const NotFoundView   = lazy(() => import('./NotFoundView'));
+const EnLandingView     = lazy(() => import('./EnLandingView'));
+const DistrictPage      = lazy(() => import('./DistrictPage'));
+const BlogListView      = lazy(() => import('./BlogListView'));
+const BlogPostView      = lazy(() => import('./BlogPostView'));
+const FiyatlarView      = lazy(() => import('./FiyatlarView'));
+const HakkimizdaView    = lazy(() => import('./HakkimizdaView'));
+const NotFoundView      = lazy(() => import('./NotFoundView'));
 
 const Fallback = () => (
   <div style={{ background: BG, minHeight: '100vh' }} />
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/" element={<CilingirLandingView />} />
         <Route path="/locksmith-istanbul" element={<EnLandingView />} />
         <Route path="/fiyatlar" element={<FiyatlarView />} />
+        <Route path="/hakkimizda" element={<HakkimizdaView />} />
         <Route path="/blog" element={<BlogListView />} />
         <Route path="/blog/:slug" element={<BlogPostRoute />} />
         {ALL_PAGES.map(p => (

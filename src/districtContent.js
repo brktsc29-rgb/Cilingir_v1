@@ -10,7 +10,7 @@ export const DISTRICT_EXTRAS = {
   },
 
   sisli: {
-    residential: `Şişli'de konut çilingir hizmetleri iki farklı yapı dokusu üzerine yoğunlaşmaktadır. Nişantaşı ve Teşvikiye'nin butik apartmanları ile Bomonti'nin dönüşüm rezidanslarında yüksek güvenlik sınıfı silindir kilitler tercih edilirken, Kurtuluş ve Feriköy'ün köklü mahallelerinde eski tip Amerikan kilit sistemleri ve antika kapı donanımları özel müdahale gerektirmektedir. Şişli'deki çok katlı apartmanlarda ortak alan kapı sistemleri, kat kilitleri ve daire kapısı olarak üç ayrı noktada servis yapabiliyoruz. Mecidiyeköy'ün yüksek katlı rezidanslarında ise güvenlikli kat kapıları ve acil çıkış kapıları da hizmet kapsamımızda.`,
+    residential: `Şişli'de konut çilingir hizmetleri ilçenin çeşitli yapı dokularına göre şekillenmektedir. Mecidiyeköy'de Nurol Tower (243 daire) ve Torun Center (550 konut); Bomonti'de Nidapark Bomonti (536 konut) ve Bomonti Residences by Rotana (840 konut, 44 kat); Teşvikiye'de The Ritz-Carlton Residences İstanbul (121 daire); Nişantaşı'nda Nişantaşı Koru (160 daire) ve Esentepe'de İstanbul Tower 205 ile Ferko Signature ilçenin öne çıkan konut projeleridir. Nişantaşı ve Teşvikiye'nin butik apartmanları ile Bomonti'nin dönüşüm rezidanslarında yüksek güvenlik sınıfı silindir kilitler tercih edilirken, Kurtuluş ve Feriköy'ün köklü mahallelerinde eski tip Amerikan kilit sistemleri ve antika kapı donanımları özel müdahale gerektirmektedir.`,
     commercial: `Mecidiyeköy, İstanbul'un en yoğun ofis bölgelerinden biridir ve buradaki ticari çilingir talebi gece dahil yüksek seviyelerde seyretmektedir. Osmanbey'deki tekstil ve konfeksiyon işyerleri, Şişli Cevahir AVM çevresi ve Esentepe'deki şirket genel merkezleri ticari hizmet alanlarımız arasındadır. Kurumsal müşteriler için toplu kilit değişimi, master key sistemi kurulumu ve güvenlik denetimi hizmetleri de sunmaktayız. Harbiye bölgesindeki yabancı konsolosluk yakını iş yerleri ise yüksek güvenlik sertifikalı kilit sistemleri açısından özel talep oluşturmaktadır.`,
     auto: `Şişli'de oto çilingir çağrılarının büyük bölümü Mecidiyeköy kavşağındaki otoparklarda ve Cevahir AVM çevresindeki katlı garajlarda alınmaktadır. İş çıkışı yoğun trafik saatlerinde araç anahtarını içeride kilitlemek Şişli'nin en sık karşılaştığımız oto çilingir senaryosudur. Nişantaşı'ndaki lüks araçlar için transponder programlama ve rezerve anahtar üretimi de sıklıkla talep edilmektedir. Şişli'ye oto çilingir için ortalama varış süremiz 20-30 dakikadır.`,
     lockGuide: `Şişli'de kilit değişimi kararı verilmesi gereken durumlar arasında en sık görüleni taşınma sonrası güvenlik güncellemesidir; özellikle Bomonti ve Nişantaşı'nın yüksek kira bölgelerinde kiracı değişim hızı yüksektir. Anahtar kaybı veya çalınması, kilidin dönmemesi veya takılması, kapı fitilinin değişimi sırasında fark edilen kasa hasarı ve bina yönetimi tarafından zorunlu tutulan güvenlik standardı güncellemesi de sık görülen nedenlerdir. Çilingirciniz Şişli genelinde aynı gün kilit değişimi yapabilmektedir. Değişim parçaları teknisyen araçlarında stokta tutulmaktadır.`,
@@ -19,7 +19,7 @@ export const DISTRICT_EXTRAS = {
   },
 
   sariyer: {
-    residential: `Sarıyer ilçesinin konut yapısı İstanbul'un en çeşitli dokularından birini barındırmaktadır. Maslak ve Büyükdere'nin yüksek katlı rezidanslarından Zekeriyaköy ve Göktürk'ün villa evlerine, İstinye'nin lüks konut projelerinden Kilyos ve Kumköy'ün sahil konutlarına kadar her yapı tipi özel kilit çözümü gerektirmektedir. Villa bölgelerinde akıllı kapı kilitleri, motorlu garaj kilitleri ve bahçe kapısı kilitleri de hizmet kapsamımızdadır. Sarıyer'in uzak mahallelerinde (Zekeriyaköy, Bahçeköy, Kilyos) hizmet verebilmek için bölge bazlı araç konumlandırması yapıyoruz; bu sayede uzak noktalara da ortalama 30-40 dakikada ulaşabiliyoruz.`,
+    residential: `Sarıyer ilçesinin konut yapısı İstanbul'un en çeşitli dokularından birini barındırmaktadır. Maslak'ta Maslak 1453 (~4.200 konut), Skyland İstanbul (830 konut, 65 kat), RAMS Beyond İstanbul / ETRO Residences; Ayazağa'da Vadistanbul Teras (~1.111 daire), Vadistanbul Bahçe (~1.000 daire), RAMS Ayazağa (~4.000 konut planlı) ve Avangart İstanbul İstanbul'un en büyük konut projelerinin bir bölümünü oluşturmaktadır. Buna ek olarak Zekeriyaköy ve Göktürk'ün villa evleri, İstinye'nin lüks konut projeleri, Kilyos ve Kumköy'ün sahil konutlarına kadar her yapı tipi özel kilit çözümü gerektirmektedir. Villa bölgelerinde akıllı kapı kilitleri, motorlu garaj kilitleri ve bahçe kapısı kilitleri de hizmet kapsamımızdadır. Sarıyer'in uzak mahallelerinde (Zekeriyaköy, Bahçeköy, Kilyos) hizmet verebilmek için bölge bazlı araç konumlandırması yapıyoruz.`,
     commercial: `Sarıyer'de ticari çilingir hizmetleri ağırlıklı olarak Maslak ve Büyükdere plaza bölgesinde yoğunlaşmaktadır. Sabancı Center, Spine Tower ve diğer kurumsal yapılardaki ofis kapıları, güvenlik kontrol sistemleri ve acil çıkış kapıları için yetkili servis çalışmaları yapılmaktadır. İstinye Park AVM ve çevresindeki mağazalar ile Tarabya'daki balıkçı restoranlar gibi küçük ticari işletmeler de alanımız içindedir. Sarıyer'in büyükelçilik villaları ve diplomatik temsilciliklerin bulunduğu bölgelerinde yüksek güvenlik sertifikalı kilit sistemleri konusunda danışmanlık da sunuyoruz.`,
     auto: `Sarıyer'de oto çilingir en sık Maslak'taki plaza otoparkları ile İstinye Park AVM katlı garajında talep edilmektedir. Boğaz kıyısında park eden araçlarda anahtar kilitleme vakası da sıkça yaşanmaktadır. Zekeriyaköy ve Göktürk gibi villa bölgelerinde araç anahtarı kaybı durumunda en yakın yetkili servisin mesafesi göz önüne alındığında, oto çilingir hizmetimiz önemli bir alternatif sunmaktadır. Sarıyer'e oto çilingir için varış süremiz bölgeye göre 25-45 dakika arasında değişmekte olup önceden bilgilendirme yapılmaktadır.`,
     lockGuide: `Sarıyer'de kilit değişiminin en önemli nedeni, yaz sezonu sonrası tatil ve yazlık konutlarının uzun süre boş kalmasıdır. Kilyos, Tarabya ve Yeniköy gibi mevsimlik konutlarda sezon başı silindir denetimi ve gerekirse değişim önerilmektedir. Villa bölgelerinde güvenlik nedeniyle taşınma dönemlerinde kapsamlı kilit yenileme yapılması da tercih edilmektedir. Zekeriyaköy ve Bahçeköy'ün uzak konumu göz önünde bulundurulduğunda, yedek anahtar stratejisi ve kilit sigortası hakkında ücretsiz danışmanlık sunuyoruz.`,
@@ -28,7 +28,7 @@ export const DISTRICT_EXTRAS = {
   },
 
   kagithane: {
-    residential: `Kağıthane'de son on yılda gerçekleşen kentsel dönüşüm, ilçenin konut kilit sistemlerini kökten değiştirmiştir. Yıkılarak yeniden inşa edilen yapılarda modern çelik kapı sistemleri ve A sınıfı silindirler standart hale gelirken, dönüşüm henüz tamamlanmamış olan eski binalarda 1980-2000 yılları arasına ait kilit mekanizmaları görülmektedir. Gültepe, Nurtepe ve Kuştepe gibi yoğun konut mahallelerinde apartman ana kapısı, kat kapısı ve daire kapısı şeklinde üç ayrı kilit noktası bulunmakta; her biri için ayrı servis yapabilmekteyiz. Çilingirciniz, hem yeni kentsel dönüşüm konutlarını hem de eski yapıları kapsayan tam stok yeterliliğiyle Kağıthane genelinde hizmet vermektedir.`,
+    residential: `Kağıthane'de son on yılda gerçekleşen kentsel dönüşüm, ilçenin konut kilit sistemlerini kökten değiştirmiştir. Seyrantepe'de Avrupa Konutları Çamlıvadi (919 daire), Nurol Life (502 daire, 50 kat), Nidapark Seyrantepe (317 daire) ve Vadipark (400 daire); Çağlayan'da Tempo City Kağıthane (217 daire) ve Imperium No1/No2 projeleri ilçenin büyük rezidans komplekslerini oluşturmaktadır. Yıkılarak yeniden inşa edilen yapılarda modern çelik kapı sistemleri ve A sınıfı silindirler standart hale gelirken, dönüşüm henüz tamamlanmamış eski binalarda 1980-2000 yıllarına ait kilit mekanizmaları görülmektedir. Gültepe, Nurtepe ve Kuştepe gibi yoğun konut mahallelerinde apartman ana kapısı, kat kapısı ve daire kapısı şeklinde üç ayrı noktada servis yapabilmekteyiz.`,
     commercial: `Kağıthane'nin ticari yapısı Çağlayan'daki adliye çevresi iş yerleri, Talatpaşa Caddesi'ndeki dükkan sırası ve Kağıthane Vadisi çevresinde gelişen yeni ofis alanlarından oluşmaktadır. Çağlayan'da avukat ofisleri, noter ve mahkeme yakını işyerlerinde kilit güvenliğine olan hassasiyet yüksektir; bu bölgede A sınıfı kilit ürün önerisinde bulunuyoruz. M7 metro hattının Seyrantepe'ye ulaşmasıyla birlikte bölgede kurumsal yapılaşma da hız kazanmıştır ve ticari çilingir talebi artmaktadır.`,
     auto: `Kağıthane'de oto çilingir çağrıları ağırlıklı olarak Çağlayan bölgesinin yoğun trafik kavşakları, Seyrantepe yakınındaki stadyum çevresi ve M7 metro güzergahı boyunca konumlanan otoparklarda alınmaktadır. Kağıthane'de özellikle iş çıkışı saatlerinde oluşan yoğunlukta araç anahtarı kilitlemesi vakası sıkça yaşanmaktadır. Çilingirciniz oto çilingir ekibi Kağıthane genelinde ortalama 20-30 dakikada yerinde olmaktadır.`,
     lockGuide: `Kağıthane'de en sık kilit değişimi gereksinimi kentsel dönüşüm projeleri kapsamında oluşmaktadır. Yeni teslim edilen dairelerde müteahhit standart silindiri genellikle A veya B güvenlik sınıfından oluşmakta; bu silindirler ilk 1-2 yıl içinde yüksek güvenlik sınıfı ürünlerle değiştirme planlanmalıdır. Eski Kağıthane yapılarında ise kapı kasası hasarı, yıpranmış kilit gövdesi veya kırık anahtar gibi arızalar sıkça yaşanmakta ve acil müdahale gerektirmektedir. Çilingirciniz, Kağıthane genelinde aynı gün değişim garantisi sunmaktadır.`,
@@ -142,15 +142,15 @@ export const HOOD_EXTRAS = {
 
   // ── Şişli ────────────────────────────────────────────────────────────────
   'sisli-mecidiyekoy': {
-    buildingType: 'Yüksek katlı ofis binaları, karma kullanımlı rezidans kuleleri; yoğun ticari yapılaşma.',
-    commonRequests: ['Ofis katı kapısı açma', 'Kurumsal kilit değişimi', 'Rezidans dairesi açma'],
-    securityTip: 'Mecidiyeköy\'de iş yeri kilitleri sabah erken ve gece geç saatlerde sık talep görmektedir.',
+    buildingType: 'Yüksek katlı ofis binaları, karma kullanımlı rezidans kuleleri; yoğun ticari yapılaşma. Bölgede Nurol Tower (243 konut, Büyükdere Cad.) ve Torun Center (550 konut, Fulya Mah.) gibi büyük konut projeleri yer almaktadır.',
+    commonRequests: ['Nurol Tower daire kapısı açma', 'Torun Center rezidans kilidi değişimi', 'Ofis katı kapısı açma', 'Kurumsal kilit değişimi'],
+    securityTip: 'Nurol Tower ve Torun Center gibi büyük rezidanslarda teslim silindiri ilk yıl A sınıfı ürünle değiştirilmeli; site güvenliğiyle koordineli müdahale yapıyoruz.',
     responseRoute: 'M2 metro hattı üzerinde olduğundan Mecidiyeköy\'e 15-20 dk içinde ulaşılmaktadır.',
   },
   'sisli-nisantasi': {
-    buildingType: 'Butik apartmanlar, lüks daireler ve Osmanlı sonrası yüzyıl başı yapılar.',
-    commonRequests: ['Lüks daire kapısı açma', 'Antika kapı donanımı', 'Güvenlik kilidi yükseltimi'],
-    securityTip: 'Nişantaşı\'nın butik yapılarında kapı görünümüyle uyumlu dekoratif yüksek güvenlik kilitleri tercih edilmektedir.',
+    buildingType: 'Butik apartmanlar, lüks daireler ve Osmanlı sonrası yüzyıl başı yapılar. Nişantaşı Koru (160 daire, ultra lüks site) semtin prestijli konut projelerinin başında gelmektedir.',
+    commonRequests: ['Nişantaşı Koru dairesi açma', 'Lüks daire kapısı açma', 'Antika kapı donanımı', 'Güvenlik kilidi yükseltimi'],
+    securityTip: 'Nişantaşı Koru gibi ultra lüks sitelerde biyometrik kilit ve akıllı kapı sistemi kombinasyonu; antika yapılarda ise görünümle uyumlu A sınıfı dekoratif silindir önerilmektedir.',
     responseRoute: 'Şişli merkezi üzerinden Nişantaşı\'na erişim; ortalama 15-25 dk.',
   },
   'sisli-osmanbey': {
@@ -160,9 +160,9 @@ export const HOOD_EXTRAS = {
     responseRoute: 'M2 Osmanbey istasyonu sayesinde 10-15 dk içinde erişim.',
   },
   'sisli-bomonti': {
-    buildingType: 'Dönüşüm rezidansları, butik oteller ve eski fabrika alanları üzerine inşa edilmiş modern yapılar.',
-    commonRequests: ['Rezidans kapısı açma', 'Akıllı kilit kurulumu', 'Otel kapısı açma'],
-    securityTip: 'Bomonti\'nin yeni rezidanslarında teslim silindiri ilk yıl içinde A sınıfı ürünle değiştirilmelidir.',
+    buildingType: 'Dönüşüm rezidansları, butik oteller ve eski fabrika alanları üzerine inşa edilmiş modern yapılar. Nidapark Bomonti (536 konut + otel bölümü) ve Bomonti Residences by Rotana (840 konut, 44 kat) semtin en büyük projeleridir.',
+    commonRequests: ['Nidapark Bomonti dairesi açma', 'Bomonti Residences kapısı açma', 'Rezidans kapısı açma', 'Akıllı kilit kurulumu'],
+    securityTip: 'Nidapark Bomonti ve Bomonti Residences gibi büyük rezidanslarda teslim silindiri ilk yıl A sınıfı ürünle değiştirilmelidir; otel bölümüyle ortak lobi girişleri için özel koordinasyon sağlıyoruz.',
     responseRoute: 'Şişli veya Okmeydanı üzerinden Bomonti\'ye erişim; ortalama 20-25 dk.',
   },
   'sisli-harbiye': {
@@ -184,9 +184,9 @@ export const HOOD_EXTRAS = {
     responseRoute: 'Şişli-Okmeydanı hattından Feriköy\'e erişim; ortalama 20 dk.',
   },
   'sisli-tesvikiye': {
-    buildingType: 'Prestijli lüks apartmanlar ve abonelik üst gelir konutları.',
-    commonRequests: ['Lüks daire kapısı açma', 'Yüksek güvenlik kilidi değişimi', 'Akıllı kilit kurulumu'],
-    securityTip: 'Teşvikiye\'nin prestijli konumunda biyometrik kilit ve güvenlik kamerası kombinasyonu önerilmektedir.',
+    buildingType: 'Prestijli lüks apartmanlar ve üst gelir konutları. The Ritz-Carlton Residences İstanbul (121 daire, Valikonağı Cad.) semtin en prestijli konut projesi olup ultra lüks standartlar gerektirmektedir.',
+    commonRequests: ['Ritz-Carlton Residences kapısı açma', 'Lüks daire kapısı açma', 'Yüksek güvenlik kilidi değişimi', 'Akıllı kilit kurulumu'],
+    securityTip: 'Ritz-Carlton Residences ve çevresindeki ultra lüks konutlarda biyometrik kilit, güvenlik kamerası ve kapıcı iletişim entegrasyonu birlikte uygulanmalıdır.',
     responseRoute: 'Nişantaşı ve Şişli üzerinden Teşvikiye\'ye 15-20 dk içinde ulaşılmaktadır.',
   },
   'sisli-kurtulus': {
@@ -202,18 +202,18 @@ export const HOOD_EXTRAS = {
     responseRoute: 'Şişli-Gayrettepe hattından Pangaltı\'ya 15-20 dk içinde ulaşılmaktadır.',
   },
   'sisli-esentepe': {
-    buildingType: 'Büyük şirket genel merkezleri, plaza ve karma kullanımlı kurumsal yapılar.',
-    commonRequests: ['Plaza kapısı açma', 'Kurumsal kilit değişimi', 'Ofis güvenlik sistemi'],
-    securityTip: 'Esentepe\'nin kurumsal binalarında mesai sonrası acil erişim planı oluşturulmalıdır.',
+    buildingType: 'Büyük şirket genel merkezleri, plaza ve karma kullanımlı kurumsal yapılar. İstanbul Tower 205 ve Ferko Signature (Büyükdere Cad.) bölgenin öne çıkan yüksek katlı ofis ve rezidans kulelerididir.',
+    commonRequests: ['İstanbul Tower 205 ofis kapısı açma', 'Ferko Signature dairesi açma', 'Plaza kapısı açma', 'Kurumsal kilit değişimi'],
+    securityTip: 'İstanbul Tower 205 ve Ferko Signature gibi karma kullanımlı kulelerde ofis ve rezidans bölümleri için ayrı master key sistemi planlaması önerilmektedir.',
     responseRoute: 'M2 Gayrettepe yakınlığı ile Esentepe\'ye 10-15 dk içinde ulaşılmaktadır.',
   },
 
   // ── Sarıyer ──────────────────────────────────────────────────────────────
   'sariyer-maslak': {
-    buildingType: 'Plaza ofis binaları, yüksek katlı rezidanslar ve teknoloji şirketi kampüsleri.',
-    commonRequests: ['Plaza kapısı açma', 'Rezidans kilidi değişimi', 'Kurumsal master key sistemi'],
-    securityTip: 'Maslak\'ta iş sonrası kurgusal erişim senaryoları için acil hat kaydedilmeli.',
-    responseRoute: 'M2 Maslak istasyonu sayesinde hızlı erişim; ortalama 15-20 dk.',
+    buildingType: 'Yüksek katlı rezidans kuleler, plaza ofisleri ve İstanbul\'un en büyük konut projelerinden bazıları. Maslak 1453 (Ağaoğlu, ~4.200 konut, 24 blok), Skyland İstanbul (65 kat, 830 konut — uzun süre Türkiye\'nin en yükseği), RAMS Beyond İstanbul / ETRO Residences, Eclipse Maslak, Mashattan, KİPTAŞ Maslak Modern (249 daire), As Maslak (118 daire), Selenium Twins ve Maslak Dream başlıca konut projeleridir.',
+    commonRequests: ['Maslak 1453 rezidans kapısı açma', 'Skyland İstanbul dairesi kilidi değişimi', 'ETRO Residences kapısı açma', 'Plaza ofis kapısı açma', 'Kurumsal master key sistemi'],
+    securityTip: 'Maslak 1453, Skyland ve RAMS Beyond gibi yüksek katlı rezidanslarda teslim silindiri ilk yıl içinde A sınıfı yüksek güvenlik ürünüyle değiştirilmelidir. Site güvenlik personeli ile koordineli müdahale yapıyoruz.',
+    responseRoute: 'M2 Maslak istasyonu sayesinde hızlı erişim; Maslak 1453 ve Skyland\'a ortalama 15-20 dk.',
   },
   'sariyer-istinye': {
     buildingType: 'Lüks rezidans projeleri, AVM yakını konutlar ve tarihi tersane dönüşüm binaları.',
@@ -240,10 +240,10 @@ export const HOOD_EXTRAS = {
     responseRoute: 'M2 Hacıosman veya Maslak güzergahından Büyükdere\'ye erişim.',
   },
   'sariyer-ayazaga': {
-    buildingType: 'Üniversite kampüsü yakını konutlar, öğrenci yurtları ve gelişen site projeleri.',
-    commonRequests: ['Yurt kapısı açma', 'Öğrenci dairesi kilidi', 'Site kapısı açma'],
-    securityTip: 'Yüksek kiracı dönüşümlü öğrenci konutlarında her dönem başı silindir değişimi önerilmektedir.',
-    responseRoute: 'M2 Ayazağa istasyonu sayesinde hızlı erişim; ortalama 15-25 dk.',
+    buildingType: 'İstanbul\'un en büyük konut vadisi projelerinin bulunduğu mahalle. Vadistanbul Teras (~1.111 daire), Vadistanbul Bahçe (~1.000 daire), Maslak Koru (750 daire), Vadi Koru (242 daire), RAMS Ayazağa (~4.000 konut planlı), RAMS Park House Maslak ve Avangart İstanbul başlıca projelerdir. Vadi İstanbul AVM de mahallenin önemli bir referans noktasıdır.',
+    commonRequests: ['Vadistanbul Teras dairesi açma', 'Vadistanbul Bahçe kapısı açma', 'Maslak Koru kilidi değişimi', 'RAMS Ayazağa rezidans kapısı', 'Avangart İstanbul daire açma'],
+    securityTip: 'Vadistanbul komplekslerinde her blokun giriş kapısı güvenlik sistemiyle entegre; müdahale öncesi site yönetimiyle koordinasyon sağlıyoruz. Teslim silindirlerinin ilk yıl A sınıfı ürünle değiştirilmesi önerilir.',
+    responseRoute: 'M2 Ayazağa istasyonu sayesinde hızlı erişim; Vadistanbul Teras ve Maslak Koru\'ya ortalama 15-20 dk.',
   },
   'sariyer-zekeriyakoy': {
     buildingType: 'Villa ve müstakil evler; bahçeli konutlar ve güvenlikli özel mülkler.',
@@ -296,16 +296,16 @@ export const HOOD_EXTRAS = {
 
   // ── Kağıthane ─────────────────────────────────────────────────────────────
   'kagithane-caglayan': {
-    buildingType: 'Adliye çevresi ofisler, ticari yapılar ve karma kullanımlı apartmanlar.',
-    commonRequests: ['Ofis kapısı açma', 'Dükkan kilidi değişimi', 'Konut kapısı açma'],
-    securityTip: 'Çağlayan\'ın yoğun ticaret dokusunda iş yeri kilitleri A sınıfı ürünlerle donatılmalıdır.',
+    buildingType: 'Adliye çevresi ofisler, ticari yapılar ve karma kullanımlı apartmanlar. Tempo City Kağıthane (217 daire), Imperium No1 ve Imperium No2 (toplam 123 daire) ile Papirus Plaza bölgenin öne çıkan konut ve iş merkezi projeleridir.',
+    commonRequests: ['Tempo City Kağıthane dairesi açma', 'Imperium rezidans kapısı açma', 'Ofis kapısı açma', 'Dükkan kilidi değişimi'],
+    securityTip: 'Tempo City ve Imperium projelerinde teslim silindiri ilk yıl içinde yüksek güvenlik sınıfıyla değiştirilmelidir. Adliye çevresi yoğun trafik nedeniyle müdahale saati esnek tutulmaktadır.',
     responseRoute: 'Metrobüs Çağlayan durağı yakınlığı sayesinde 15-25 dk içinde erişim.',
   },
   'kagithane-seyrantepe': {
-    buildingType: 'Modern rezidans kuleler, stadyum çevresi ticari yapılar ve yeni site projeleri.',
-    commonRequests: ['Rezidans kapısı açma', 'Site kilidi değişimi', 'Akıllı kilit kurulumu'],
-    securityTip: 'Seyrantepe\'nin yeni binalarında teslim kilidi 1 yıl içinde yüksek güvenlik sınıfıyla güncellenmelidir.',
-    responseRoute: 'M7 Seyrantepe istasyonu sayesinde 15-20 dk içinde erişim.',
+    buildingType: 'Modern rezidans kuleler, stadyum çevresi ticari yapılar ve büyük konut siteleri. Avrupa Konutları Çamlıvadi (919 daire), Nurol Life (502 daire, 50 kat), Nidapark Seyrantepe (317 daire), Vadipark (400 daire), Ferko Line (119 daire), Mevsim İstanbul (187 daire), Orman İstanbul ve Porta Vadi bölgenin başlıca konut projeleridir.',
+    commonRequests: ['Avrupa Konutları Çamlıvadi kapısı açma', 'Nurol Life dairesi açma', 'Nidapark Seyrantepe kilidi değişimi', 'Vadipark rezidans kapısı açma', 'Mevsim İstanbul daire açma'],
+    securityTip: 'Nurol Life (50 kat) ve Avrupa Konutları gibi yüksek katlı komplekslerde teslim silindiri ilk yıl A sınıfı ürünle değiştirilmelidir. Site güvenlik personeli ile koordineli müdahale yapıyoruz.',
+    responseRoute: 'M7 Seyrantepe istasyonu sayesinde 15-20 dk içinde erişim; Avrupa Konutları ve Nurol Life\'a doğrudan yürüyüş mesafesinde.',
   },
   'kagithane-gultepe': {
     buildingType: 'Yoğun apartman dokusu; köklü konut mahallesinde orta katlı yapılar.',
@@ -314,9 +314,9 @@ export const HOOD_EXTRAS = {
     responseRoute: 'Kağıthane merkezi üzerinden Gültepe\'ye 15-25 dk.',
   },
   'kagithane-hamidiye': {
-    buildingType: 'Tarihi doku ile yeni yapının karıştığı karma konut yapılanması.',
-    commonRequests: ['Eski bina kapısı açma', 'Yeni yapı kilit değişimi', 'Daire kapısı açma'],
-    securityTip: 'Hamidiye\'de eski yapılara monte edilen yeni kilit sistemi kapı kasası sağlamlığına göre seçilmelidir.',
+    buildingType: 'Tarihi doku ile yeni yapının karıştığı karma konut yapılanması. Avrupa Konutları Çamlıvadi (919 daire) projesinin bir bölümünün Hamidiye Mahallesi adresinde yer alması, semte yüksek katlı rezidans dokusunu da katmaktadır.',
+    commonRequests: ['Avrupa Konutları Çamlıvadi kapısı açma', 'Eski bina kapısı açma', 'Yeni yapı kilit değişimi', 'Daire kapısı açma'],
+    securityTip: 'Hamidiye\'deki Avrupa Konutları rezidanslarında teslim silindiri ilk yıl A sınıfı ürünle değiştirilmeli; eski yapılarda kapı kasası sağlamlığı kontrol edilerek kilit seçimi yapılmalıdır.',
     responseRoute: 'Kağıthane otobüs güzergahından Hamidiye\'ye ortalama 20-30 dk.',
   },
   'kagithane-nurtepe': {

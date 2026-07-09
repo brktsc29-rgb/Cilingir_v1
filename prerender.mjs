@@ -109,6 +109,12 @@ const staticPages = [
     desc:  'İstanbul Avrupa Yakası çilingir hizmet fiyatları. Kapı açma, kilit değişimi, oto çilingir. Şeffaf fiyat garantisi, telefonda net bilgi.',
     url:   `${BASE_URL}/fiyatlar`,
   },
+  {
+    path:  'hakkimizda',
+    title: 'Hakkımızda | Çilingirciniz — İstanbul 7/24 Acil Çilingir',
+    desc:  '2014\'ten beri İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. 10+ yıl deneyim, şeffaf fiyat, hasarsız açma garantisi. Kimliği doğrulanmış ekip.',
+    url:   `${BASE_URL}/hakkimizda`,
+  },
 ];
 
 for (const p of staticPages) {
@@ -117,3 +123,53 @@ for (const p of staticPages) {
 }
 
 console.log(`\nPrerendered ${count} pages into dist/\n`);
+
+// ─── Sitemap generation ───────────────────────────────────────────────────────
+function sitemapEntry({ loc, lastmod, changefreq, priority, bilingual = false }) {
+  let s = `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>`;
+  if (bilingual) {
+    s += `\n    <xhtml:link rel="alternate" hreflang="tr"        href="${BASE_URL}/"/>`;
+    s += `\n    <xhtml:link rel="alternate" hreflang="en"        href="${BASE_URL}/locksmith-istanbul"/>`;
+    s += `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/"/>`;
+  }
+  s += `\n  </url>`;
+  return s;
+}
+
+const sitemapEntries = [];
+
+// Homepage
+sitemapEntries.push(sitemapEntry({ loc: `${BASE_URL}/`, lastmod: '2026-06-01', changefreq: 'weekly', priority: '1.0', bilingual: true }));
+
+// English page
+sitemapEntries.push(sitemapEntry({ loc: `${BASE_URL}/locksmith-istanbul`, lastmod: '2026-06-01', changefreq: 'weekly', priority: '0.9', bilingual: true }));
+
+// Fiyatlar
+sitemapEntries.push(sitemapEntry({ loc: `${BASE_URL}/fiyatlar`, lastmod: '2026-06-01', changefreq: 'monthly', priority: '0.8' }));
+
+// Blog list
+sitemapEntries.push(sitemapEntry({ loc: `${BASE_URL}/blog`, lastmod: '2026-06-17', changefreq: 'weekly', priority: '0.8' }));
+
+// Blog posts — use post date as lastmod
+for (const post of BLOG_POSTS) {
+  sitemapEntries.push(sitemapEntry({ loc: `${BASE_URL}/blog/${post.slug}`, lastmod: post.date, changefreq: 'monthly', priority: '0.7' }));
+}
+
+// District and neighborhood pages
+for (const page of ALL_PAGES) {
+  const priority = page.isNeighborhood ? '0.6' : '0.8';
+  const changefreq = page.isNeighborhood ? 'monthly' : 'weekly';
+  sitemapEntries.push(sitemapEntry({ loc: `${BASE_URL}/${page.path}`, lastmod: '2026-06-01', changefreq, priority }));
+}
+
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+${sitemapEntries.join('\n\n')}
+
+</urlset>`;
+
+writeFileSync(join(DIST, 'sitemap.xml'), sitemapXml, 'utf8');
+console.log(`Sitemap generated: dist/sitemap.xml (${sitemapEntries.length} URLs)\n`);
