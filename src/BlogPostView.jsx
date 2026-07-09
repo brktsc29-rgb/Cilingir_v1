@@ -149,6 +149,7 @@ function Block({ block }) {
 
   switch (block.type) {
     case 'lead':
+    case 'intro':
       return (
         <p style={{
           ...prose, fontSize: 16, color: 'rgba(255,255,255,.82)',
@@ -230,6 +231,39 @@ function Block({ block }) {
               <MessageCircle size={14} color="#25D366" />
               WhatsApp
             </a>
+          </div>
+        </div>
+      );
+
+    case 'section':
+      return (
+        <div style={{ marginBottom: 4 }}>
+          <h2 style={{
+            fontSize: 19, fontWeight: 800, color: '#fff',
+            letterSpacing: '-.01em', marginTop: 32, marginBottom: 8,
+          }}>{block.heading}</h2>
+          <p style={prose}>{block.text}</p>
+        </div>
+      );
+
+    case 'links':
+      return (
+        <div style={{ marginTop: 28, marginBottom: 20 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: GD, letterSpacing: '.18em', marginBottom: 10 }}>
+            {block.heading || 'İLGİLİ İÇERİKLER'}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {block.items.map(item => (
+              <a key={item.path} href={`/blog/${item.path}`} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '10px 14px', borderRadius: 10, textDecoration: 'none',
+                background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.12)',
+                fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,.75)',
+              }}>
+                {item.name}
+                <ChevronRight size={13} color={GD} style={{ flexShrink: 0 }} />
+              </a>
+            ))}
           </div>
         </div>
       );
