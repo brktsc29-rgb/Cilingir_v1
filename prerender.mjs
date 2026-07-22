@@ -97,8 +97,8 @@ for (const post of BLOG_POSTS) {
 const staticPages = [
   {
     path:  'locksmith-istanbul',
-    title: 'Istanbul Locksmith | 24/7 Emergency | Çilingirciniz',
-    desc:  '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0538 059 01 73',
+    title: 'Istanbul Locksmith Near Me | Open Now 24/7 | Çilingirciniz',
+    desc:  'Emergency locksmith open now in Istanbul. Key copy near me, door opening, lock replacement. 20-30 min response. Trusted since 2014. Call: 0538 059 01 73',
     url:   `${BASE_URL}/locksmith-istanbul`,
     enUrl: `${BASE_URL}/locksmith-istanbul`,
     trUrl: `${BASE_URL}/`,

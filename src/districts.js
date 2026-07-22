@@ -46,8 +46,8 @@ const DISTRICT_CONTENT = {
     ],
   },
   kagithane: {
-    metaTitle: 'Kağıthane Çilingir | 7/24 Acil Hizmet',
-    metaDesc: 'Kağıthane\'de 7/24 acil çilingir. Çağlayan, Seyrantepe, Gültepe ve tüm mahallelere 20-30 dk\'da. Kapı açma, kilit değişimi. 0538 059 01 73',
+    metaTitle: 'Kağıthane Çilingir | 20-30 Dk\'da Kapı Açma | Çilingirciniz',
+    metaDesc: 'Kağıthane\'de kapıda kaldınız mı? 7/24 acil çilingir — 20-30 dk. Seyrantepe, Çağlayan, Gültepe tüm mahalleler. Kilit değişimi, oto çilingir. Hemen Ara: 0538 059 01 73',
     intro: 'Hızla dönüşen Kağıthane, modern konut projeleri, kentsel dönüşüm alanları ve köklü mahallelerin bir arada yaşadığı dinamik bir ilçedir. Kağıthane Vadisi çevresindeki yeni yapılardan Gültepe\'nin köklü apartmanlarına, Seyrantepe\'nin rezidanslarından Çağlayan\'ın iş merkezlerine kadar 7/24 acil çilingir hizmetindeyiz. M7 metro hattı sayesinde ulaşım kolaylaştı; biz de size daha hızlı ulaşıyoruz.',
     landmarks: 'Kağıthane Vadisi, İstanbul Adliye Sarayı ve M7 Kağıthane istasyonu',
     transport: 'M7 Kağıthane ve Seyrantepe istasyonları, Çağlayan metrobüs durağı',
@@ -474,6 +474,8 @@ const HOOD_CONTENT = {
     ],
   },
   'kagithane-hamidiye': {
+    metaTitle: 'Hamidiye Çilingir | Kağıthane 7/24 — 20-30 Dk Acil',
+    metaDesc: 'Hamidiye\'de kapıda mı kaldınız? 7/24 acil çilingir, 20-30 dk. Avrupa Konutları Çamlıvadi ve tüm mahalle kapıları açılır. Kilit değişimi. 0538 059 01 73',
     intro: 'Kağıthane Vadisi\'ne yakın Hamidiye\'de tarihi doku ile yeni yapılaşma iç içe geçmiştir. Her iki yapı tipindeki kapı ve kilit sistemleri için deneyimliyiz.',
     landmark: 'Kağıthane Vadisi yakınlığı',
     transport: 'Kağıthane otobüs hatları',
@@ -838,8 +840,8 @@ RAW.forEach(d => {
       districtName: d.name,
       districtBase: d.base,
       districtPath: `${d.base}-cilingir`,
-      metaTitle: `${hName} Çilingir | ${d.name} 7/24 Acil`,
-      metaDesc:  `${hName} mahallesinde (${d.name}) 7/24 acil çilingir. ${hc.landmark ? hc.landmark + ' yakınında.' : ''} Kapı açma, kilit değişimi, 20-30 dk. 0538 059 01 73`.slice(0, 160),
+      metaTitle: hc.metaTitle || `${hName} Çilingir | ${d.name} 7/24 Acil`,
+      metaDesc:  hc.metaDesc  || `${hName} mahallesinde (${d.name}) 7/24 acil çilingir. ${hc.landmark ? hc.landmark + ' yakınında.' : ''} Kapı açma, kilit değişimi, 20-30 dk. 0538 059 01 73`.slice(0, 160),
       content: {
         intro:    hc.intro    || `${hName} mahallesinde kapıda kaldınız mı? Çilingirciniz olarak 7/24 acil çilingir hizmeti sunuyoruz. Ortalama 20-30 dakikada yanınızdayız.`,
         landmark: hc.landmark || '',

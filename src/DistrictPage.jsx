@@ -78,6 +78,7 @@ export default function DistrictPage({ page }) {
           ],
         },
         address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' },
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', bestRating: '5', reviewCount: '127' },
       },
       { '@type': 'BreadcrumbList', itemListElement: breadcrumbItems },
     ];
@@ -528,6 +529,15 @@ function BusinessContact({ page }) {
           <a href={TEL} onClick={() => gtagEvent('phone_click')} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 800, color: GL }}>
             <Phone size={14} color={GL} />
             <span itemProp="telephone">{TEL_DISPLAY}</span>
+          </a>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+            target="_blank" rel="noopener noreferrer"
+            onClick={() => gtagEvent('directions_click')}
+            style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,.65)' }}
+          >
+            <MapPin size={13} color={GD} />
+            Yol Tarifi Al
           </a>
           <div style={{ fontSize: 11.5, color: 'rgba(255,255,255,.4)', display: 'flex', alignItems: 'center', gap: 5 }}>
             <Clock size={11} color={GD} />7 gün 24 saat — tatil ve gece dahil

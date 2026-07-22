@@ -353,10 +353,10 @@ export function StickyBar() {
         background: `linear-gradient(135deg,${GD},${GL})`,
         boxShadow: '0 3px 14px rgba(212,175,55,.35)',
       }}>
-        <Phone size={13} color="#000" strokeWidth={2.5} />
+        <Phone size={15} color="#000" strokeWidth={2.5} />
         <div style={{ textAlign: 'left' }}>
-          <div style={{ fontSize: 9, fontWeight: 900, color: 'rgba(0,0,0,.6)', letterSpacing: '.1em', lineHeight: 1 }}>7/24 ACİL</div>
-          <div style={{ fontSize: 12, fontWeight: 900, color: '#000', lineHeight: 1.3 }}>{TEL_DISPLAY}</div>
+          <div style={{ fontSize: 11, fontWeight: 900, color: '#000', letterSpacing: '.01em', lineHeight: 1.15 }}>Hemen Ara — 7/24 Çilingir</div>
+          <div style={{ fontSize: 10.5, fontWeight: 700, color: 'rgba(0,0,0,.72)', lineHeight: 1.3 }}>{TEL_DISPLAY}</div>
         </div>
       </a>
       <a href={WA} className="bp" onClick={() => gtagEvent('whatsapp_click')} style={{

@@ -23,7 +23,13 @@ const SCHEMA_EN = {
     'opens': '00:00',
     'closes': '23:59',
   },
-  'areaServed': { '@type': 'City', 'name': 'Istanbul' },
+  'areaServed': [
+    { '@type': 'Place', 'name': 'Beşiktaş, Istanbul' },
+    { '@type': 'Place', 'name': 'Şişli, Istanbul' },
+    { '@type': 'Place', 'name': 'Sarıyer, Istanbul' },
+    { '@type': 'Place', 'name': 'Kağıthane, Istanbul' },
+    { '@type': 'Place', 'name': 'Eyüpsultan, Istanbul' },
+  ],
   'address': { '@type': 'PostalAddress', 'addressLocality': 'Istanbul', 'addressCountry': 'TR' },
   'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'bestRating': '5', 'reviewCount': '127' },
 };
@@ -33,8 +39,8 @@ export default function EnLandingView() {
 
   useEffect(() => {
     setSEO({
-      title: 'Istanbul Locksmith | 24/7 Emergency | Çilingirciniz',
-      desc: '24/7 emergency locksmith in Istanbul. Door opening, lock replacement, auto locksmith. Average response: 20-30 min. Call now: 0538 059 01 73',
+      title: 'Istanbul Locksmith Near Me | Open Now 24/7 | Çilingirciniz',
+      desc: 'Emergency locksmith open now in Istanbul. Key copy near me, door opening, lock replacement. 20-30 min response. Trusted since 2014. Call: 0538 059 01 73',
       url: `${BASE_URL}/locksmith-istanbul`,
       lang: 'en',
       schema: SCHEMA_EN,
