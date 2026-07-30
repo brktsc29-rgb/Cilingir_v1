@@ -393,20 +393,20 @@ export function SectionHeader({ eyebrow, title }) {
 
 const FAQ_ITEMS = {
   tr: [
-    { q: 'Çilingir kaç dakikada gelir?', a: 'Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da ortalama 20-30 dakika içinde kapınızdayız. Yoğun trafik saatlerinde bu süre biraz uzayabilir, telefonda tahmini süreyi bildiririz.' },
-    { q: 'Gece de hizmet veriyor musunuz?', a: 'Evet, 7/24 kesintisiz hizmet veriyoruz. Gece yarısı, hafta sonu veya resmi tatil fark etmeksizin arayabilirsiniz. Gece tarifesi hakkında bilgiyi telefonda önceden bildiririz.' },
-    { q: 'Kapı açma işlemi kapıya zarar verir mi?', a: 'Profesyonel ekipmanlarımızla büyük çoğunlukla kilidi ve kapıyı hasarsız açıyoruz. Eğer hasar verilmesi gerekecekse işlem öncesi sizi bilgilendiririz ve onayınızı alırız.' },
-    { q: 'Ücret ne kadar?', a: 'Ücret işlemin türüne, saatine ve ilçeye göre değişir. Net fiyat bilgisi için sizi arayın. Telefonda şeffaf fiyat veriyoruz, kapı açıldıktan sonra sürpriz ücret çıkmaz.' },
-    { q: 'Oto çilingir hizmeti de yapıyor musunuz?', a: 'Evet, araç kapısı açma ve oto kilit hizmetleri de veriyoruz. Araç marka ve modelini telefonda belirtin, doğru ekipmanla gelelim.' },
-    { q: 'Kilit değişimi de yapıyor musunuz?', a: 'Evet. Kapı açma işleminin yanı sıra kilit değişimi, çelik kapı kilidi kurulumu ve silindir yenileme hizmetleri de sunuyoruz. Markalı ve garantili ürünler kullanıyoruz.' },
+    { q: 'Çilingir kaç dakikada gelir?', a: 'Ortalama 20-30 dakika. Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da bu süreyi hedefliyoruz. Yoğun trafik saatlerinde tahmini süreyi telefonda önceden bildiririz: 0538 059 01 73.' },
+    { q: 'Gece de hizmet veriyor musunuz?', a: 'Evet, 7/24 ve 365 gün. Gece yarısı, Ramazan Bayramı, Kurban Bayramı, cumartesi veya pazar — hiçbir saatte kapalı değiliz. Hemen arayın: 0538 059 01 73.' },
+    { q: 'Kapı açma işlemi kapıya zarar verir mi?', a: 'Hayır, büyük çoğunlukla hasarsız açıyoruz. Profesyonel pick ve tensioner ekipmanı kullanıyoruz. Çok nadir durumlarda hasar kaçınılmazsa işlemden önce sizi bilgilendirip onayınızı alıyoruz.' },
+    { q: 'Ücret ne kadar?', a: 'Fiyat; işlem türüne (kapı açma, kilit değişimi, oto çilingir), saate ve ilçeye göre belirlenir. Net rakamı telefonda önceden açıklıyoruz. Kapı açıldıktan sonra ek veya gizli ücret yoktur.' },
+    { q: 'Oto çilingir hizmeti de yapıyor musunuz?', a: 'Evet. Araç kapısı açma, yedek anahtar üretimi ve transponder programlama yapıyoruz. Araç marka ve modelini arayınca belirtin; doğru ekipmanla gelelim.' },
+    { q: 'Kilit değişimi de yapıyor musunuz?', a: 'Evet. Silindir değişimi, çelik kapı kilidi kurulumu ve yüksek güvenlik sınıfı (A sınıfı) kilit montajı yapıyoruz. Kale, Mul-T-Lock ve ISEO dahil markalı garantili ürünler kullanıyoruz.' },
   ],
   en: [
-    { q: 'How quickly can a locksmith arrive?', a: 'We arrive within an average of 20-30 minutes in Beşiktaş, Şişli, Sarıyer, Kağıthane and Eyüpsultan. During heavy traffic hours the wait may be slightly longer. We will give you an estimated arrival time by phone.' },
-    { q: 'Do you provide service at night?', a: 'Yes, we operate 24/7 without interruption. You can call us at midnight, on weekends or on public holidays. Any night-time surcharge will be communicated upfront.' },
-    { q: 'Will opening the door cause damage?', a: 'In the vast majority of cases we open locks and doors without any damage using professional equipment. If damage is unavoidable we will inform you and get your approval before proceeding.' },
-    { q: 'How much does it cost?', a: 'Pricing depends on the type of service, time of day and location. Call us for a clear quote. We give transparent pricing over the phone with no surprise charges after the job.' },
-    { q: 'Do you offer auto locksmith services?', a: 'Yes, we open vehicle doors and handle automotive lock issues. Please mention your vehicle make and model when you call so we can bring the right equipment.' },
-    { q: 'Do you also replace locks?', a: 'Yes. In addition to door opening we offer lock replacement, steel door lock installation and cylinder renewal. We use branded, guaranteed products.' },
+    { q: 'How quickly can a locksmith arrive?', a: 'Average 20-30 minutes. We cover Beşiktaş, Şişli, Sarıyer, Kağıthane and Eyüpsultan. During peak traffic we give an estimated arrival time by phone before dispatch. Call: +90 538 059 01 73.' },
+    { q: 'Do you provide service at night?', a: 'Yes, 24/7 and 365 days a year. Midnight, weekends, public holidays — we never close. Call us any time: +90 538 059 01 73. Night-rate surcharges, if any, are disclosed upfront.' },
+    { q: 'Will opening the door cause damage?', a: 'No, in almost all cases we open doors without damage using professional pick and tensioner tools. In rare cases where damage is unavoidable we inform you and get your approval before proceeding.' },
+    { q: 'How much does it cost?', a: 'Price depends on service type (door opening, lock replacement, auto locksmith), time of day and district. We quote a clear price by phone before arrival. No hidden or surprise charges after the job.' },
+    { q: 'Do you offer auto locksmith services?', a: 'Yes. We open vehicle doors, cut spare keys and program transponders. Please tell us your car make and model when you call so we arrive with the right equipment.' },
+    { q: 'Do you also replace locks?', a: 'Yes. We do cylinder replacement, steel door lock installation and Grade A high-security lock fitting. We use branded, warranted products including Kale, Mul-T-Lock and ISEO.' },
   ],
 };
 

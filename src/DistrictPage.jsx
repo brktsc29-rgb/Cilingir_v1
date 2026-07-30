@@ -79,6 +79,11 @@ export default function DistrictPage({ page }) {
         },
         address: { '@type': 'PostalAddress', addressLocality: 'İstanbul', addressCountry: 'TR' },
         aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', bestRating: '5', reviewCount: '127' },
+        foundingDate: '2014',
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '#faq', '.district-intro'],
+        },
       },
       { '@type': 'BreadcrumbList', itemListElement: breadcrumbItems },
     ];
