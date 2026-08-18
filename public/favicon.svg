@@ -7,8 +7,12 @@
       <stop offset="100%" stop-color="#C9A84C"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="12" fill="#07090e"/>
-  <path d="M32 7L53 15V34C53 47 32 57 32 57C32 57 11 47 11 34V15L32 7Z" fill="url(#g)"/>
-  <circle cx="32" cy="27" r="8.5" stroke="#07090e" stroke-width="4" fill="none"/>
-  <rect x="29.5" y="32" width="5" height="13" rx="2" fill="#07090e"/>
+  <!-- Tam daire background — Google'ın dairesel kırpmasında düzgün görünür -->
+  <circle cx="32" cy="32" r="32" fill="#07090e"/>
+  <!-- Logo %80 ölçeğe küçültüldü, tüm kenarlarda eşit padding bırakıldı -->
+  <g transform="translate(32,32) scale(0.8) translate(-32,-32)">
+    <path d="M32 7L53 15V34C53 47 32 57 32 57C32 57 11 47 11 34V15L32 7Z" fill="url(#g)"/>
+    <circle cx="32" cy="27" r="8.5" stroke="#07090e" stroke-width="4" fill="none"/>
+    <rect x="29.5" y="32" width="5" height="13" rx="2" fill="#07090e"/>
+  </g>
 </svg>
