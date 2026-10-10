@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Clock, Phone, MessageCircle } from 'lucide-react';
-import { TEL, TEL_DISPLAY, WA, GL, GD, BG, gtagEvent } from '../shared';
+import { Clock, MessageCircle } from 'lucide-react';
+import { WA, GL, GD, BG, gtagEvent } from '../shared';
 
 const KEYFRAMES = `
   .hk-btn { position:relative; overflow:hidden; isolation:isolate; }
@@ -65,8 +65,7 @@ const subtle = {
 
 const CTAButton = memo(({ href, primary, icon, label, sub, reduced }) => {
   const handleClick = () => {
-    if (href && href.startsWith('tel:')) gtagEvent('phone_click');
-    else if (href && (href.includes('wa.me') || href.includes('whatsapp'))) gtagEvent('whatsapp_click');
+    if (href && (href.includes('wa.me') || href.includes('whatsapp'))) gtagEvent('whatsapp_click');
   };
   return (
   <motion.a
@@ -218,18 +217,9 @@ export default function AnimatedEnHero() {
             <span style={{ color: '#E5951E', fontWeight: 700 }}>20–30 min</span>.
           </motion.p>
 
-          <motion.div variants={fromBottom} style={{ marginBottom: 10 }}>
-            <CTAButton
-              href={TEL} primary reduced={shouldReduce}
-              icon={<Phone size={17} color="#000" strokeWidth={2.5} />}
-              label="CALL NOW"
-              sub={TEL_DISPLAY}
-            />
-          </motion.div>
-
           <motion.div variants={fromBottom}>
             <CTAButton
-              href={WA} reduced={shouldReduce}
+              href={WA} primary reduced={shouldReduce}
               icon={<MessageCircle size={17} color="#25D366" />}
               label="CHAT ON WHATSAPP"
               sub="Quick support"

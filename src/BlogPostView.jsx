@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Clock, ArrowLeft, Phone, MessageCircle, MapPin, ChevronRight } from 'lucide-react';
+import { Clock, ArrowLeft, MessageCircle, MapPin, ChevronRight } from 'lucide-react';
 import {
-  CSS, BG, GL, GD, BASE_URL, TEL, TEL_DISPLAY, WA,
+  CSS, BG, GL, GD, BASE_URL, WA,
   Navbar, MobileMenu, StickyBar, setSEO,
 } from './shared';
 import { getPostBySlug, formatDate, BLOG_POSTS } from './blogPosts';
@@ -211,16 +211,6 @@ function Block({ block }) {
             Ortalama 20-30 dakikada kapınızdayız.
           </p>
           <div style={{ display: 'flex', gap: 10 }}>
-            <a href={TEL} style={{
-              display: 'flex', alignItems: 'center', gap: 8,
-              padding: '12px 16px', borderRadius: 12, flex: 1,
-              background: `linear-gradient(135deg,${GD},${GL})`,
-              fontSize: 13, fontWeight: 800, color: '#000',
-              textDecoration: 'none',
-            }}>
-              <Phone size={14} color="#000" strokeWidth={2.5} />
-              {TEL_DISPLAY}
-            </a>
             <a href={WA} style={{
               display: 'flex', alignItems: 'center', gap: 8,
               padding: '12px 16px', borderRadius: 12, flex: 1,

@@ -857,7 +857,7 @@ export const BLOG_POSTS = [
       {
         type: 'ul',
         items: [
-          'Çilingirciniz 7/24 aktif: 0538 059 01 73',
+          'Çilingirciniz 7/24 aktif: WhatsApp\'tan yazın',
           'Telefonda konum bildirin — adres, apartman adı veya yakın bir cadde',
           'İstanbul Avrupa Yakasında ortalama 20-30 dakikada kapınızdayız',
         ],

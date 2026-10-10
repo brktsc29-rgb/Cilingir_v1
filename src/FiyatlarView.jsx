@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Key, Car, Lock, Shield, Clock, Phone, ChevronRight } from 'lucide-react';
+import { Key, Car, Lock, Shield, Clock, MessageCircle, ChevronRight } from 'lucide-react';
 import {
-  CSS, BG, GL, GD, TEL, TEL_DISPLAY, WA, BASE_URL,
+  CSS, BG, GL, GD, WA, BASE_URL,
   Navbar, MobileMenu, StickyBar, SectionHeader, setSEO,
 } from './shared';
 
@@ -12,14 +12,9 @@ const SCHEMA = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'Çilingirciniz',
-    telephone: '+905380590173',
     url: BASE_URL,
   },
   areaServed: ['Beşiktaş', 'Şişli', 'Sarıyer', 'Kağıthane', 'Eyüpsultan'],
-  availableChannel: {
-    '@type': 'ServiceChannel',
-    servicePhone: { '@type': 'ContactPoint', telephone: '+905380590173', contactType: 'customer service' },
-  },
 };
 
 const SERVICES = [
@@ -129,22 +124,14 @@ export default function FiyatlarView() {
               size hemen kesin fiyat verelim.
             </p>
             <div style={{ display: 'flex', gap: 10 }}>
-              <a href={TEL} style={{
-                flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                height: 48, borderRadius: 12, textDecoration: 'none',
-                background: `linear-gradient(135deg,${GD},${GL})`,
-                fontSize: 12.5, fontWeight: 800, color: '#000',
-              }}>
-                <Phone size={14} color="#000" strokeWidth={2.5} />
-                {TEL_DISPLAY}
-              </a>
               <a href={WA} style={{
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 height: 48, borderRadius: 12, textDecoration: 'none',
-                background: 'rgba(37,211,102,.1)', border: '1px solid rgba(37,211,102,.25)',
+                background: 'rgba(37,211,102,.06)', border: '1px solid rgba(37,211,102,.25)',
                 fontSize: 12.5, fontWeight: 700, color: '#25D366',
               }}>
-                WhatsApp
+                <MessageCircle size={14} color="#25D366" />
+                WhatsApp'tan Destek
               </a>
             </div>
           </div>

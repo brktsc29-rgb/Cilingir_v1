@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Clock, Star, Users, CheckCircle, Phone, MessageCircle } from 'lucide-react';
+import { Shield, Clock, Star, Users, CheckCircle, MessageCircle } from 'lucide-react';
 import {
-  CSS, BG, GL, GD, BASE_URL, TEL, TEL_DISPLAY, WA,
+  CSS, BG, GL, GD, BASE_URL, WA,
   Navbar, MobileMenu, StickyBar, setSEO, gtagEvent,
 } from './shared';
 
@@ -14,7 +14,6 @@ const SCHEMA = {
       name: 'Çilingirciniz',
       description: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. 10+ yıl deneyim, şeffaf fiyatlandırma, hasarsız açma garantisi.',
       url: BASE_URL,
-      telephone: '+905380590173',
       image: `${BASE_URL}/images/hero.png`,
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
@@ -123,23 +122,14 @@ export default function HakkimizdaView() {
               aynı günde, şeffaf fiyatla ve hasara yol açmadan çözüm üretmek.
             </p>
             <div style={{ display: 'flex', gap: 12 }}>
-              <a href={TEL} onClick={() => gtagEvent('phone_click')} style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '13px 20px', borderRadius: 12,
-                background: `linear-gradient(135deg,${GD},${GL})`,
-                fontSize: 13, fontWeight: 800, color: '#000', textDecoration: 'none',
-              }}>
-                <Phone size={15} color="#000" strokeWidth={2.5} />
-                {TEL_DISPLAY}
-              </a>
               <a href={WA} onClick={() => gtagEvent('whatsapp_click')} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '13px 20px', borderRadius: 12,
-                background: 'rgba(255,255,255,.06)', border: '1px solid rgba(37,211,102,.25)',
+                background: 'rgba(37,211,102,.06)', border: '1px solid rgba(37,211,102,.25)',
                 fontSize: 13, fontWeight: 700, color: '#25D366', textDecoration: 'none',
               }}>
                 <MessageCircle size={15} color="#25D366" />
-                WhatsApp
+                WhatsApp'tan Yaz
               </a>
             </div>
           </div>
@@ -281,23 +271,14 @@ export default function HakkimizdaView() {
                 </span>
               </p>
               <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
-                <a href={TEL} onClick={() => gtagEvent('phone_click')} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  padding: '13px 22px', borderRadius: 12,
-                  background: `linear-gradient(135deg,${GD},${GL})`,
-                  fontSize: 14, fontWeight: 800, color: '#000', textDecoration: 'none',
-                }}>
-                  <Phone size={15} color="#000" strokeWidth={2.5} />
-                  Hemen Ara
-                </a>
                 <a href={WA} onClick={() => gtagEvent('whatsapp_click')} style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '13px 22px', borderRadius: 12,
-                  background: 'rgba(255,255,255,.06)', border: '1px solid rgba(37,211,102,.25)',
+                  background: 'rgba(37,211,102,.06)', border: '1px solid rgba(37,211,102,.25)',
                   fontSize: 14, fontWeight: 700, color: '#25D366', textDecoration: 'none',
                 }}>
                   <MessageCircle size={15} color="#25D366" />
-                  WhatsApp
+                  WhatsApp'tan Yaz
                 </a>
               </div>
             </div>

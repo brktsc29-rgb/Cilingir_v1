@@ -4,8 +4,6 @@ import {
   ChevronRight, ChevronDown, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
 
-export const TEL = 'tel:+905380590173';
-export const TEL_DISPLAY = '0538 059 01 73';
 export const WA = 'https://wa.me/905380590173';
 export const WA_KONUM = 'https://wa.me/905380590173?text=Merhaba%2C%20konumumu%20payla%C5%9Fmak%20istiyorum.%20L%C3%BCtfen%20en%20yak%C4%B1n%20ustay%C4%B1%20y%C3%B6nlendirebilir%20misiniz%3F';
 export const GL = '#FFD700';
@@ -107,17 +105,17 @@ export function Navbar({ open, setOpen, lang = 'tr' }) {
       borderBottom: '1px solid rgba(212,175,55,.09)',
     }}>
       <LogoMark />
-      <a href={TEL} className="bp" onClick={() => gtagEvent('phone_click')} style={{
+      <a href={WA} className="bp" onClick={() => gtagEvent('whatsapp_click')} style={{
         display: 'flex', alignItems: 'center', gap: 8,
         padding: '7px 12px',
-        background: 'rgba(212,175,55,.08)', border: '1px solid rgba(212,175,55,.2)', borderRadius: 10,
+        background: 'rgba(37,211,102,.08)', border: '1px solid rgba(37,211,102,.2)', borderRadius: 10,
       }}>
-        <Phone size={13} color={GL} strokeWidth={2.5} />
+        <MessageCircle size={13} color="#25D366" strokeWidth={2.5} />
         <div>
-          <div style={{ fontSize: 8, color: GD, fontWeight: 700, letterSpacing: '.1em', lineHeight: 1 }}>
-            {lang === 'en' ? '24/7 EMERGENCY' : '7/24 ACİL DESTEK'}
+          <div style={{ fontSize: 8, color: '#25D366', fontWeight: 700, letterSpacing: '.1em', lineHeight: 1 }}>
+            {lang === 'en' ? '24/7 WHATSAPP' : '7/24 WHATSAPP'}
           </div>
-          <div style={{ fontSize: 12.5, color: GL, fontWeight: 800, letterSpacing: '.03em', lineHeight: 1.4 }}>{TEL_DISPLAY}</div>
+          <div style={{ fontSize: 10.5, color: '#25D366', fontWeight: 800, letterSpacing: '.03em', lineHeight: 1.4 }}>Hemen Yaz</div>
         </div>
       </a>
       <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
@@ -159,7 +157,7 @@ export function MobileMenu({ onClose }) {
     { label: 'Fiyatlar',   href: '/fiyatlar' },
     { label: 'Hakkımızda', href: '/hakkimizda' },
     { label: 'Blog',       href: '/blog' },
-    { label: 'İletişim',   href: TEL },
+    { label: 'İletişim',   href: WA },
   ];
 
   return (
@@ -183,16 +181,16 @@ export function MobileMenu({ onClose }) {
           }}>{label}</button>
         )
       )}
-      <a href={TEL} onClick={() => { onClose(); gtagEvent('phone_click'); }} style={{
+      <a href={WA} onClick={() => { onClose(); gtagEvent('whatsapp_click'); }} style={{
         display: 'flex', alignItems: 'center', gap: 14, marginTop: 28,
         padding: '16px 20px', borderRadius: 14,
-        background: `linear-gradient(135deg,${GD},${GL})`,
-        boxShadow: '0 4px 20px rgba(212,175,55,.35)',
+        background: '#0d2e18', border: '1px solid rgba(37,211,102,.35)',
+        boxShadow: '0 4px 20px rgba(37,211,102,.18)',
       }}>
-        <Phone size={20} color="#000" />
+        <MessageCircle size={20} color="#25D366" />
         <div>
-          <div style={{ fontSize: 11, color: 'rgba(0,0,0,.6)', fontWeight: 700 }}>ACİL HATTI</div>
-          <div style={{ fontSize: 18, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
+          <div style={{ fontSize: 11, color: 'rgba(37,211,102,.65)', fontWeight: 700 }}>7/24 ACİL DESTEK</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: '#25D366' }}>WhatsApp'tan Yaz</div>
         </div>
       </a>
     </div>
@@ -233,7 +231,7 @@ const SVC_DATA = [
 
 function ServiceCard({ grad, Icon, title, desc }) {
   return (
-    <a href={TEL} className="svc" onClick={() => gtagEvent('phone_click')} style={{
+    <a href={WA} className="svc" onClick={() => gtagEvent('whatsapp_click')} style={{
       display: 'flex', alignItems: 'center',
       background: 'rgba(255,255,255,.04)',
       border: '1px solid rgba(212,175,55,.18)',
@@ -347,18 +345,6 @@ export function StickyBar() {
       paddingBottom: 'max(10px,env(safe-area-inset-bottom))',
       display: 'flex', gap: 8,
     }}>
-      <a href={TEL} className="bp" onClick={() => gtagEvent('phone_click')} style={{
-        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
-        height: 46, borderRadius: 12,
-        background: `linear-gradient(135deg,${GD},${GL})`,
-        boxShadow: '0 3px 14px rgba(212,175,55,.35)',
-      }}>
-        <Phone size={15} color="#000" strokeWidth={2.5} />
-        <div style={{ textAlign: 'left' }}>
-          <div style={{ fontSize: 11, fontWeight: 900, color: '#000', letterSpacing: '.01em', lineHeight: 1.15 }}>Hemen Ara — 7/24 Çilingir</div>
-          <div style={{ fontSize: 10.5, fontWeight: 700, color: 'rgba(0,0,0,.72)', lineHeight: 1.3 }}>{TEL_DISPLAY}</div>
-        </div>
-      </a>
       <a href={WA} className="bp" onClick={() => gtagEvent('whatsapp_click')} style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
         height: 46, borderRadius: 12,
@@ -393,16 +379,16 @@ export function SectionHeader({ eyebrow, title }) {
 
 const FAQ_ITEMS = {
   tr: [
-    { q: 'Çilingir kaç dakikada gelir?', a: 'Ortalama 20-30 dakika. Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da bu süreyi hedefliyoruz. Yoğun trafik saatlerinde tahmini süreyi telefonda önceden bildiririz: 0538 059 01 73.' },
-    { q: 'Gece de hizmet veriyor musunuz?', a: 'Evet, 7/24 ve 365 gün. Gece yarısı, Ramazan Bayramı, Kurban Bayramı, cumartesi veya pazar — hiçbir saatte kapalı değiliz. Hemen arayın: 0538 059 01 73.' },
+    { q: 'Çilingir kaç dakikada gelir?', a: 'Ortalama 20-30 dakika. Beşiktaş, Şişli, Sarıyer, Kağıthane ve Eyüpsultan\'da bu süreyi hedefliyoruz. Yoğun trafik saatlerinde tahmini süreyi WhatsApp üzerinden önceden bildiririz.' },
+    { q: 'Gece de hizmet veriyor musunuz?', a: 'Evet, 7/24 ve 365 gün. Gece yarısı, Ramazan Bayramı, Kurban Bayramı, cumartesi veya pazar — hiçbir saatte kapalı değiliz. WhatsApp\'tan hemen yazın.' },
     { q: 'Kapı açma işlemi kapıya zarar verir mi?', a: 'Hayır, büyük çoğunlukla hasarsız açıyoruz. Profesyonel pick ve tensioner ekipmanı kullanıyoruz. Çok nadir durumlarda hasar kaçınılmazsa işlemden önce sizi bilgilendirip onayınızı alıyoruz.' },
     { q: 'Ücret ne kadar?', a: 'Fiyat; işlem türüne (kapı açma, kilit değişimi, oto çilingir), saate ve ilçeye göre belirlenir. Net rakamı telefonda önceden açıklıyoruz. Kapı açıldıktan sonra ek veya gizli ücret yoktur.' },
     { q: 'Oto çilingir hizmeti de yapıyor musunuz?', a: 'Evet. Araç kapısı açma, yedek anahtar üretimi ve transponder programlama yapıyoruz. Araç marka ve modelini arayınca belirtin; doğru ekipmanla gelelim.' },
     { q: 'Kilit değişimi de yapıyor musunuz?', a: 'Evet. Silindir değişimi, çelik kapı kilidi kurulumu ve yüksek güvenlik sınıfı (A sınıfı) kilit montajı yapıyoruz. Kale, Mul-T-Lock ve ISEO dahil markalı garantili ürünler kullanıyoruz.' },
   ],
   en: [
-    { q: 'How quickly can a locksmith arrive?', a: 'Average 20-30 minutes. We cover Beşiktaş, Şişli, Sarıyer, Kağıthane and Eyüpsultan. During peak traffic we give an estimated arrival time by phone before dispatch. Call: +90 538 059 01 73.' },
-    { q: 'Do you provide service at night?', a: 'Yes, 24/7 and 365 days a year. Midnight, weekends, public holidays — we never close. Call us any time: +90 538 059 01 73. Night-rate surcharges, if any, are disclosed upfront.' },
+    { q: 'How quickly can a locksmith arrive?', a: 'Average 20-30 minutes. We cover Beşiktaş, Şişli, Sarıyer, Kağıthane and Eyüpsultan. During peak traffic we give an estimated arrival time via WhatsApp before dispatch.' },
+    { q: 'Do you provide service at night?', a: 'Yes, 24/7 and 365 days a year. Midnight, weekends, public holidays — we never close. Message us on WhatsApp any time. Night-rate surcharges, if any, are disclosed upfront.' },
     { q: 'Will opening the door cause damage?', a: 'No, in almost all cases we open doors without damage using professional pick and tensioner tools. In rare cases where damage is unavoidable we inform you and get your approval before proceeding.' },
     { q: 'How much does it cost?', a: 'Price depends on service type (door opening, lock replacement, auto locksmith), time of day and district. We quote a clear price by phone before arrival. No hidden or surprise charges after the job.' },
     { q: 'Do you offer auto locksmith services?', a: 'Yes. We open vehicle doors, cut spare keys and program transponders. Please tell us your car make and model when you call so we arrive with the right equipment.' },
@@ -555,9 +541,9 @@ export function Footer() {
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,.45)', lineHeight: 1.6, marginBottom: 12 }}>
             İstanbul Avrupa Yakası'nda 7/24 acil çilingir hizmeti.
           </p>
-          <a href={TEL} itemProp="telephone" onClick={() => gtagEvent('phone_click')} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 14, fontWeight: 700, color: GL }}>
-            <Phone size={14} color={GL} />
-            <span>{TEL_DISPLAY}</span>
+          <a href={WA} onClick={() => gtagEvent('whatsapp_click')} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 14, fontWeight: 700, color: '#25D366' }}>
+            <MessageCircle size={14} color="#25D366" />
+            <span>WhatsApp'tan Yaz</span>
           </a>
           <meta itemProp="addressLocality" content="İstanbul" />
           <meta itemProp="addressCountry" content="TR" />

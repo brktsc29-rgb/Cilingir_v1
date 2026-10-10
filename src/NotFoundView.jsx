@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Home, Phone } from 'lucide-react';
-import { CSS, BG, GL, GD, TEL, TEL_DISPLAY, StickyBar } from './shared';
+import { Home, MessageCircle } from 'lucide-react';
+import { CSS, BG, GL, GD, WA, StickyBar } from './shared';
 
 export default function NotFoundView() {
   useEffect(() => {
@@ -57,14 +57,14 @@ export default function NotFoundView() {
             <Home size={15} color="#000" />
             Ana Sayfaya Dön
           </a>
-          <a href={TEL} style={{
+          <a href={WA} style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '13px 20px', borderRadius: 12,
-            background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.12)',
-            fontSize: 13, fontWeight: 700, color: '#fff', textDecoration: 'none',
+            background: 'rgba(37,211,102,.06)', border: '1px solid rgba(37,211,102,.2)',
+            fontSize: 13, fontWeight: 700, color: '#25D366', textDecoration: 'none',
           }}>
-            <Phone size={15} color={GL} />
-            {TEL_DISPLAY}
+            <MessageCircle size={15} color="#25D366" />
+            WhatsApp'tan Yaz
           </a>
         </div>
       </div>

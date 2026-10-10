@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Phone, MessageCircle, MapPin, ChevronRight, CheckCircle, Zap, Shield, Key, Home, Building2, Car, Lock } from 'lucide-react';
+import { Clock, MessageCircle, MapPin, ChevronRight, CheckCircle, Zap, Shield, Key, Home, Building2, Car, Lock } from 'lucide-react';
 import {
-  CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
+  CSS, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, SocialProof, StickyBar, SectionHeader, Footer,
   setSEO, ReviewsSection, gtagEvent,
 } from './shared';
@@ -51,7 +51,7 @@ export default function DistrictPage({ page }) {
         name: `Çilingirciniz - ${page.name}`,
         description: page.metaDesc,
         url,
-        telephone: '+905380590173',
+        contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', availableLanguage: 'Turkish' },
         image: `${BASE_URL}/images/hero.png`,
         priceRange: '₺₺',
         openingHoursSpecification: {
@@ -278,19 +278,6 @@ function DistrictHero({ page }) {
           <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dk</span>{' '}
           içinde profesyonel çilingir.
         </p>
-        <a href={TEL} className="bp" style={{
-          display: 'flex', alignItems: 'center', gap: 11,
-          padding: '0 14px', height: 58, borderRadius: 12, marginBottom: 10,
-          background: `linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
-          backgroundSize: '200% auto',
-          boxShadow: '0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
-        }}>
-          <Phone size={17} color="#000" strokeWidth={2.5} />
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 900, color: 'rgba(0,0,0,.7)', letterSpacing: '.12em', lineHeight: 1 }}>HEMEN ARA</div>
-            <div style={{ fontSize: 14, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
-          </div>
-        </a>
         <a href={WA} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12,
@@ -363,7 +350,7 @@ function ServicesList({ services, name }) {
 /* ── How it works ───────────────────────────────────────────────────────────── */
 function HowItWorks() {
   const steps = [
-    { Icon: Phone,         title: 'Bizi Arayın',         desc: '0538 059 01 73\'yi arayın veya WhatsApp\'tan yazın. Konumunuzu bildirin.' },
+    { Icon: MessageCircle, title: 'WhatsApp\'tan Yazın',  desc: 'WhatsApp\'tan mesaj gönderin. Konumunuzu bildirin, en yakın teknisyen yola çıksın.' },
     { Icon: Zap,           title: 'Hızlı Yönlendirme',   desc: 'En yakın teknisyen anında yola çıkar. Tahmini varış süresini bildiririz.' },
     { Icon: CheckCircle,   title: 'Sorun Çözülür',        desc: 'Kapınız açılır veya kilit değiştirilir. Gizli ücret yoktur.' },
   ];
@@ -518,7 +505,6 @@ function BusinessContact({ page }) {
         style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,.07)' }}
       >
         <meta itemProp="name" content="Çilingirciniz" />
-        <meta itemProp="telephone" content="+905380590173" />
         <meta itemProp="openingHours" content="Mo-Su 00:00-23:59" />
         <link itemProp="url" href="https://cilingirciniz.com" />
         <iframe
@@ -531,9 +517,9 @@ function BusinessContact({ page }) {
           referrerPolicy="no-referrer-when-downgrade"
         />
         <div style={{ padding: '12px 14px', background: 'rgba(255,255,255,.03)', display: 'flex', flexDirection: 'column', gap: 7 }}>
-          <a href={TEL} onClick={() => gtagEvent('phone_click')} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 800, color: GL }}>
-            <Phone size={14} color={GL} />
-            <span itemProp="telephone">{TEL_DISPLAY}</span>
+          <a href={WA} onClick={() => gtagEvent('whatsapp_click')} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 800, color: '#25D366' }}>
+            <MessageCircle size={14} color="#25D366" />
+            <span>WhatsApp'tan Yaz</span>
           </a>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}

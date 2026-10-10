@@ -1,9 +1,9 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import {
-  Phone, MessageCircle, MapPin, Clock, Zap, CheckCircle,
+  MessageCircle, MapPin, Clock, Zap, CheckCircle,
   ChevronRight, Menu, X, Star, Users, Tag, Car, Key, Lock, Shield,
 } from 'lucide-react';
-import { CSS, TEL, TEL_DISPLAY, WA, WA_KONUM, GL, GD, BG, BASE_URL, Navbar, setSEO, setHreflang, FAQSection, ReviewsSection, WhatsAppBubble, Footer } from './shared';
+import { CSS, WA, WA_KONUM, GL, GD, BG, BASE_URL, Navbar, setSEO, setHreflang, FAQSection, ReviewsSection, WhatsAppBubble, Footer } from './shared';
 
 const AnimatedEnHero = lazy(() => import('./components/AnimatedEnHero'));
 
@@ -14,7 +14,6 @@ const SCHEMA_EN = {
   'name': 'Çilingirciniz',
   'description': '24/7 emergency locksmith service in Istanbul. Door opening, lock replacement, auto locksmith.',
   'url': `${BASE_URL}/locksmith-istanbul`,
-  'telephone': '+905380590173',
   'image': `${BASE_URL}/images/hero.png`,
   'priceRange': '₺₺',
   'openingHoursSpecification': {
@@ -40,7 +39,7 @@ export default function EnLandingView() {
   useEffect(() => {
     setSEO({
       title: 'Istanbul Locksmith Near Me | Open Now 24/7 | Çilingirciniz',
-      desc: 'Emergency locksmith open now in Istanbul. Key copy near me, door opening, lock replacement. 20-30 min response. Trusted since 2014. Call: 0538 059 01 73',
+      desc: 'Emergency locksmith open now in Istanbul. Key copy near me, door opening, lock replacement. 20-30 min response. Trusted since 2014.',
       url: `${BASE_URL}/locksmith-istanbul`,
       lang: 'en',
       schema: SCHEMA_EN,
@@ -89,7 +88,7 @@ function EnMobileMenu({ onClose }) {
   const NAV = [
     { label: 'Services',  action: () => goTo('services', '/locksmith-istanbul#services') },
     { label: 'Districts', action: () => goTo('districts', '/locksmith-istanbul#districts') },
-    { label: 'Contact',   href: TEL },
+    { label: 'Contact',   href: WA },
   ];
 
   return (
@@ -113,16 +112,15 @@ function EnMobileMenu({ onClose }) {
           }}>{label}</button>
         )
       )}
-      <a href={TEL} onClick={onClose} style={{
+      <a href={WA} onClick={onClose} style={{
         display: 'flex', alignItems: 'center', gap: 14, marginTop: 28,
         padding: '16px 20px', borderRadius: 14,
-        background: `linear-gradient(135deg,${GD},${GL})`,
-        boxShadow: '0 4px 20px rgba(212,175,55,.35)',
+        background: 'rgba(37,211,102,.06)', border: '1px solid rgba(37,211,102,.25)',
       }}>
-        <Phone size={20} color="#000" />
+        <MessageCircle size={20} color="#25D366" />
         <div>
-          <div style={{ fontSize: 11, color: 'rgba(0,0,0,.6)', fontWeight: 700 }}>EMERGENCY LINE</div>
-          <div style={{ fontSize: 18, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
+          <div style={{ fontSize: 11, color: 'rgba(37,211,102,.7)', fontWeight: 700 }}>EMERGENCY LINE</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: '#25D366' }}>WhatsApp'tan Yaz</div>
         </div>
       </a>
     </div>
@@ -218,19 +216,6 @@ function EnHero() {
           Average response:{' '}
           <span style={{ color: '#E5951E', fontWeight: 700 }}>20–30 min</span>.
         </p>
-        <a href={TEL} className="bp" style={{
-          display: 'flex', alignItems: 'center', gap: 11,
-          padding: '0 14px', height: 58, borderRadius: 12, marginBottom: 10,
-          background: `linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
-          backgroundSize: '200% auto',
-          boxShadow: '0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
-        }}>
-          <Phone size={17} color="#000" strokeWidth={2.5} />
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 900, color: 'rgba(0,0,0,.7)', letterSpacing: '.12em', lineHeight: 1 }}>CALL NOW</div>
-            <div style={{ fontSize: 14, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
-          </div>
-        </a>
         <a href={WA} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12,
@@ -282,7 +267,7 @@ const EN_SVC = [
 
 function EnServiceCard({ grad, Icon, title, desc }) {
   return (
-    <a href={TEL} className="svc" style={{
+    <a href={WA} className="svc" style={{
       display: 'flex', alignItems: 'center',
       background: 'rgba(255,255,255,.04)', border: '1px solid rgba(212,175,55,.18)', borderRadius: 14,
     }}>
@@ -398,13 +383,6 @@ function EnStickyBar() {
       paddingBottom: 'max(10px,env(safe-area-inset-bottom))',
       display: 'flex', gap: 8,
     }}>
-      <a href={TEL} className="bp" style={{
-        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-        height: 46, borderRadius: 12, background: `linear-gradient(135deg,${GD},${GL})`,
-        boxShadow: '0 3px 14px rgba(212,175,55,.35)', fontSize: 11.5, fontWeight: 800, color: '#000',
-      }}>
-        <Phone size={14} color="#000" strokeWidth={2.5} /> CALL NOW
-      </a>
       <a href={WA} className="bp" style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
         height: 46, borderRadius: 12, background: '#0d1e11', border: '1px solid rgba(37,211,102,.28)',

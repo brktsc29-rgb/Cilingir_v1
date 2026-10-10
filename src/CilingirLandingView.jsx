@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { Clock, Phone, MessageCircle } from 'lucide-react';
+import { Clock, MessageCircle } from 'lucide-react';
 import {
-  CSS, TEL, TEL_DISPLAY, WA, GL, GD, BG, BASE_URL,
+  CSS, WA, GL, GD, BG, BASE_URL,
   Navbar, MobileMenu, TrustCards, Services, Districts, SocialProof, StickyBar,
   FAQSection, ReviewsSection, WhatsAppBubble, Footer,
   setSEO, setHreflang,
@@ -20,7 +20,7 @@ const SCHEMA = {
       'name': 'Çilingirciniz',
       'description': 'İstanbul Avrupa Yakası\'nda 2014\'ten beri 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakika.',
       'url': BASE_URL,
-      'telephone': '+905380590173',
+      'contactPoint': { '@type': 'ContactPoint', 'contactType': 'customer service', 'availableLanguage': 'Turkish' },
       'image': `${BASE_URL}/images/hero.png`,
       'priceRange': '₺₺',
       'foundingDate': '2014',
@@ -67,8 +67,8 @@ const SCHEMA = {
         {
           '@type': 'HowToStep',
           'position': 1,
-          'name': '7/24 Çilingiri Arayın',
-          'text': '0538 059 01 73 numaralı hattı arayın. Gece yarısı, tatil ve hafta sonu dahil her saat aktiftir.',
+          'name': '7/24 Çilingir ile İletişime Geçin',
+          'text': 'WhatsApp üzerinden yazın. Gece yarısı, tatil ve hafta sonu dahil her saat aktiftir.',
         },
         {
           '@type': 'HowToStep',
@@ -99,7 +99,7 @@ export default function CilingirLandingView() {
   useEffect(() => {
     setSEO({
       title: 'Çilingirciniz | İstanbul 7/24 Acil Çilingir Hizmeti',
-      desc: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızdayız. 0538 059 01 73',
+      desc: 'İstanbul Avrupa Yakası\'nda 7/24 acil çilingir hizmeti. Kapı açma, kilit değişimi, oto çilingir. Ortalama 20-30 dakikada kapınızdayız.',
       url: `${BASE_URL}/`,
       lang: 'tr',
       schema: SCHEMA,
@@ -198,19 +198,6 @@ function Hero() {
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.55, marginBottom: 20 }}>
           Ortalama <span style={{ color: '#E5951E', fontWeight: 700 }}>20-30 dk</span> içinde profesyonel çözüm.
         </p>
-        <a href={TEL} className="bp" style={{
-          display: 'flex', alignItems: 'center', gap: 11,
-          padding: '0 14px', height: 58, borderRadius: 12, marginBottom: 10,
-          background: `linear-gradient(135deg,${GD} 0%,${GL} 50%,${GD} 100%)`,
-          backgroundSize: '200% auto',
-          boxShadow: '0 5px 22px rgba(212,175,55,.42),inset 0 1px 0 rgba(255,255,255,.25)',
-        }}>
-          <Phone size={17} color="#000" strokeWidth={2.5} />
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 900, color: 'rgba(0,0,0,.7)', letterSpacing: '.12em', lineHeight: 1 }}>HEMEN ARA</div>
-            <div style={{ fontSize: 14, fontWeight: 900, color: '#000' }}>{TEL_DISPLAY}</div>
-          </div>
-        </a>
         <a href={WA} className="bp" style={{
           display: 'flex', alignItems: 'center', gap: 11,
           padding: '0 14px', height: 58, borderRadius: 12,
